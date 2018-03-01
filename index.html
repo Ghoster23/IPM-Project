@@ -3,23 +3,11 @@
   <head>
     <title>Laborat&oacute;rios de IPM</title>
     <link rel="stylesheet" href="style.css">
+    <script src="animation.js"></script>
 
     <style type="text/css">
 
     </style>
-
-    <script type="text/javascript">
-      function toggleVisible(sec_id, arrow_id) {
-        if (sec_id.style.display == "none") {
-          arrow_id.className   = "open_arrow";
-          sec_id.style.display = "block";
-        } else {
-          arrow_id.className   = "closed_arrow";
-          sec_id.style.display = "none";
-        }
-      }
-    </script>
-
   </head>
 
 
@@ -51,7 +39,7 @@
       <p>
 
         <div id="at" class="section" onclick="toggleVisible(at_inner,at_arrow)">
-          <h2 class="section">Análise de Tarefas <img id="at_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
+          <h2 class="section">An&aacute;lise de Tarefas <img id="at_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="at_inner" class="inner_section">
               <!--<a href="questionario1.html">Question&aacute;rio para an&aacute;lise de tarefas</a> <br />
@@ -81,7 +69,7 @@
         </div>
 
         <div id="proto" class="section" onclick="toggleVisible(proto_inner,pr_arrow)">
-          <h2 class="section">Protótipos <img id="pr_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
+          <h2 class="section">Prot&oacute;tipos <img id="pr_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="proto_inner" class="inner_section">
               <!--<a href="pbf1.html">PBF</a> <br />
@@ -106,7 +94,7 @@
         </div>
 
         <div id="au" class="section" onclick="toggleVisible(au_inner,au_arrow)">
-          <h2 class="section">Avaliação com Utilizadores <img id="au_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
+          <h2 class="section">Avalia&ccedil;&atildeo com Utilizadores <img id="au_arrow" class="open_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="au_inner" class="inner_section">
               <!--<a href="tarefas-criterios1.html">Tarefas e Crit&eacute;rios de usabilidade</a> <br />
