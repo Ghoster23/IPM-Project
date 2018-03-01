@@ -1,0 +1,61 @@
+body {
+   font-family: Calibri, sans-serif;
+   text-align: center;
+}
+
+#header {
+  color: darkblue;
+  font-size: 40px;
+}
+
+#sub-header {
+  font-size: 30px;
+}
+
+#Nico_Name {
+  width: 33%;
+}
+
+#Manel_Name {
+  width: 33%;
+}
+
+#Miguel_Name {
+  width: 33%;
+}
+
+#Nico_Image {
+  border-radius: 60%;
+  width: 100px;
+}
+
+#Manel_Image {
+  border-radius: 60%;
+  width: 100px;
+}
+
+#Miguel_Image {
+  border-radius: 60%;
+  width: 100px;
+}
+
+#links {
+  text-align: left;
+  padding-left: 100px;
+}
+
+#at {
+  padding-bottom: 20px;
+}
+
+#mc {
+  padding-bottom: 20px;
+}
+
+#proto {
+  padding-bottom: 20px;
+}
+
+#au {
+  padding-bottom: 20px;
+}
