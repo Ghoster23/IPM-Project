@@ -39,13 +39,14 @@ body {
   width: 100px;
 }
 
-.up_arrow {
-  width: 10px;
-}
-
-.down_arrow {
+.open_arrow {
   width: 10px;
   transform: scaleY(-1);
+}
+
+.closed_arrow {
+  width: 10px;
+  transform: rotate(90deg);
 }
 
 #links {
