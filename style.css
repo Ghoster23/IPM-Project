@@ -39,6 +39,15 @@ body {
   width: 100px;
 }
 
+.up_arrow {
+  width: 10px;
+}
+
+.down_arrow {
+  width: 10px;
+  transform: scaleY(-1);
+}
+
 #links {
   text-align: left;
   padding-left: 100px;

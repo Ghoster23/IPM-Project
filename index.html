@@ -9,11 +9,13 @@
     </style>
 
     <script type="text/javascript">
-      function toggleVisible(id) {
-        if (id.style.display == "none") {
-          id.style.display = "block";
+      function toggleVisible(sec_id, arrow_id) {
+        if (sec_id.style.display == "none") {
+          arrow_id.className   = "up_arrow";
+          sec_id.style.display = "block";
         } else {
-          id.style.display = "none";
+          arrow_id.className   = "down_arrow";
+          sec_id.style.display = "none";
         }
       }
     </script>
@@ -48,8 +50,8 @@
     <div id="links">
       <p>
 
-        <div id="at" class="section" onclick="toggleVisible(at_inner)">
-          <h2 class="section">Análise de Tarefas</h2>
+        <div id="at" class="section" onclick="toggleVisible(at_inner,at_arrow)">
+          <h2 class="section">Análise de Tarefas <img id="at_arrow" class="up_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="at_inner" class="inner_section">
               <!--<a href="questionario1.html">Question&aacute;rio para an&aacute;lise de tarefas</a> <br />
@@ -66,8 +68,8 @@
             </div>
         </div>
 
-        <div id="mc" class="section" onclick="toggleVisible(mc_inner)">
-          <h2 class="section">Modelo Conceptual</h2>
+        <div id="mc" class="section" onclick="toggleVisible(mc_inner,mc_arrow)">
+          <h2 class="section">Modelo Conceptual <img id="mc_arrow" class="up_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="mc_inner" class="inner_section">
               <!--<a href="mod-conceptual1.html">Modelo Conceptual</a> <br />
@@ -78,8 +80,8 @@
             </div>
         </div>
 
-        <div id="proto" class="section" onclick="toggleVisible(proto_inner)">
-          <h2 class="section">Protótipos</h2>
+        <div id="proto" class="section" onclick="toggleVisible(proto_inner,pr_arrow)">
+          <h2 class="section">Protótipos <img id="pr_arrow" class="up_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="proto_inner" class="inner_section">
               <!--<a href="pbf1.html">PBF</a> <br />
@@ -103,8 +105,8 @@
             </div>
         </div>
 
-        <div id="au" class="section" onclick="toggleVisible(au_inner)">
-          <h2 class="section">Avaliação com Utilizadores</h2>
+        <div id="au" class="section" onclick="toggleVisible(au_inner,au_arrow)">
+          <h2 class="section">Avaliação com Utilizadores <img id="au_arrow" class="up_arrow" src = "Images/Arrow.jpg"></h2>
           <hr>
             <div id="au_inner" class="inner_section">
               <!--<a href="tarefas-criterios1.html">Tarefas e Crit&eacute;rios de usabilidade</a> <br />
