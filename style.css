@@ -12,29 +12,21 @@ body {
   font-size: 30px;
 }
 
-#Nico_Name {
+#links {
+  text-align: left;
+  padding-left: 100px;
+}
+
+#rodape {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.element_name {
   width: 33%;
 }
 
-#Manel_Name {
-  width: 33%;
-}
-
-#Miguel_Name {
-  width: 33%;
-}
-
-#Nico_Image {
-  border-radius: 60%;
-  width: 100px;
-}
-
-#Manel_Image {
-  border-radius: 60%;
-  width: 100px;
-}
-
-#Miguel_Image {
+.element_image {
   border-radius: 60%;
   width: 100px;
 }
@@ -49,28 +41,6 @@ body {
   transform: rotate(90deg);
 }
 
-#links {
-  text-align: left;
-  padding-left: 100px;
-}
-
-#at {
+.section {
   padding-bottom: 20px;
-}
-
-#mc {
-  padding-bottom: 20px;
-}
-
-#proto {
-  padding-bottom: 20px;
-}
-
-#au {
-  padding-bottom: 20px;
-}
-
-#rodape {
-  text-align: right;
-  padding-right: 20px;
 }
