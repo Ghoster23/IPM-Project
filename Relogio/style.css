@@ -1,0 +1,7 @@
+#Back_Arrow {
+    width: 10pt;
+    transform: rotate(-90deg);
+    padding-top: 10pt;
+    padding-bottom: 0pt;
+    padding-right: 0pt;
+}
