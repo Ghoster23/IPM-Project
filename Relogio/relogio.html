@@ -2,18 +2,31 @@
 <html>
     <head>
         <title>iRave - Primeiro prot&oacute;tipo funcional</title>
-        <link rel="stylesheet" href="style.css">
+        <link type="text/css" rel="stylesheet" href="style Watch.css">
+        <script type="text/javascript" src="animation Watch.js"></script>
     </head>
 
-    <body>
-        <div>
-            <a href="../index.html"><img id="Back_Arrow" src="../Images/Arrow.jpg"></a>
-        </div>
+    <body onload="clock()">
+        <a href="../index.html"><img id="Back_Arrow" src="../Images/Arrow.jpg"></a>
 
-        <div id="Relogio" class="circulo"> 
-            <!--<div id="Screen" class="circulo">-->
-                iRave
-            <!--</div>-->
+        <div id="Clock">
+            <img id="Watch" src="../Images/Watch Parts/watch.png">
+            <div id="Date">
+                <span id="Sem">sem</span>
+                <span id="Day">00</span>
+                <span>/</span>
+                <span id="Month">00</span>
+            </div>
+            <div id="Clock_Face">
+                <img id="Watch_Face" src="../Images/Watch Parts/watchface.png">
+                <div id="Hands">
+                    <img id="Hour_Hand" class="hand" src="../Images/Watch Parts/watchhours.png">
+                    <img id="Min_Hand"  class="hand" src="../Images/Watch Parts/watchminutes.png">
+                    <img id="Sec_Hand"  class="hand" src="../Images/Watch Parts/watchseconds.png"> 
+                </div>
+            </div>
+
+            <div id="Menu_Botton"></div>
         </div>
     </body>
 </html>

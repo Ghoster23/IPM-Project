@@ -1,0 +1,50 @@
+#Back_Arrow {
+    width: 10pt;
+    transform: rotate(-90deg);
+    padding-top: 10pt;
+    padding-bottom: 0pt;
+    padding-right: 0pt;
+}
+
+#Clock {
+    width: 220px;
+    height: 220px;
+    margin: auto;
+    position: relative;
+}
+
+#Watch {
+    display: block;
+    margin: auto;
+}
+
+#Clock_Face {
+    width: 202px;
+    height: 202px;
+    border-radius: 50%;
+    position: absolute;
+    top: 4%;
+    left: 4%;
+}
+
+#Date {
+    position: absolute;
+    top: 70%;
+    left: 32%;
+    z-index: 2;
+}
+
+.hand {
+    width: 202px;
+    height: 202px;
+    border-radius: 50%;
+    position: absolute;
+    top: -0.5%;
+    left: -0.5%;
+    z-index: 1;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
