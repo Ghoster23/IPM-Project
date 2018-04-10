@@ -1,0 +1,29 @@
+
+#progresscircleshealth{
+    height:        50px;
+    position:      absolute; 
+    top:           92px;
+    left:          195px;
+}
+
+#loading{
+    width: 210px; 
+    height:210px;
+    position:      absolute; 
+    top:           -1px;
+    left:          -8px;
+}
+
+#result{
+    visibility: hidden;
+    width: 210px; 
+    height:210px;
+    position:      absolute; 
+    text-align: center; 
+    top:           45px;
+    left:          -8px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 400;
+    text-shadow: 0px 0px 4px #000000;
+}

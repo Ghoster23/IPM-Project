@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title> Health App</title>
+    <link rel="stylesheet" href="stylemenu1.css">
+    <link rel="stylesheet" href="stylehealthapp.css">
+  </head>
+
+  <body>
+    <div id="clock">
+        <!-- Dark Background -->
+        <div id="backgroundcircle"></div>
+        <div class="menu1" onscroll="updateprogress()">
+            <table id="table1">
+                <!-- alcool test -->
+                <tr>    
+                    <th>
+                        <a href="healthapptest.html" onclick="savecolor('#26B6A0')">
+                            <img src="rsz_alcooltest.png" height="100px" draggable="false">
+                        </a>
+                        <figcaption class="appsubtitle"> Teste de<br>Alcoolemia </figcaption>
+                    </th>
+                </tr>
+
+                <!-- blood pressure test -->
+                <tr>
+                    <th>
+                        <a href="healthapptest.html" onclick="savecolor('#3E67B1')">
+                            <img src="rsz_bloodpressuretest.png" height="100px" draggable="false">
+                        </a>
+                        <figcaption class="appsubtitle"> Pressão <br>Arterial </figcaption>
+                    </th>
+                </tr>
+
+                <!-- drug test -->
+                <tr>
+                    <th>
+                        <a href="healthapptest.html" onclick="savecolor('#462A72')">
+                            <img src="rsz_drugtest.png" height="100px" draggable="false">
+                        </a>
+                        <figcaption class="appsubtitle"> Teste de<br>Narcóticos </figcaption>
+                    </th>
+                </tr>
+
+                <!-- heart rate test -->
+                <tr>
+                    <th>
+                        <a href="healthapptest.html" onclick="savecolor('#F05686')">
+                            <img src="rsz_heartratetest.png" height="100px" draggable="false">
+                        </a>
+                        <figcaption class="appsubtitle"> Ritmo<br>Cardíaco </figcaption>
+                    </th>
+                </tr>
+
+                <!-- blood sugar test -->
+                <tr>
+                    <th>
+                        <a href="healthapptest.html" onclick="savecolor('#DE1F26')">
+                            <img src="rsz_bloodsugartest.png" height="100px" draggable="false">
+                        </a>
+                        <figcaption class="appsubtitle"> Teste de<br>Glicémia </figcaption>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Back Button -->
+        <a href="menu1.html">
+            <img src="back.png" id="back" on>
+        </a>
+
+        <!-- Progress Circles -->
+        <img src="progress2_3.png" id="progresscircleshealth" on>
+
+        <!-- Bezzle -->
+        <img src="bezel.png" id="bezel">  
+    </div>
+    
+<!-- Functions for the scrolling -->
+<script>
+
+    function savecolor(a){
+        localStorage.setItem("color",a);
+    }
+
+    const slider = document.querySelector('.menu1')
+    let isDown = false;
+    let startY = 0;
+    let scrollTop;
+    slider.scrollTop = 372;
+  
+    slider.addEventListener('mousedown', (e) => {
+  	isDown = true;
+    slider.classList.add('active');
+    startY = e.pageY - slider.offsetTop;
+    scrollTop = slider.scrollTop;
+  
+    });
+  
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+    
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+        
+        /*if(slider.scrollTop >= 40 && slider.scrollTop <= 140){
+            pan2app(90);
+        }*/
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+        if(!isDown) return;
+        e.preventDefault();
+        const y = e.pageY - slider.offsetTop; 
+        const walk = y - startY;
+        slider.scrollTop = scrollTop - walk;
+        console.log(slider.scrollTop);
+        
+    });
+
+    function updateprogress(){
+        if(slider.scrollTop<=80){
+            document.getElementById("progresscircleshealth").src="progress2_1.png";
+        }
+        if(slider.scrollTop>96 && slider.scrollTop<=276){
+            document.getElementById("progresscircleshealth").src="progress2_2.png";
+        }
+        if(slider.scrollTop>276 && slider.scrollTop<=450){
+            document.getElementById("progresscircleshealth").src="progress2_3.png";
+        }
+        if(slider.scrollTop>450 && slider.scrollTop<=650){
+            document.getElementById("progresscircleshealth").src="progress2_4.png";
+        }
+        if(slider.scrollTop>650){
+            document.getElementById("progresscircleshealth").src="progress2_5.png";
+        }
+    }
+
+</script>
+
+  </body>
+
+</html>

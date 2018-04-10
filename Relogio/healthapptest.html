@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title> Health App Test</title>
+    <link rel="stylesheet" href="stylemenu1.css">
+    <link rel="stylesheet" href="stylehealthapp.css">
+  </head>
+
+  <body>
+    <div id="clock">
+        <!-- Dark Background -->
+        <div id="backgroundcircle"></div>
+        <div class="menu1" onscroll="updateprogress()">
+            <!-- loading -->
+            <canvas id="loading"></canvas>
+            <!-- result -->
+            <div id="result"> Resultado<br>do teste:</div>
+        </div>
+        <!-- Back Button -->
+        <a href="healthapp.html">
+            <img src="back.png" id="back" on>
+        </a>
+
+        <!-- Bezzle --> 
+        <img src="bezel.png" id="bezel"> 
+    </div>
+    
+<!-- Functions for the scrolling -->
+<script>
+
+    var ctx = document.getElementById('loading').getContext('2d');
+    var percentage = 0;
+    var start = 4.72;
+    var cw = ctx.canvas.width =210;
+    var ch = ctx.canvas.height= 210;
+    var color = localStorage.getItem("color");
+
+    var diff;
+    function progressSim(){
+        diff = ((percentage / 100) * Math.PI*2*10).toFixed(2);
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.lineWidth = 40;
+        ctx.fillStyle = "#FFFFFF";
+        ctx.strokeStyle = color;
+
+        ctx.font="20px sans-serif";
+        ctx.textAlign = 'center';
+        ctx.fillText(percentage+'%', cw*.5, ch*.5+8, cw);
+        ctx.beginPath();
+        ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
+        ctx.stroke();
+        if(percentage >= 100){
+            clearTimeout(sim);
+
+            ctx.clearRect(0, 0, cw, ch);
+            ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
+            ctx.stroke();
+
+            document.getElementById('result').style.visibility= "visible";
+        }
+        percentage++;
+    }
+    var sim = setInterval(progressSim, 50);
+
+</script>
+
+  </body>
+
+</html>
