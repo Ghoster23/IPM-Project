@@ -16,7 +16,7 @@
                 <!-- alcool test -->
                 <tr>    
                     <th>
-                        <a href="healthapptest.html" onclick="savecolor('#26B6A0')">
+                        <a href="healthapptest.html" onclick="savetestinfo('#26B6A0',1)">
                             <img src="rsz_alcooltest.png" height="100px" draggable="false">
                         </a>
                         <figcaption class="appsubtitle"> Teste de<br>Alcoolemia </figcaption>
@@ -26,7 +26,7 @@
                 <!-- blood pressure test -->
                 <tr>
                     <th>
-                        <a href="healthapptest.html" onclick="savecolor('#3E67B1')">
+                        <a href="healthapptest.html" onclick="savetestinfo('#3E67B1',2)">
                             <img src="rsz_bloodpressuretest.png" height="100px" draggable="false">
                         </a>
                         <figcaption class="appsubtitle"> Pressão <br>Arterial </figcaption>
@@ -36,7 +36,7 @@
                 <!-- drug test -->
                 <tr>
                     <th>
-                        <a href="healthapptest.html" onclick="savecolor('#462A72')">
+                        <a href="healthapptest.html" onclick="savetestinfo('#462A72',3)">
                             <img src="rsz_drugtest.png" height="100px" draggable="false">
                         </a>
                         <figcaption class="appsubtitle"> Teste de<br>Narcóticos </figcaption>
@@ -46,7 +46,7 @@
                 <!-- heart rate test -->
                 <tr>
                     <th>
-                        <a href="healthapptest.html" onclick="savecolor('#F05686')">
+                        <a href="healthapptest.html" onclick="savetestinfo('#F05686',4)">
                             <img src="rsz_heartratetest.png" height="100px" draggable="false">
                         </a>
                         <figcaption class="appsubtitle"> Ritmo<br>Cardíaco </figcaption>
@@ -56,7 +56,7 @@
                 <!-- blood sugar test -->
                 <tr>
                     <th>
-                        <a href="healthapptest.html" onclick="savecolor('#DE1F26')">
+                        <a href="healthapptest.html" onclick="savetestinfo('#DE1F26',5)">
                             <img src="rsz_bloodsugartest.png" height="100px" draggable="false">
                         </a>
                         <figcaption class="appsubtitle"> Teste de<br>Glicémia </figcaption>
@@ -80,8 +80,9 @@
 <!-- Functions for the scrolling -->
 <script>
 
-    function savecolor(a){
+    function savetestinfo(a,b){
         localStorage.setItem("color",a);
+        localStorage.setItem("testtype",b);
     }
 
     const slider = document.querySelector('.menu1')
