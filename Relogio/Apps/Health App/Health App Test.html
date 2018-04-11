@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sa&uacute;de - Teste</title>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Health App).css">
+    </head>
+
+    <body>
+        <a href="../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.jpg">
+        </a>
+    
+        <div id="Clock">
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <img id="Button" src="../../Images/Button.png">
+            </a>
+
+            <!-- Dark Background -->
+            <div id="Background_Circle"></div>
+            <div class="menu">
+                <!-- Loading -->
+                <canvas id="Loading"></canvas>
+                <!-- Result -->
+                <div id="Result"> Resultado<br>do teste:</div>
+                <!-- Result Text -->
+                <span id="Result_Text"> place_holder_text</span>
+            </div>
+
+            <!-- Back Button -->
+            <a href="Health App.html">
+                <img id="Back" src="../Images/back.png">
+            </a>
+
+            <!-- Bezzle --> 
+            <img id="Bezel" src="../../Images/Bezel.png"> 
+        </div>
+        
+        <!-- Functions for the tests -->
+        <script>
+
+            function getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            //decide on the string to put for the result :)
+            var testtype     = localStorage.getItem("testtype");
+            var resultstring = "default";
+
+            switch(testtype) {
+                //teste alcoolemia
+                case "1":
+                    resultstring = getRandomArbitrary(0,0.7).toFixed(2).toString() + "%";
+                    break;
+                //tete de pressao arterial
+                case "2":
+                    resultstring = getRandomArbitrary(110,170).toFixed(0).toString() + "/" + getRandomArbitrary(70,110).toFixed(0).toString() + "\nmmHg";
+                    break;   
+                //teste de narcoticos
+                case "3":
+                    switch(getRandomArbitrary(0,0).toFixed(0)) {
+                        case "0":
+                            resultstring = "Não foram\nencontradas\nsubstâncias";
+                            document.getElementById('Result_Text').style.top = "90px";
+                            break;
+                        /*place holder de futuro pensar numa maneira de mostrar as substâncias no sangue
+                        case "1":
+                            resultstring="yes";
+                            break;*/
+                    }
+                    break;
+                //ritmo cardiaco
+                case "4":
+                    resultstring = getRandomArbitrary(49,121).toFixed(0).toString() + " bpm";
+                    break;
+                //teste de glicémia
+                case "5":
+                    resultstring = getRandomArbitrary(5,13).toFixed(0).toString() + " %";
+                    break;
+            }
+            document.getElementById('Result_Text').textContent = resultstring;    
+
+
+            //take care of making the circular progress bar :o
+            var ctx        = document.getElementById('Loading').getContext('2d');
+            var percentage = 0;
+            var start      = 4.72;
+            var cw         = ctx.canvas.width =210;
+            var ch         = ctx.canvas.height= 210;
+            var color      = localStorage.getItem("color");
+
+            var diff;
+            function progressSim() {
+                diff = ((percentage / 100) * Math.PI*2*10).toFixed(2);
+                ctx.clearRect(0, 0, cw, ch);
+                ctx.lineWidth   = 40;
+                ctx.fillStyle   = "#FFFFFF";
+                ctx.strokeStyle = color;
+
+                ctx.font      = "20px sans-serif";
+                ctx.textAlign = 'center';
+                ctx.fillText(percentage+'%', cw*.5, ch*.5+8, cw);
+                ctx.beginPath();
+                ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
+                ctx.stroke();
+                if (percentage >= 100) {
+                    //upon finishing clear canvas and make visible test results
+                    clearTimeout(sim);
+                    
+                    ctx.clearRect(0, 0, cw, ch);
+                    ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
+                    ctx.stroke();
+
+                    document.getElementById('Result').style.visibility = "visible";
+                    document.getElementById('Result_Text').style.visibility = "visible";
+                }
+                percentage++;
+            }
+            var sim = setInterval(progressSim, 50);
+        </script>
+
+    </body>
+</html>
