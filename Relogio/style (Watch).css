@@ -42,9 +42,12 @@
 
 #Button {
     position: absolute;
-    width:    225px;
-    top:      2%;
-    left:     0%;
+    width:     22px;
+    height:    7px;
+    top:       32%;
+    right:     -2%;
+    z-index:   1;
+    transform: rotate(70deg);
 }
 
 #Date {

@@ -13,11 +13,6 @@
         </a>
 
         <div id="Clock">
-            <!-- Button -->
-            <a href="../Watch.html">
-                <img id="Button" src="../Images/Button.png">
-            </a>
-            
             <!-- Dark Background -->
             <div id="Background_Circle"></div>
             <div class="menu" onscroll="updateProgress()">
@@ -57,57 +52,62 @@
 
             <!-- Progress Circles -->
             <img id="Progress_Circles" src="Images/progress2.png">
-
+                                    
             <!-- Bezle -->
-            <img id="Bezel" src="../Images/Bezel.png">  
+            <img id="Bezel" src="../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../Watch.html">
+                <div id="Button" onclick="console.log('tentei')"></div>
+            </a>   
         </div>
         
 
-    <!-- Functions for the scrolling -->
-    <script>
-        const slider = document.querySelector(".menu")
-        let isDown = false;
-        let startY = 0;
-        let scrollTop;
-        slider.scrollTop = 165;
-  
-        slider.addEventListener("mousedown", (e) => {
-            isDown = true;
-            slider.classList.add("active");
-            startY    = e.pageY - slider.offsetTop;
-            scrollTop = slider.scrollTop;
-        });
-  
-        slider.addEventListener("mouseleave", () => {
-            isDown = false;
-            slider.classList.remove("active");
-        });
+        <!-- Functions for the scrolling -->
+        <script>
+            const slider = document.querySelector(".menu")
+            let isDown = false;
+            let startY = 0;
+            let scrollTop;
+            slider.scrollTop = 165;
     
-        slider.addEventListener("mouseup", () => {
-            isDown = false;
-            slider.classList.remove("active");
-        });
+            slider.addEventListener("mousedown", (e) => {
+                isDown = true;
+                slider.classList.add("active");
+                startY    = e.pageY - slider.offsetTop;
+                scrollTop = slider.scrollTop;
+            });
     
-        slider.addEventListener("mousemove", (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const y          = e.pageY - slider.offsetTop; 
-            const walk       = y - startY;
-            slider.scrollTop = scrollTop - walk;
-            console.log(slider.scrollTop);
-        });
+            slider.addEventListener("mouseleave", () => {
+                isDown = false;
+                slider.classList.remove("active");
+            });
+        
+            slider.addEventListener("mouseup", () => {
+                isDown = false;
+                slider.classList.remove("active");
+            });
+        
+            slider.addEventListener("mousemove", (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const y          = e.pageY - slider.offsetTop; 
+                const walk       = y - startY;
+                slider.scrollTop = scrollTop - walk;
+                console.log(slider.scrollTop);
+            });
 
-        function updateProgress(){
-            if (slider.scrollTop <= 80) {
-                document.getElementById("Progress_Circles").src = "Images/progress1.png";
+            function updateProgress(){
+                if (slider.scrollTop <= 80) {
+                    document.getElementById("Progress_Circles").src = "Images/progress1.png";
+                }
+                if (slider.scrollTop > 80 && slider.scrollTop <= 240) {
+                    document.getElementById("Progress_Circles").src = "Images/progress2.png";
+                }
+                if (slider.scrollTop > 240) {
+                    document.getElementById("Progress_Circles").src = "Images/progress3.png";
+                }
             }
-            if (slider.scrollTop > 80 && slider.scrollTop <= 240) {
-                document.getElementById("Progress_Circles").src = "Images/progress2.png";
-            }
-            if (slider.scrollTop > 240) {
-                document.getElementById("Progress_Circles").src = "Images/progress3.png";
-            }
-        }
         </script>
 
     </body>
