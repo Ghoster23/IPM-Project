@@ -87,64 +87,7 @@
             </a>
         </div>
         
-        <!-- Functions for the scrolling -->
-        <script>
-            function saveTestInfo(a, b){
-                localStorage.setItem("color", a);
-                localStorage.setItem("testtype", b);
-            }
-
-            const slider = document.querySelector(".menu")
-            let isDown   = false;
-            let startY   = 0;
-            let scrollTop;
-
-            slider.scrollTop = 372;
-        
-            slider.addEventListener("mousedown", (e) => {
-                isDown = true;
-                slider.classList.add("active");
-                startY    = e.pageY - slider.offsetTop;
-                scrollTop = slider.scrollTop;
-            });
-        
-            slider.addEventListener("mouseleave", () => {
-                isDown = false;
-                slider.classList.remove("active");
-            });
-            
-            slider.addEventListener("mouseup", () => {
-                isDown = false;
-                slider.classList.remove("active");
-            });
-            
-            slider.addEventListener("mousemove", (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const y          = e.pageY - slider.offsetTop; 
-                const walk       = y - startY;
-                slider.scrollTop = scrollTop - walk;
-                console.log(slider.scrollTop);
-            });
-
-            function updateProgress() {
-                if (slider.scrollTop <= 80) {
-                    document.getElementById("Progress_Circles_Health").src = "Images/progress1.png";
-                }
-                if (slider.scrollTop > 96 && slider.scrollTop <= 276) {
-                    document.getElementById("Progress_Circles_Health").src = "Images/progress2.png";
-                }
-                if (slider.scrollTop > 276 && slider.scrollTop <= 450) {
-                    document.getElementById("Progress_Circles_Health").src = "Images/progress3.png";
-                }
-                if (slider.scrollTop > 450 && slider.scrollTop <= 650) {
-                    document.getElementById("Progress_Circles_Health").src = "Images/progress4.png";
-                }
-                if (slider.scrollTop > 650) {
-                    document.getElementById("Progress_Circles_Health").src = "Images/progress5.png";
-                }
-            }
-        </script>
-
+        <script src="../animation (Menu).js"></script>
+        <script src="animation (Health App).js"></script>
     </body>
 </html>
