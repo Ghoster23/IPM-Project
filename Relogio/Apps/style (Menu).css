@@ -1,49 +1,28 @@
 #Clock{
-    position:  absolute;
-    width:     194px;
-    top:       50%;
-    left:      50%;
-    padding:   15px;
     overflow:  hidden;
-    transform: translate(-50%,-50%);
-}
-
-#Background_Circle{ 
-    position:      absolute;
-    width:         210px; 
-    height:        210px;
-    top:           12px; 
-    left:          5px;
-    background:    rgb(28, 41, 83);
-    border-radius: 50%;
 }
 
 #Table {
     border-collapse: separate;
-    border-spacing:  43px 45px; 
+    border-spacing:  53px 46px;
 }
 
 #Back {
     position: absolute; 
     height:   70px;
-    top:      80px;
-    left:     0px;
+    top:      67px;
+    left:     -5px;
 }
 
 #Progress_Circles {
     position: absolute; 
     height:   30px;
-    top:      100px;
-    left:     198px;
+    top:      88px;
+    left:     193px;
 }
 
 #Bezel {
-    position:       absolute; 
-    height:         220px;
-    top:            8px;
-    left:           0px;
     pointer-events: none;    
-
 }
 
 .menu {

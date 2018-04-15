@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="../../style (Watch).css">
         <link rel="stylesheet" href="../style (Menu).css">
         <link rel="stylesheet" href="style (Health App).css">
+        <link rel="stylesheet" href="style (Health App Test).css">
     </head>
 
     <body>
@@ -13,29 +14,30 @@
         </a>
     
         <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu">
+                    <!-- Loading -->
+                    <canvas id="Loading"></canvas>
+                    <!-- Result -->
+                    <div id="Result"> Resultado<br>do teste:</div>
+                    <!-- Result Text -->
+                    <span id="Result_Text"> place_holder_text</span>
+                </div>
+    
+                <!-- Back Button -->
+                <a href="Health App.html">
+                    <img id="Back" src="../Images/back.png">
+                </a>    
+            </div>
+
+            <!-- Bezzle --> 
+            <img id="Bezel" src="../../Images/Bezel.png">
+
             <!-- Button -->
             <a href="../../Watch.html">
                 <div id="Button"></div>
             </a>
-
-            <!-- Dark Background -->
-            <div id="Background_Circle"></div>
-            <div class="menu">
-                <!-- Loading -->
-                <canvas id="Loading"></canvas>
-                <!-- Result -->
-                <div id="Result"> Resultado<br>do teste:</div>
-                <!-- Result Text -->
-                <span id="Result_Text"> place_holder_text</span>
-            </div>
-
-            <!-- Back Button -->
-            <a href="Health App.html">
-                <img id="Back" src="../Images/back.png">
-            </a>
-
-            <!-- Bezzle --> 
-            <img id="Bezel" src="../../Images/Bezel.png"> 
         </div>
         
         <!-- Functions for the tests -->
@@ -46,49 +48,76 @@
             }
 
             //decide on the string to put for the result :)
-            var testtype     = localStorage.getItem("testtype");
-            var resultstring = "default";
+            function testResults() {
+                var testtype     = localStorage.getItem("testtype");
+                var resultstring = "default";
+                var goodResult   = false;
+                var randomNumber;
 
-            switch(testtype) {
-                //teste alcoolemia
-                case "1":
-                    resultstring = getRandomArbitrary(0,0.7).toFixed(2).toString() + "%";
-                    break;
-                //tete de pressao arterial
-                case "2":
-                    resultstring = getRandomArbitrary(110,170).toFixed(0).toString() + "/" + getRandomArbitrary(70,110).toFixed(0).toString() + "\nmmHg";
-                    break;   
-                //teste de narcoticos
-                case "3":
-                    switch(getRandomArbitrary(0,0).toFixed(0)) {
-                        case "0":
-                            resultstring = "Não foram\nencontradas\nsubstâncias";
-                            document.getElementById('Result_Text').style.top = "90px";
-                            break;
-                        /*place holder de futuro pensar numa maneira de mostrar as substâncias no sangue
-                        case "1":
-                            resultstring="yes";
-                            break;*/
-                    }
-                    break;
-                //ritmo cardiaco
-                case "4":
-                    resultstring = getRandomArbitrary(49,121).toFixed(0).toString() + " bpm";
-                    break;
-                //teste de glicémia
-                case "5":
-                    resultstring = getRandomArbitrary(5,13).toFixed(0).toString() + " %";
-                    break;
+                switch(testtype) {
+                    //teste alcoolemia
+                    case "1":
+                        randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
+                        resultstring = randomNumber.toString() + "%";
+                        if (randomNumber < 0.5) { goodResult = true; }
+                        break;
+
+                    //tete de pressao arterial
+                    case "2":
+                        randomNumber = getRandomArbitrary(0,190).toFixed(0);
+                        var pressao2 = getRandomArbitrary(0,120).toFixed(0);
+                        resultstring = randomNumber.toString() + "/" + pressao2.toString() + "\nmmHg";
+                        document.getElementById('Result_Text').style.top = "100px";
+                        if (randomNumber < 120 && pressao2 < 80) { goodResult = true; }
+                        break;
+
+                    //teste de narcoticos
+                    case "3":
+                        var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
+                        randomNumber = getRandomArbitrary(0,6).toFixed(0);
+                        switch(randomNumber) {
+                            case "0":
+                                document.getElementById("Result_Text").style.top = "90px";
+                                document.getElementById("Result_Text").style.fontSize = "21px";
+                                goodResult = true;
+                                break;
+                            case "5":
+                                document.getElementById("Result_Text").style.fontSize = "25px";
+                                break;
+                        }
+                        resultstring = narcoticos[randomNumber];
+                        break;
+
+                    //ritmo cardiaco
+                    case "4":
+                        randomNumber = getRandomArbitrary(49,121).toFixed(0);
+                        resultstring = randomNumber.toString() + " bpm";
+                        if (60 < randomNumber && randomNumber < 100) { goodResult = true; }
+                        break;
+
+                    //teste de glicémia
+                    case "5":
+                        randomNumber = getRandomArbitrary(40,200).toFixed(0);
+                        resultstring = randomNumber.toString() + "\nmg/dl";
+                        document.getElementById("Result_Text").style.top = "100px";
+                        if (70 < randomNumber && randomNumber < 140) { goodResult = true; }
+                        break;
+                }
+
+                document.getElementById('Result_Text').textContent = resultstring;
+                if (goodResult) {
+                    document.getElementById("Touch_Screen").style.backgroundColor = "#93DB70"; //green
+                } else {
+                    document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26"; //red
+                }
             }
-            document.getElementById('Result_Text').textContent = resultstring;    
-
 
             //take care of making the circular progress bar :o
             var ctx        = document.getElementById('Loading').getContext('2d');
             var percentage = 0;
             var start      = 4.72;
-            var cw         = ctx.canvas.width =210;
-            var ch         = ctx.canvas.height= 210;
+            var cw         = ctx.canvas.width  = 210;
+            var ch         = ctx.canvas.height = 210;
             var color      = localStorage.getItem("color");
 
             var diff;
@@ -99,9 +128,10 @@
                 ctx.fillStyle   = "#FFFFFF";
                 ctx.strokeStyle = color;
 
-                ctx.font      = "20px sans-serif";
-                ctx.textAlign = 'center';
-                ctx.fillText(percentage+'%', cw*.5, ch*.5+8, cw);
+                ctx.font      = "40px sans-serif";
+                ctx.textAlign = "center";
+
+                ctx.fillText(percentage+'%', cw*.5+5, ch*.5+15, cw);
                 ctx.beginPath();
                 ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
                 ctx.stroke();
@@ -112,13 +142,14 @@
                     ctx.clearRect(0, 0, cw, ch);
                     ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
                     ctx.stroke();
-
+                    
+                    testResults();
                     document.getElementById('Result').style.visibility = "visible";
                     document.getElementById('Result_Text').style.visibility = "visible";
                 }
                 percentage++;
             }
-            var sim = setInterval(progressSim, 50);
+            var sim = setInterval(progressSim, 30);
         </script>
 
     </body>

@@ -4,7 +4,6 @@
         <title>Menu Principal</title>
         <link rel="stylesheet" href="../style (Watch).css">
         <link rel="stylesheet" href="style (Menu).css">
-        <!-- <script src="animation (Menu).js"></script> -->
     </head>
 
     <body>
@@ -14,51 +13,52 @@
 
         <div id="Clock">
             <!-- Dark Background -->
-            <div id="Background_Circle"></div>
-            <div class="menu" onscroll="updateProgress()">
-                <table id="Table">
-                    <!-- Health App -->
-                    <tr>    
-                        <th>
-                            <a href="Health App/Health App.html">
-                                <img class="iconApp" draggable="false" src="Images/Health Icon.png">
-                            </a>
-                            <figcaption class="appSubtitle"> Sa&uacute;de </figcaption>
-                        </th>
-                    </tr>
+            <div id="Touch_Screen">
+                <div class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+                        <!-- Health App -->
+                        <tr>    
+                            <th>
+                                <a href="Health App/Health App.html">
+                                    <img class="iconApp" draggable="false" src="Images/Health Icon.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Sa&uacute;de </figcaption>
+                            </th>
+                        </tr>
 
-                    <!-- Messaging App -->
-                    <tr>
-                        <th>
-                            <img class="iconApp" draggable="false" src="Images/Messaging Icon.png">
-                            <figcaption class="appSubtitle"> Mensagens </figcaption>
-                        </th>
-                    </tr>
+                        <!-- Messaging App -->
+                        <tr>
+                            <th>
+                                <img class="iconApp" draggable="false" src="Images/Messaging Icon.png">
+                                <figcaption class="appSubtitle"> Mensagens </figcaption>
+                            </th>
+                        </tr>
 
-                    <!-- Location App -->
-                    <tr>
-                        <th>
-                            <img class="iconApp" draggable="false" src="Images/Location Icon.png">
-                            <figcaption class="appSubtitle"> Navega&ccedil;&atilde;o </figcaption>
-                        </th>
-                    </tr>
-                </table>
+                        <!-- Location App -->
+                        <tr>
+                            <th>
+                                <img class="iconApp" draggable="false" src="Images/Location Icon.png">
+                                <figcaption class="appSubtitle"> Navega&ccedil;&atilde;o </figcaption>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Back Button -->
+                <a href="../Watch.html">
+                    <img id="Back" src="Images/back.png">
+                </a>
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles" src="Images/progress2.png">
             </div>
-
-            <!-- Back Button -->
-            <a href="../Watch.html">
-                <img id="Back" src="Images/back.png">
-            </a>
-
-            <!-- Progress Circles -->
-            <img id="Progress_Circles" src="Images/progress2.png">
                                     
             <!-- Bezle -->
             <img id="Bezel" src="../Images/Bezel.png">
 
             <!-- Button -->
             <a href="../Watch.html">
-                <div id="Button" onclick="console.log('tentei')"></div>
+                <div id="Button"></div>
             </a>   
         </div>
         

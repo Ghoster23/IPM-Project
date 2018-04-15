@@ -1,35 +1,6 @@
 #Progress_Circles_Health {
     position: absolute; 
     height:   50px;
-    top:      92px;
-    left:     195px;
-}
-
-#Loading {
-    position: absolute; 
-    width:    210px; 
-    height:   210px;
-    top:      -1px;
-    left:     -8px;
-}
-
-#Result, #Result_Text{
-    position:    absolute; 
-    width:       210px; 
-    height:      210px;
-    top:         45px;
-    left:        -8px;
-    visibility:  hidden;
-    color:       white;
-    text-align:  center; 
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400px;
-    text-shadow: 0px 0px 4px #000000;
-}
-
-#Result_Text{
-    top:         110px;
-    font-weight: 600px;
-    font-size:   22px;
-    white-space: pre;
+    top:      80px;
+    left:     190px;
 }
