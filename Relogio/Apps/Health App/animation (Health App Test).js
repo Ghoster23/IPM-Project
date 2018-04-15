@@ -65,17 +65,20 @@ function testResults() {
         //teste de narcoticos
         case "3":
             var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
-            randomNumber = getRandomArbitrary(0,6).toFixed(0);
+            randomNumber = getRandomArbitrary(0,7).toFixed(0);
             switch(randomNumber) {
                 case "0":
+                case "1":
                     document.getElementById("Result_Text").style.top = "90px";
                     document.getElementById("Result_Text").style.fontSize = "21px";
-                    goodResult = true;
+                    goodResult   = true;
+                    randomNumber = 0;
                     break;
-                case "5":
+                case "6":
                     document.getElementById("Result_Text").style.fontSize = "25px";
                     break;
             }
+            if (randomNumber > 1) { randomNumber -= 1; }
             resultstring = narcoticos[randomNumber];
             break;
 

@@ -1,6 +1,6 @@
 body {
-   font-family: Calibri, sans-serif;
-   text-align: center;
+  font-family: Calibri, sans-serif;
+  text-align: center;
 }
 
 #header {
@@ -32,15 +32,29 @@ body {
 }
 
 .open_arrow {
-  width: 7.5pt;
+  width: 9pt;
   transform: scaleY(-1);
-}
-
-.closed_arrow {
-  width: 7.5pt;
   transform: rotate(90deg);
 }
 
+.closed_arrow {
+  width: 9pt;
+}
+
 .section {
-  padding-bottom: 15pt;
+  padding-bottom: 5pt;
+}
+
+.section_header {
+  margin-right: 5%;
+  line-height: 10px;
+}
+
+.section_header:hover {
+  background-color: rgb(231, 231, 231);
+}
+
+.section_header_text {
+  padding-top: 1%;
+  padding-left: 0.5%;
 }

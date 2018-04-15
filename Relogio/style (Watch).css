@@ -1,7 +1,6 @@
 #Back_Arrow {
     width:       10pt;
-    padding-top: 10pt;
-    transform:   rotate(-90deg);
+    transform:   rotate(-180deg);
 }
 
 #Clock {
