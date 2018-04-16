@@ -33,18 +33,18 @@ function progressSim() {
             if(done == false){
                 done=true;
                 clearTimeout(sim);
-            
+
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
                 ctx.stroke();
-                
+
                 testResults();
                 document.getElementById('Result').style.visibility = "visible";
                 document.getElementById('Result_Text').style.visibility = "visible";
             }
         }
     }
-    if(done == true){ 
+    if(done == true){
         sim = setInterval(progressSim, 50);
         ctx.lineWidth = 56-((percentage-100)*60/100);
         ctx.clearRect(0, 0, cw, ch);
@@ -71,8 +71,8 @@ function testResults() {
         case "1":
             randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
             resultstring = randomNumber.toString() + "%";
-            if (randomNumber < 0.5) { 
-                goodResult = true; 
+            if (randomNumber < 0.5) {
+                goodResult = true;
             }
             break;
 
@@ -87,7 +87,7 @@ function testResults() {
 
         //teste de narcoticos
         case "3":
-            var narcoticos = ["Nao foram\nencontradas\nsubstâncias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
+            var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
             randomNumber = getRandomArbitrary(0,7).toFixed(0);
             switch(randomNumber) {
                 case "0":
