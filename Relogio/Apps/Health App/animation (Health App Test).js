@@ -87,7 +87,7 @@ function testResults() {
 
         //teste de narcoticos
         case "3":
-            var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
+            var narcoticos = ["Nao foram\nencontradas\nsubstâncias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
             randomNumber = getRandomArbitrary(0,7).toFixed(0);
             switch(randomNumber) {
                 case "0":

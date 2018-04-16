@@ -63,7 +63,7 @@ function updateProgress() {
 //function that gets called when you want the scroll to go to the nearest element in menu
 function anchor2closest(){
     slider.scroll({ top: closest(slider.scrollTop), left: 0, behavior: 'smooth' });
-    console.log(closest(slider.scrollTop));
+    //console.log(closest(slider.scrollTop));
 }
 
 //finds the closest element in to "position" in array "anchors"
