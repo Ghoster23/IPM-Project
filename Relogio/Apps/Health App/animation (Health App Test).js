@@ -7,33 +7,54 @@ var ch         = ctx.canvas.height = 210;
 var color      = localStorage.getItem("color");
 
 var diff;
-var sim = setInterval(progressSim, 30);
+var sim = setInterval(progressSim, 25);
+var done = false;
+
+//purposelly left empty this function is used to do nothing
+function noop() {};
 
 function progressSim() {
-    diff = ((percentage / 100) * Math.PI*2*10).toFixed(2);
-    ctx.clearRect(0, 0, cw, ch);
-    ctx.lineWidth   = 40;
-    ctx.fillStyle   = "#FFFFFF";
-    ctx.strokeStyle = color;
-
-    ctx.font      = "40px sans-serif";
-    ctx.textAlign = "center";
-
-    ctx.fillText(percentage+'%', cw*.5+5, ch*.5+15, cw);
-    ctx.beginPath();
-    ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
-    ctx.stroke();
-    if (percentage >= 100) {
-        //upon finishing clear canvas and make visible test results
-        clearTimeout(sim);
-        
+    if(done == false){
+        diff = ((percentage / 100) * Math.PI*2*10).toFixed(2);
         ctx.clearRect(0, 0, cw, ch);
-        ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
+        ctx.lineWidth   = 56;
+        ctx.fillStyle   = "#FFFFFF";
+        ctx.strokeStyle = color;
+
+        ctx.font      = "40px sans-serif";
+        ctx.textAlign = "center";
+
+        ctx.fillText(percentage+'%', cw*.5+5, ch*.5+15, cw);
+        ctx.beginPath();
+        ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
         ctx.stroke();
-        
-        testResults();
-        document.getElementById('Result').style.visibility = "visible";
-        document.getElementById('Result_Text').style.visibility = "visible";
+        if (percentage >= 100) {
+            //upon finishing clear canvas and make visible test results
+            if(done == false){
+                done=true;
+                clearTimeout(sim);
+            
+                ctx.clearRect(0, 0, cw, ch);
+                ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
+                ctx.stroke();
+                
+                testResults();
+                document.getElementById('Result').style.visibility = "visible";
+                document.getElementById('Result_Text').style.visibility = "visible";
+            }
+        }
+    }
+    if(done == true){ 
+        sim = setInterval(progressSim, 50);
+        ctx.lineWidth = 56-((percentage-100)*60/100);
+        ctx.clearRect(0, 0, cw, ch);
+        ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
+        ctx.stroke();
+        if(percentage >= 190){
+            ctx.clearRect(0, 0, cw, ch);
+            clearTimeout(sim);
+            done=null;
+        }
     }
     percentage++;
 }
@@ -50,7 +71,9 @@ function testResults() {
         case "1":
             randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
             resultstring = randomNumber.toString() + "%";
-            if (randomNumber < 0.5) { goodResult = true; }
+            if (randomNumber < 0.5) { 
+                goodResult = true; 
+            }
             break;
 
         //tete de pressao arterial
@@ -100,9 +123,11 @@ function testResults() {
 
     document.getElementById('Result_Text').textContent = resultstring;
     if (goodResult) {
-        document.getElementById("Touch_Screen").style.backgroundColor = "#93DB70"; //green
+        document.getElementById("Touch_Screen").style.backgroundColor = "#17BF15";      //green +    thumbs up
     } else {
-        document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26"; //red
+        document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26";      //red
+        document.getElementById("Symbol").src = "Images/warning.png";                   //warning sign
+        document.getElementById("Symbol").style.animation = "pulse 1s ease-in infinite";//add pulsating
     }
 }
 

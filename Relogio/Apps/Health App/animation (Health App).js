@@ -1,4 +1,5 @@
 slider.scrollTop = 372;
+anchors = [0, 186, 372, 560, 750];
 
 function saveTestInfo(a, b){
     localStorage.setItem("color", a);
@@ -6,19 +7,19 @@ function saveTestInfo(a, b){
 }
 
 function updateProgress() {
-    if (slider.scrollTop <= 80) {
+    if (slider.scrollTop <= 93) {
         document.getElementById("Progress_Circles_Health").src = "Images/progress1.png";
     }
-    if (slider.scrollTop > 96 && slider.scrollTop <= 276) {
+    if (slider.scrollTop > 93 && slider.scrollTop <= 274) {
         document.getElementById("Progress_Circles_Health").src = "Images/progress2.png";
     }
-    if (slider.scrollTop > 276 && slider.scrollTop <= 450) {
+    if (slider.scrollTop > 274 && slider.scrollTop <= 466) {
         document.getElementById("Progress_Circles_Health").src = "Images/progress3.png";
     }
-    if (slider.scrollTop > 450 && slider.scrollTop <= 650) {
+    if (slider.scrollTop > 466 && slider.scrollTop <= 654) {
         document.getElementById("Progress_Circles_Health").src = "Images/progress4.png";
     }
-    if (slider.scrollTop > 650) {
+    if (slider.scrollTop > 654) {
         document.getElementById("Progress_Circles_Health").src = "Images/progress5.png";
     }
 }
