@@ -16,13 +16,17 @@
         <div id="Clock">
             <!-- Dark Background -->
             <div id="Touch_Screen">
-                <div class="menu">
+                <div class="menu" style="overflow-x: hidden; overflow-y: hidden;">
                     <!-- Loading -->
                     <canvas id="Loading"></canvas>
+                    <!-- little circle -->
+                    <div id = "littlecircle"></div>
+                    <!-- SOS Confirm -->
+                    <canvas id="sosconfirm"></canvas>
                     <!-- Result -->
                     <div id="Good"> 
                         <img id="Symbol" src="Images/good.png">
-                        <img id="Warningfinal" src="Images/warningfinal.png" onclick="javascript:location.href='https://en.wikipedia.org/wiki/SOS'">
+                        <img id="Warningfinal" src="Images/warningfinal.png">
                     </div>
                     <div id="Warning"></div>
                     <!-- Result Text -->
