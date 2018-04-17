@@ -1,0 +1,97 @@
+body {
+  text-align:   left;
+  padding-left: 75pt;
+}
+
+figcaption {
+font-weight: normal;
+}
+
+#Back_Arrow {
+  position:  absolute;
+  width:     10pt;
+  left:      10pt;
+  top:       10pt;
+  transform: rotate(-180deg);
+}
+
+#header {
+  text-align:     center;
+  vertical-align: middle;
+  width:          300pt;
+  margin-left:    32%;
+}
+
+#Proto_StoryBoards {
+  float: left;
+  width: 40%;
+}
+
+#Table1 {
+  width:          62%;
+  text-align:     center;
+  vertical-align: middle;
+}
+
+#Table2 {
+  width:          65%;
+  text-align:     center;
+  vertical-align: middle;
+}
+
+#Storyboard1 {
+  transform: rotate(180deg);
+}
+
+#Storyboard2 {
+  transform: rotate(180deg);
+}
+
+#Zoom {
+  float:            left;
+  position:         relative;
+  width:            550pt;
+  height:           350pt;
+  top:              25pt;
+  text-align:       center;
+  font-size:        30pt;
+  line-height:      350pt;
+  color:            rgb(164, 180, 194);
+  background-color: rgb(208, 215, 219);
+  border:           solid 1pt;
+}
+
+#Zoom_Image {
+  position:   relative;
+  display:    block;
+  margin:     auto;
+  max-width:  100%;
+  max-height: 100%;
+}
+
+#Nota {
+  float:      right;
+  position:   relative;
+  width:      550pt;
+  top:        15pt;
+  right:      260pt;
+  font-size:  12pt;
+  text-align: center;
+}
+
+.section_header {
+  margin-right: 30%;
+}
+
+.section_header_text {
+  padding-top:  3%;
+  padding-left: 1.5%;
+}
+
+.proto_image {
+  width: 100pt;
+}
+
+.storyboard_image {
+  width: 110pt;
+}

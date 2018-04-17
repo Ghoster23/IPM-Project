@@ -7,7 +7,7 @@ var ch         = ctx.canvas.height = 210;
 var color      = localStorage.getItem("color");
 
 var diff;
-var sim = setInterval(progressSim, 5);
+var sim = setInterval(progressSim, 25);
 var done = false;
 
 //purposelly left empty this function is used to do nothing
@@ -33,16 +33,18 @@ function progressSim() {
             if(done == false){
                 done=true;
                 clearTimeout(sim);
-
+            
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
                 ctx.stroke();
-
+                
                 testResults();
+                document.getElementById('Result').style.visibility = "visible";
+                document.getElementById('Result_Text').style.visibility = "visible";
             }
         }
     }
-    if(done == true){
+    if(done == true){ 
         sim = setInterval(progressSim, 50);
         ctx.lineWidth = 56-((percentage-100)*60/100);
         ctx.clearRect(0, 0, cw, ch);
@@ -69,8 +71,8 @@ function testResults() {
         case "1":
             randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
             resultstring = randomNumber.toString() + "%";
-            if (randomNumber < 0.5) {
-                goodResult = true;
+            if (randomNumber < 0.5) { 
+                goodResult = true; 
             }
             break;
 
@@ -85,7 +87,7 @@ function testResults() {
 
         //teste de narcoticos
         case "3":
-            var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
+            var narcoticos = ["Nao foram\nencontradas\nsubstâncias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
             randomNumber = getRandomArbitrary(0,7).toFixed(0);
             switch(randomNumber) {
                 case "0":
@@ -122,27 +124,11 @@ function testResults() {
     document.getElementById('Result_Text').textContent = resultstring;
     if (goodResult) {
         document.getElementById("Touch_Screen").style.backgroundColor = "#17BF15";      //green +    thumbs up
-        document.getElementById('Result_Text').style.visibility = "visible";
-        document.getElementById('Good').style.visibility = "visible";  
     } else {
         document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26";      //red
-        document.getElementById('Result_Text').style.visibility = "visible";
-        document.getElementById('Warning').style.visibility = "visible";  
-        document.getElementById("Warning").style.animation = "pulse 1s ease-in infinite";//add pulsating
-        window.setTimeout(buttonise, 2100);
+        document.getElementById("Symbol").src = "Images/warning.png";                   //warning sign
+        document.getElementById("Symbol").style.animation = "pulse 1s ease-in infinite";//add pulsating
     }
-}
-
-function buttonise(){
-    document.getElementById("Warning").style.animation = "morph 0.6s steps(17) 1, enlarge 0.6s ease-in 1";
-    document.getElementById("Warning").style.animationFillMode = "forwards";
-    document.getElementById('Result_Text').style.transform= "translate(0px, 60px)";
-    document.getElementById('Result_Text').style.fontSize = "18px";
-    window.setTimeout(function(){
-        document.getElementById('Warning').style.visibility = "hidden";
-        document.getElementById('Warningfinal').style.visibility = "visible";
-        document.getElementById('Warningfinal').style.transform= "translate(0px, 30px)";
-    }, 600);
 }
 
 function getRandomArbitrary(min, max) {
