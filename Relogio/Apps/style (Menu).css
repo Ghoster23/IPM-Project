@@ -2,6 +2,12 @@
     overflow:  hidden;
 }
 
+#sosconfirm{
+    position: absolute; 
+    top:      163px;
+    left:     -0px;
+}
+
 #Table {
     border-collapse: separate;
     border-spacing:  53px 46px;
@@ -16,9 +22,9 @@
 
 #Progress_Circles {
     position: absolute; 
-    height:   30px;
+    height:   40px;
     top:      88px;
-    left:     193px;
+    left:     191px;
 }
 
 #Bezel {

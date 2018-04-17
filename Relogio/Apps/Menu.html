@@ -16,13 +16,24 @@
             <div id="Touch_Screen">
                 <div class="menu" onscroll="updateProgress()">
                     <table id="Table">
+
                         <!-- Health App -->
                         <tr>
-                            <th>
+                            <th>                
                                 <a href="Health App/Health App.html">
                                     <img class="iconApp" draggable="false" src="Images/Health Icon.png">
                                 </a>
                                 <figcaption class="appSubtitle"> Sa&uacute;de </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- SOS shortcut -->
+                        <tr>
+                            <th>
+                                <!-- SOS Confirm -->
+                                <canvas id="sosconfirm" style="pointer-events: none;"></canvas>
+                                <img class="iconApp" id="iconSOS" draggable="false" src="Images/SOS icon.png">
+                                <figcaption class="appSubtitle"> <br> </figcaption>
                             </th>
                         </tr>
 
