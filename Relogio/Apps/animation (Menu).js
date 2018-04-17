@@ -1,4 +1,4 @@
-const slider = document.querySelector(".menu")
+const slider = document.querySelector(".menu");
 let isDown = false;
 let startY = 0;
 let scrollTop;
@@ -36,6 +36,7 @@ slider.addEventListener("mousemove", (e) => {
     const y          = e.pageY - slider.offsetTop; 
     const walk       = y - startY;
     slider.scrollTop = scrollTop - walk;
+    clearTimeout(timer);   
 });
 
 slider.addEventListener('scroll', function() {
@@ -46,6 +47,7 @@ slider.addEventListener('scroll', function() {
         anchor2closest();
     }, 50);
 }, false);
+
 
 //changes the image to show that the menu has changed
 function updateProgress() {
@@ -80,4 +82,3 @@ function closest(position){
     }
     return ans;
 }
-
