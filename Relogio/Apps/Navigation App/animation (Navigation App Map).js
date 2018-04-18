@@ -26,11 +26,11 @@ function progressSim() {
     if (percentage >= 100) {
         //upon finishing clear canvas and make visible test results
         clearTimeout(sim);
-        
+
         ctx.clearRect(0, 0, cw, ch);
         ctx.arc(cw/2, ch/2, cw/2-10 , start, diff/10+start, false);
         ctx.stroke();
-        
+
         testResults();
         document.getElementById('Result').style.visibility = "visible";
         document.getElementById('Result_Text').style.visibility = "visible";
@@ -39,71 +39,37 @@ function progressSim() {
 }
 
 //decide on the string to put for the result :)
-function testResults() {
-    var testtype     = localStorage.getItem("testtype");
-    var resultstring = "default";
-    var goodResult   = false;
-    var randomNumber;
+function markerPosition() {
+    var marker = localStorage.getItem("label");
 
-    switch(testtype) {
-        //teste alcoolemia
+    switch(marker) {
+        //Stages
+        case "0":
+
+        break;
+
+        //WC
         case "1":
-            randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
-            resultstring = randomNumber.toString() + "%";
-            if (randomNumber < 0.5) { goodResult = true; }
-            break;
 
-        //tete de pressao arterial
+        break;
+
+        //Drinks
         case "2":
-            randomNumber = getRandomArbitrary(0,190).toFixed(0);
-            var pressao2 = getRandomArbitrary(0,120).toFixed(0);
-            resultstring = randomNumber.toString() + "/" + pressao2.toString() + "\nmmHg";
-            document.getElementById('Result_Text').style.top = "100px";
-            if (randomNumber < 120 && pressao2 < 80) { goodResult = true; }
-            break;
 
-        //teste de narcoticos
+        break;
+
+        //Food
         case "3":
-            var narcoticos = ["Nao foram\nencontradas\nsubstancias", "Cannabis", "Ecstasy", "Heroina", "Cocaina", "Anfetaminas", "LSD"];
-            randomNumber = getRandomArbitrary(0,7).toFixed(0);
-            switch(randomNumber) {
-                case "0":
-                case "1":
-                    document.getElementById("Result_Text").style.top = "90px";
-                    document.getElementById("Result_Text").style.fontSize = "21px";
-                    goodResult   = true;
-                    randomNumber = 0;
-                    break;
-                case "6":
-                    document.getElementById("Result_Text").style.fontSize = "25px";
-                    break;
-            }
-            if (randomNumber > 1) { randomNumber -= 1; }
-            resultstring = narcoticos[randomNumber];
-            break;
 
-        //ritmo cardiaco
+        break;
+
+        //Friends
         case "4":
-            randomNumber = getRandomArbitrary(49,121).toFixed(0);
-            resultstring = randomNumber.toString() + " bpm";
-            if (60 < randomNumber && randomNumber < 100) { goodResult = true; }
-            break;
 
-        //teste de glicémia
-        case "5":
-            randomNumber = getRandomArbitrary(40,200).toFixed(0);
-            resultstring = randomNumber.toString() + "\nmg/dl";
-            document.getElementById("Result_Text").style.top = "100px";
-            if (70 < randomNumber && randomNumber < 140) { goodResult = true; }
-            break;
+        break;
     }
 
     document.getElementById('Result_Text').textContent = resultstring;
-    if (goodResult) {
-        document.getElementById("Touch_Screen").style.backgroundColor = "#93DB70"; //green
-    } else {
-        document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26"; //red
-    }
 }
 
 function getRandomArbitrary(min, max) {

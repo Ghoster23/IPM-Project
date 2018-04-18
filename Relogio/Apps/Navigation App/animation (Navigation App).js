@@ -1,4 +1,5 @@
 slider.scrollTop = 372;
+anchors = [0, 186, 372, 560, 750];
 
 function saveNavInfo(a){
     localStorage.setItem("label", a);
