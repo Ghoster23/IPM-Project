@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PBF</title>
+    <link rel="stylesheet" href="../Site/style.css">
+    <link rel="stylesheet" href="style (PBF).css">
+    <script src="../Site/animation.js"></script>
+    <script src="animation (PBF).js"></script>
+  </head>
+
+
+  <body>
+    <a href="../index.html">
+        <img id="Back_Arrow" src="../Site/Images/Arrow.png">
+    </a>
+
+    <h1 id="header">Prot&oacute;tipo e Storyboards</h1>
+
+    <div id="Proto_StoryBoards">
+      <div id="Proto" class="section">
+        <div id="Proto_Header" class="section_header">
+          <h2 id="Proto_Header_Text" class="section_header_text" onclick="toggleVisible(Proto_Fotos,Proto_Arrow)">Prot&oacute;tipo <img id="Proto_Arrow" class="open_arrow" src="../Site/Images/Arrow.png"></h2>
+          <hr>
+        </div>
+        <div id="Proto_Fotos">
+          <table id="Table1">
+            <tr>
+              <th>
+                <img id="Proto_Foto1" class="proto_image" onclick="zoom('Prototipo.jpg')" src="Prototipo.jpg">
+              </th>
+              <th>
+                <img id="Proto_Foto2" class="proto_image" onclick="zoom('Relogio e Bracelete.jpg')" src="Relogio e Bracelete.jpg">
+              </th>
+              <th>
+                <img id="Proto_Foto3" class="proto_image" onclick="zoom('Prototipo montado.jpg')" src="Prototipo montado.jpg">
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <figcaption class="proto_image_subtitle"> Prot&oacute;tipo </figcaption>
+              </th>
+              <th>
+                <figcaption class="proto_image_subtitle"> Rel&oacute;gio e Bracelete </figcaption>
+              </th>
+              <th>
+                <figcaption class="proto_image_subtitle"> Prot&oacute;tipo Montado </figcaption>
+              </th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div id="Storyboards" class="section">
+        <div id="Storyboards_Header" class="section_header">
+          <h2 id="Storyboards_Header_Text" class="section_header_text" onclick="toggleVisible(Storyboards_Fotos,Storyboards_Arrow)">Storyboards <img id="Storyboards_Arrow" class="open_arrow" src="../Site/Images/Arrow.png"></h2>
+          <hr>
+        </div>
+        <div id="Storyboards_Fotos">
+          <table id="Table2">
+            <tr>
+              <th>
+                <img id="Storyboard1" class="storyboard_image" onclick="zoom('Storyboard - Saude.jpg')" src="Storyboard - Saude.jpg">
+              </th>
+              <th>
+                <img id="Storyboard2" class="storyboard_image" onclick="zoom('Storyboard - Mensagens.jpg')" src="Storyboard - Mensagens.jpg">
+              </th>
+              <th>
+                <img id="Storyboard3" class="storyboard_image" onclick="zoom('Storyboard - Navegacao.jpg')" src="Storyboard - Navegacao.jpg">
+              </th>
+            </tr>
+            <tr>
+              <th>
+                <figcaption class="proto_image_subtitle"> Sa&uacute;de </figcaption>
+              </th>
+              <th>
+                <figcaption class="proto_image_subtitle"> Mensagens </figcaption>
+              </th>
+              <th>
+                <figcaption class="proto_image_subtitle"> Navega&ccedil;&atilde;o </figcaption>
+              </th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="Zoom">
+      <img id="Zoom_Image">
+      <span id="Zoom_Text">
+        Selecione uma imgem para fazer zoom!
+      </span>
+    </div>
+
+    <p id="Nota">
+      <b>Nota:</b> As partes destacadas a amarelo s&atilde;o melhorias realizadas ap&oacute;s avalia&ccedil;&otilde;es de outros colegas!
+    </p>
+  </body>
+</html>

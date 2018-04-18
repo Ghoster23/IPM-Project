@@ -4,7 +4,51 @@
     left:     3px;
 }
 
-#Result, #Result_Text{
+#sosconfirm{
+    position: absolute; 
+    top:      1px;
+}
+
+#littlecircle{
+    position:      absolute;
+    border-radius: 50%;
+    height :       96px;
+    width :        96px;
+    border:        3px solid #FFFFFF;
+    top:           55px;
+    left:          54px;
+    opacity:       0;
+    transition: opacity 1s ease-in-out;
+}
+
+#Warning{
+    background: url('Images/warningstrip.png');
+    position:    absolute; 
+    width:       50px; 
+    height:      50px;
+    top:         44px;
+    left:        80px;
+    visibility:  hidden;
+    background-repeat: no-repeat;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    
+}
+@keyframes morph{   
+    from{ background-position: 0px;}
+    to{ background-position: -850px;}
+}
+@keyframes pulse{
+    25%  {transform: scale(0.9);}
+    75%  {transform: scale(1.1);}
+}
+@keyframes enlarge{
+    0%  {transform: scale(1);}
+    100%  {transform: scale(1.7);}
+}
+
+#Good, #Result_Text{
     position:    absolute; 
     width:       210px; 
     height:      210px;
@@ -25,11 +69,22 @@
     white-space: pre;
 }
 
+#Warningfinal{
+    left:        60px;
+    top:         -18px;
+    width:       85px; 
+    height:      85px;
+    position:    absolute; 
+    visibility:  hidden;
+    transition: transform 0.3s;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 #Symbol{
     width:       50px; 
     height:      50px;
 }  
-@keyframes pulse{
-    25%  {transform: scale(0.9);}
-    75%  {transform: scale(1.1);}
-  }

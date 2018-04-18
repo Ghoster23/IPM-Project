@@ -9,31 +9,37 @@
     </head>
 
     <body>
-        <a href="../../../index.html">
+        <a href="../../../../index.html">
             <img id="Back_Arrow" src="../../../Images/Arrow.png">
         </a>
-    
+
         <div id="Clock">
             <!-- Dark Background -->
             <div id="Touch_Screen">
-                <div class="menu">
+                <div class="menu" style="overflow-x: hidden; overflow-y: hidden;">
                     <!-- Loading -->
                     <canvas id="Loading"></canvas>
+                    <!-- little circle -->
+                    <div id = "littlecircle"></div>
+                    <!-- SOS Confirm -->
+                    <canvas id="sosconfirm"></canvas>
                     <!-- Result -->
-                    <div id="Result"> 
+                    <div id="Good"> 
                         <img id="Symbol" src="Images/good.png">
+                        <img id="Warningfinal" src="Images/warningfinal.png">
                     </div>
+                    <div id="Warning"></div>
                     <!-- Result Text -->
                     <span id="Result_Text"> place_holder_text</span>
                 </div>
-    
+
                 <!-- Back Button -->
                 <a href="Health App.html">
                     <img id="Back" src="../Images/back.png">
-                </a>    
+                </a>
             </div>
 
-            <!-- Bezzle --> 
+            <!-- Bezzle -->
             <img id="Bezel" src="../../Images/Bezel.png">
 
             <!-- Button -->
@@ -41,6 +47,7 @@
                 <div id="Button"></div>
             </a>
         </div>
+        
         
         <script src="animation (Health App Test).js"></script>
     </body>

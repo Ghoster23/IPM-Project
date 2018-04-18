@@ -7,7 +7,7 @@ var ch         = ctx.canvas.height = 210;
 var color      = localStorage.getItem("color");
 
 var diff;
-var sim = setInterval(progressSim, 25);
+var sim = setInterval(progressSim, 30);
 var done = false;
 
 //purposelly left empty this function is used to do nothing
@@ -33,18 +33,16 @@ function progressSim() {
             if(done == false){
                 done=true;
                 clearTimeout(sim);
-            
+
                 ctx.clearRect(0, 0, cw, ch);
                 ctx.arc(cw/2, ch/2, cw/2-4 , start, diff/10+start, false);
                 ctx.stroke();
-                
+
                 testResults();
-                document.getElementById('Result').style.visibility = "visible";
-                document.getElementById('Result_Text').style.visibility = "visible";
             }
         }
     }
-    if(done == true){ 
+    if(done == true){
         sim = setInterval(progressSim, 50);
         ctx.lineWidth = 56-((percentage-100)*60/100);
         ctx.clearRect(0, 0, cw, ch);
@@ -71,8 +69,8 @@ function testResults() {
         case "1":
             randomNumber = getRandomArbitrary(0,1.5).toFixed(2);
             resultstring = randomNumber.toString() + "%";
-            if (randomNumber < 0.5) { 
-                goodResult = true; 
+            if (randomNumber < 0.5) {
+                goodResult = true;
             }
             break;
 
@@ -124,13 +122,95 @@ function testResults() {
     document.getElementById('Result_Text').textContent = resultstring;
     if (goodResult) {
         document.getElementById("Touch_Screen").style.backgroundColor = "#17BF15";      //green +    thumbs up
+        document.getElementById('Result_Text').style.visibility = "visible";
+        document.getElementById('Good').style.visibility = "visible";  
     } else {
         document.getElementById("Touch_Screen").style.backgroundColor = "#DE1F26";      //red
-        document.getElementById("Symbol").src = "Images/warning.png";                   //warning sign
-        document.getElementById("Symbol").style.animation = "pulse 1s ease-in infinite";//add pulsating
+        document.getElementById('Result_Text').style.visibility = "visible";
+        document.getElementById('Warning').style.visibility = "visible";  
+        document.getElementById("Warning").style.animation = "pulse 1s ease-in infinite";//add pulsating
+        window.setTimeout(buttonise, 1100);
     }
 }
 
+//handles the turning of the sprite to a button
+function buttonise(){
+    document.getElementById("Warning").style.animation = "morph 0.3s steps(17) 1, enlarge 0.3s ease-in 1";
+    document.getElementById("Warning").style.animationFillMode = "forwards";
+    document.getElementById('Result_Text').style.transition= "transform 0.3s, font-size 0.3s";
+    document.getElementById('Result_Text').style.transform= "translate(0px, 60px)";
+    document.getElementById('Result_Text').style.fontSize = "18px";
+    window.setTimeout(function(){
+        document.getElementById('Warning').style.visibility = "hidden";
+        document.getElementById('Warningfinal').style.visibility = "visible";
+        document.getElementById('Warningfinal').style.transform= "translate(0px, 37px)";
+        window.setTimeout(function(){
+            document.getElementById('littlecircle').style.opacity = "1";
+        }, 300);
+    }, 600);
+}
+
+//gets random num
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+//this bit handles the SOS button
+var timer;
+var count = 0;
+var decrease_timer = setInterval(decrease, 10);
+var mouse_is_down = false;
+
+//this is used to decrease the count variable
+function decrease(){
+    if ((count>=1) && (mouse_is_down==false)){
+        count--;
+        console.log(count.toString()); 
+    }
+}
+
+//used for event of pressing down and incrementing count variable
+function mousedownfunction(){
+    mouse_is_down=true;
+    timer=setInterval(function(){
+        count++;
+        console.log(count.toString());
+        if (count >= 100){
+            window.location.href = "http://google.com";
+            clearTimeout(decrease_timer);
+        }
+    },20);
+}
+document.getElementById('Warningfinal').addEventListener("mousedown", mousedownfunction);
+document.getElementById('Warningfinal').addEventListener("touchstart", mousedownfunction);
+
+//used for event releasing mouse and start decrementing count variable
+function mouseupfunction(){
+    if (timer) clearInterval(timer)
+    mouse_is_down=false;
+}
+document.getElementById('Warningfinal').addEventListener("mouseleave",mouseupfunction);
+document.getElementById('Warningfinal').addEventListener("mouseup", mouseupfunction);
+document.getElementById('Warningfinal').addEventListener("touchend", mouseupfunction);
+
+//  take care of sosconfirm 
+var ctx2        = document.getElementById('sosconfirm').getContext('2d');
+var start2      = 4.72;
+var cw2         = ctx2.canvas.width  = 210;
+var ch2         = ctx2.canvas.height = 210;
+
+var diff2;
+var sim2 = setInterval(sosSim, 5);
+
+function sosSim() {
+
+    diff2 = ((count / 100) * Math.PI*2*10).toFixed(2);
+    ctx2.clearRect(0, 0, cw2, ch2);
+    ctx2.lineWidth   = 8;
+    ctx2.fillStyle   = "#FFFFFF";
+    ctx2.strokeStyle = "#FFFFFF";
+
+    ctx2.beginPath();
+    ctx2.arc(cw2/2, ch2/2, cw2/2-55 , start2, diff2/10+start2, false);
+    ctx2.stroke();
 }

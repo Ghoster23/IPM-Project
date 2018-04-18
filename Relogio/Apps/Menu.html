@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <a href="../../index.html">
+        <a href="../../../index.html">
             <img id="Back_Arrow" src="../../Images/Arrow.png">
         </a>
 
@@ -16,9 +16,10 @@
             <div id="Touch_Screen">
                 <div class="menu" onscroll="updateProgress()">
                     <table id="Table">
+
                         <!-- Health App -->
                         <tr>
-                            <th>
+                            <th>                
                                 <a href="Health App/Health App.html">
                                     <img class="iconApp" draggable="false" src="Images/Health Icon.png">
                                 </a>
@@ -26,18 +27,30 @@
                             </th>
                         </tr>
 
+                        <!-- SOS shortcut -->
+                        <tr>
+                            <th>
+                                <!-- SOS Confirm -->
+                                <canvas id="sosconfirm" style="pointer-events: none;"></canvas>
+                                <img class="iconApp" id="iconSOS" draggable="false" src="Images/SOS icon.png">
+                                <figcaption class="appSubtitle"> <br> </figcaption>
+                            </th>
+                        </tr>
+
                         <!-- Messaging App -->
                         <tr>
                             <th>
-                                <img class="iconApp" draggable="false" src="Images/Messaging Icon.png">
+                                <a href="Messaging App/Messaging App.html">
+                                  <img class="iconApp" draggable="false" src="Images/Messaging Icon.png">
+                                </a>
                                 <figcaption class="appSubtitle"> Mensagens </figcaption>
                             </th>
                         </tr>
 
-                        <!-- Location App -->
+                        <!-- Navigation App -->
                         <tr>
                             <th>
-                              <a href="Navegation App/Navegation App.html">
+                              <a href="Navigation App/Navigation App.html">
                                 <img class="iconApp" draggable="false" src="Images/Location Icon.png">
                               </a>
                               <figcaption class="appSubtitle"> Navega&ccedil;&atilde;o </figcaption>
