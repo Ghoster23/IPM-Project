@@ -1,0 +1,17 @@
+#Touch_Screen {
+  background-color: #DE1F26;
+}
+
+#SOS_Text {
+  position:    absolute;
+  width:       150px;
+  height:      150px;
+  top:         15px;
+  left:        35px;
+  color:       white;
+  text-align:  center;
+  font-size:   20px;
+  font-weight: bold;
+  text-shadow: 0px 0px 4px #000000;
+  font-family: "Open Sans", sans-serif;
+}

@@ -1,6 +1,6 @@
 const slider = document.querySelector(".menu");
-let isDown = false;
-let startY = 0;
+let isDown   = false;
+let startY   = 0;
 let scrollTop;
 slider.scrollTop = 340;
 
@@ -33,15 +33,15 @@ slider.addEventListener("mouseup", () => {
 slider.addEventListener("mousemove", (e) => {
     if (!isDown) return;
     e.preventDefault();
-    const y          = e.pageY - slider.offsetTop; 
+    const y          = e.pageY - slider.offsetTop;
     const walk       = y - startY;
     slider.scrollTop = scrollTop - walk;
-    clearTimeout(timer);   
+    clearTimeout(timer);
 });
 
-slider.addEventListener('scroll', function() {
+slider.addEventListener("scroll", function() {
     if(timer !== null) {
-        clearTimeout(timer);        
+        clearTimeout(timer);
     }
     timer = setTimeout(function() {
         anchor2closest();
@@ -66,69 +66,69 @@ function updateProgress() {
 }
 
 //function that gets called when you want the scroll to go to the nearest element in menu
-function anchor2closest(){
-    slider.scroll({ top: closest(slider.scrollTop), left: 0, behavior: 'smooth' });
+function anchor2closest() {
+    slider.scroll({ top: closest(slider.scrollTop), left: 0, behavior: "smooth" });
     //console.log(closest(slider.scrollTop));
 }
 
 //finds the closest element in to "position" in array "anchors"
-function closest(position){
-    var i=0;
-    var minDiff=1000;
+function closest(position) {
+    var i = 0;
+    var minDiff = 1000;
     var ans;
-    for(i in anchors){
-         var m=Math.abs(position-anchors[i]);
-         if(m<minDiff){ 
-            minDiff=m; 
-            ans=anchors[i]; 
+    for(i in anchors) {
+         var m = Math.abs(position-anchors[i]);
+         if(m < minDiff) {
+            minDiff = m;
+            ans = anchors[i];
         }
     }
     return ans;
 }
 
 //----------------------this bit handles the SOS button-----------------------------
-var timer2;
+var timer;
 var count = 0;
 var decrease_timer = setInterval(decrease, 10);
 var mouse_is_down = false;
 
 //this is used to decrease the count variable
-function decrease(){
-    if ((count>=1) && (mouse_is_down==false)){
+function decrease() {
+    if ((count >= 1) && (mouse_is_down == false)) {
         count--;
-        console.log(count.toString()); 
+        console.log(count.toString());
     }
 }
 
 //used for event of pressing down and incrementing count variable
-function mousedownfunction(){
-    mouse_is_down=true;
-    timer2=setInterval(function(){
+function mousedownfunction() {
+    mouse_is_down = true;
+    timer = setInterval(function() {
         count++;
         console.log(count.toString());
-        if (count >= 100){
-            window.location.href = "http://google.com";
+        if (count >= 100) {
+            window.location.href = "SOS/SOS.html";
             clearTimeout(decrease_timer);
         }
-    },20);
+    }, 20);
 }
-document.getElementById('iconSOS').addEventListener("mousedown", mousedownfunction);
-document.getElementById('iconSOS').addEventListener("touchstart", mousedownfunction);
+document.getElementById("iconSOS").addEventListener("mousedown",  mousedownfunction);
+document.getElementById("iconSOS").addEventListener("touchstart", mousedownfunction);
 
 //used for event releasing mouse and start decrementing count variable
-function mouseupfunction(){
-    if (timer2) clearInterval(timer2)
-    mouse_is_down=false;
+function mouseupfunction() {
+    if (timer) clearInterval(timer)
+    mouse_is_down = false;
 }
-document.getElementById('iconSOS').addEventListener("mouseleave",mouseupfunction);
-document.getElementById('iconSOS').addEventListener("mouseup", mouseupfunction);
-document.getElementById('iconSOS').addEventListener("touchend", mouseupfunction);
+document.getElementById("iconSOS").addEventListener("mouseleave", mouseupfunction);
+document.getElementById("iconSOS").addEventListener("mouseup",    mouseupfunction);
+document.getElementById("iconSOS").addEventListener("touchend",   mouseupfunction);
 
-//  take care of sosconfirm 
-var ctx2        = document.getElementById('sosconfirm').getContext('2d');
-var start2      = 4.72;
-var cw2         = ctx2.canvas.width  = 210;
-var ch2         = ctx2.canvas.height = 210;
+//  take care of sosconfirm
+var ctx2   = document.getElementById("sosconfirm").getContext("2d");
+var start2 = 4.72;
+var cw2    = ctx2.canvas.width  = 210;
+var ch2    = ctx2.canvas.height = 210;
 
 var diff2;
 var sim2 = setInterval(sosSim, 5);
@@ -145,5 +145,3 @@ function sosSim() {
     ctx2.arc(cw2/2, ch2/2, cw2/2-48 , start2, diff2/10+start2, false);
     ctx2.stroke();
 }
-
-
