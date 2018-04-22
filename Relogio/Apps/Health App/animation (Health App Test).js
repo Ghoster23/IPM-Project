@@ -135,17 +135,18 @@ function testResults() {
 
 //handles the turning of the sprite to a button
 function buttonise() {
-    document.getElementById("Warning").style.animation = "morph 0.3s steps(17) 1, enlarge 0.3s ease-in 1";
-    document.getElementById("Warning").style.animationFillMode = "forwards";
-    document.getElementById("Result_Text").style.transition = "transform 0.3s, font-size 0.3s";
-    document.getElementById("Result_Text").style.transform  = "translate(0px, 60px)";
-    document.getElementById("Result_Text").style.fontSize   = "18px";
+    document.getElementById("Warning").style.animation           = "morph 0.3s steps(17) 1, enlarge 0.3s ease-in 1";
+    document.getElementById("Warning").style.animationFillMode   = "forwards";
+    document.getElementById("Result_Text").style.transition      = "transform 0.3s, font-size 0.3s";
+    document.getElementById("Result_Text").style.transform       = "translate(0px, 60px)";
+    document.getElementById("Result_Text").style.fontSize        = "18px";
     window.setTimeout(function() {
-        document.getElementById("Warning").style.visibility = "hidden";
+        document.getElementById("Warning").style.visibility      = "hidden";
         document.getElementById("Warningfinal").style.visibility = "visible";
         document.getElementById("Warningfinal").style.transform  = "translate(0px, 37px)";
+        document.getElementById("littlecircle").style.animation  = "animation: pulse 1s ease-in infinite";
         window.setTimeout(function() {
-            document.getElementById("littlecircle").style.opacity = "1";
+            document.getElementById("littlecircle").style.opacity= "1";
         }, 300);
     }, 600);
 }
@@ -176,6 +177,7 @@ function mousedownfunction() {
         count++;
         console.log(count.toString());
         if (count >= 100) {
+            localStorage.setItem("SOS", 1);
             window.location.href = "../SOS/SOS.html";
             clearTimeout(decrease_timer);
         }

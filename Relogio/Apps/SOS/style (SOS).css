@@ -6,12 +6,19 @@
   position:    absolute;
   width:       150px;
   height:      150px;
-  top:         15px;
-  left:        35px;
+  top:         -5px;
+  left:        30px;
   color:       white;
   text-align:  center;
   font-size:   20px;
   font-weight: bold;
   text-shadow: 0px 0px 4px #000000;
   font-family: "Open Sans", sans-serif;
+}
+
+#Cancel{
+  position: absolute;
+  height: 50px;
+  top: 145px;
+  left: 80px;
 }

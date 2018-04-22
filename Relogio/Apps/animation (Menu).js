@@ -107,6 +107,7 @@ function mousedownfunction() {
         count++;
         console.log(count.toString());
         if (count >= 100) {
+            localStorage.setItem("SOS", 0);
             window.location.href = "SOS/SOS.html";
             clearTimeout(decrease_timer);
         }

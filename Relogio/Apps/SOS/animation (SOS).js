@@ -13,7 +13,7 @@ function decreaseTime() {
   time.clearRect(0, 0, tw, th);
 
   time.lineWidth   = 210;
-  time.font        = "50px sans-serif";
+  time.font        = "40px sans-serif";
   time.fillStyle   = "#FFFFFF";
   time.textAlign   = "center";
   time.shadowColor = "black";
@@ -42,10 +42,21 @@ function decreaseTime() {
     }, 1500);
   }
 
-  time.fillText(min+":"+sec, 75, 60);
+  time.fillText(min+":"+sec, 75, 42);
 }
 
 //gets random num
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+
+function goBack() {
+  var ecra_Anterior = localStorage.getItem("SOS");
+
+  if (ecra_Anterior == 0) {
+    window.location.href = "../Menu.html";
+  } else {
+    window.location.href = "../Health App/Health App.html";
+  }
 }
