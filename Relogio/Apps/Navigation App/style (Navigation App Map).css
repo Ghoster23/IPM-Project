@@ -51,6 +51,7 @@
   font-size:   20px;
   top: 10%;
   left: 34%;
+  text-align: center;
 }
 
 #Distance {
@@ -59,4 +60,5 @@
   font-size:   16px;
   top: 83%;
   left: 43%;
+  text-align: center;
 }

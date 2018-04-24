@@ -36,3 +36,10 @@ function dateUpdate(date) {
 function changeText(id, txt) {
   document.getElementById(id).innerHTML = txt;
 }
+
+function none() {}
+
+function saveContacts() {
+  sessionStorage.setItem("contacts", JSON.stringify(["Alexandre", "Antonio", "Ash", "Frost", "Frown"]));
+  saveContacts = none;
+}

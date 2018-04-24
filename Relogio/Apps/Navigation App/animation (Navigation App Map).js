@@ -17,8 +17,8 @@ function markerPosition() {
 
     var tg = "???";
 
-    rotateElement("LookAt",rot1);
-    rotateElement("Arrow",rot2);
+    rotateElement("LookAt", rot1);
+    rotateElement("Arrow",  rot2);
 
     switch(marker) {
         case "0":
@@ -38,7 +38,7 @@ function markerPosition() {
         break;
 
         case "4":
-          tg = "Amigos";
+          tg = sessionStorage.getItem("friend");
         break;
     }
 
