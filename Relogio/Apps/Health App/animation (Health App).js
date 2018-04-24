@@ -23,4 +23,3 @@ function updateProgress() {
         document.getElementById("Progress_Circles_Health").src = "Images/progress5.png";
     }
 }
-
