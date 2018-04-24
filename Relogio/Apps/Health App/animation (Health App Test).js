@@ -144,7 +144,8 @@ function buttonise() {
         document.getElementById("Warning").style.visibility      = "hidden";
         document.getElementById("Warningfinal").style.visibility = "visible";
         document.getElementById("Warningfinal").style.transform  = "translate(0px, 37px)";
-        document.getElementById("littlecircle").style.animation  = "animation: pulse 1s ease-in infinite";
+        document.getElementById("littlecircle").style.animation  = "pulse 1s ease-in infinite";
+        document.getElementById("sosconfirm").style.animation  = "pulse 1s ease-in infinite";
         window.setTimeout(function() {
             document.getElementById("littlecircle").style.opacity= "1";
         }, 300);

@@ -46,6 +46,13 @@ slider.addEventListener("scroll", function() {
     timer = setTimeout(function() {
         anchor2closest();
     }, 50);
+
+    var icons = document.getElementsByClassName('iconApp');
+    var dist2nearest = 100 - Math.abs(slider.scrollTop - closest(slider.scrollTop));
+    var scale = ((dist2nearest*0.01)/2)+0.5;
+    for(i=0; i<icons.length; i++) {
+        icons[i].style.transform= 'scale('+scale+')';
+    }
 }, false);
 
 
@@ -71,7 +78,7 @@ function anchor2closest() {
     //console.log(closest(slider.scrollTop));
 }
 
-//finds the closest element in to "position" in array "anchors"
+//finds the closest element to "position" in array "anchors"
 function closest(position) {
     var i = 0;
     var minDiff = 1000;
