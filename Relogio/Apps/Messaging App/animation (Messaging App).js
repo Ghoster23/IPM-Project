@@ -1,18 +1,19 @@
 slider.scrollTop = 165;
 
 function showContacts(startRow) {
+  var element1 = "<th><div class='iconApp' draggable='false'><img class='iconApp' draggable='false' src='../Messaging App/Images/Letters/";
+  var element2 = ".png'></div><figcaption class='appSubtitle'> ";
+  var element3 = " </figcaption></th>";
+
   var contacts = JSON.parse(sessionStorage.getItem("contacts"));
   contacts.sort();
 
-  anchors = [0];
-  var lastAnchor = 0;
-  for (var i = 0; i < contacts.length; i++) {
-    lastAnchor += 170;
-    anchors.push(lastAnchor);
-  }
-
+  anchors = [];
   var contact_Table = document.getElementById("Table");
+
   for (var i = 0; i < contacts.length; i++) {
-    contact_Table.insertRow(i+startRow).innerHTML = "<th><img class='iconApp' draggable='false' src='Images/contact.png'><figcaption class='appSubtitle'>" + contacts[i] + "</figcaption></th>";
+    anchors.push(i*165);
+
+    contact_Table.insertRow(i+startRow).innerHTML = element1 + contacts[i][0] + element2 + contacts[i] + element3;
   }
 }
