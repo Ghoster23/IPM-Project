@@ -25,7 +25,6 @@ slider.addEventListener("mouseleave", () => {
 slider.addEventListener("mouseup", () => {
     isDown = false;
     slider.classList.remove("active");
-    console.log(scrollTop.toString());
     anchor2closest();
 });
 
@@ -75,7 +74,6 @@ function updateProgress() {
 //function that gets called when you want the scroll to go to the nearest element in menu
 function anchor2closest() {
     slider.scroll({ top: closest(slider.scrollTop), left: 0, behavior: "smooth" });
-    //console.log(closest(slider.scrollTop));
 }
 
 //finds the closest element to "position" in array "anchors"
@@ -103,7 +101,6 @@ var mouse_is_down = false;
 function decrease() {
     if ((count >= 1) && (mouse_is_down == false)) {
         count--;
-        console.log(count.toString());
     }
 }
 
@@ -112,7 +109,6 @@ function mousedownfunction() {
     mouse_is_down = true;
     timer = setInterval(function() {
         count++;
-        console.log(count.toString());
         if (count >= 100) {
             localStorage.setItem("SOS", 0);
             window.location.href = "SOS/SOS.html";

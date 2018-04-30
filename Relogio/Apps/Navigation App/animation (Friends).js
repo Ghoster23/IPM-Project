@@ -1,25 +1,86 @@
+var opened = false;
+var friend = {}; 
 
-function saveFriendName(name) {
-  sessionStorage.setItem("friend", name);
+function saveFriendName() {
+  sessionStorage.setItem("friend", friend.name);
+  document.location.href = "Navigation App Map.html";
 }
 
+function cancelFriend(){
+  slider.scroll({ top: slider.scrollTop+0.5, left: 0, behavior: "smooth" });
+}
+
+function confirmFriend(e,name){
+  friend.name = name;
+  opened                = true;
+  var icon              = e.target;
+  icon.style.transition = "opacity 0.5s ease-in-out";
+  icon.style.opacity    = "0";
+
+  var icondiv              = icon.closest('div');
+  icondiv.style.transition = "transform 0.3s"
+  icondiv.style.transform  = "scale(1.5,1.5)"; 
+  icondiv.style.pointerEvents = "none";
+
+  var confText = document.createElement('span');
+  confText.setAttribute("id", "confText");
+  confText.innerHTML = "Pedir\nlocaliza&ccedil&atildeo\na " + name + "?";
+  var row = icon.closest('tr');
+  row.appendChild(confText);
+  
+  var sub = row.getElementsByClassName('appSubtitle')[0];
+  sub.style.opacity = "0";
+
+  var cancel = document.getElementById('Cancel');
+  cancel.style.transform = "scale(1,1)";
+  var accept = document.getElementById('Accept');
+  accept.style.transform = "scale(1,1)";
+
+} 
+
+
+slider.addEventListener("scroll", function() {
+  if(opened == true){ 
+    opened = false;
+    confText.style.transition = "opacity 0.2s ease-in-out";
+    confText.style.opacity    = "0";
+    var sub = confText.closest('tr').getElementsByClassName('appSubtitle')[0];
+    sub.style.opacity = "1";
+
+    var cancel = document.getElementById('Cancel');
+    cancel.style.transform = "scale(0,0)";
+    var accept = document.getElementById('Accept');
+    accept.style.transform = "scale(0,0)";
+
+    setTimeout(function() {
+      confText.remove();
+      var icons = document.getElementsByClassName('iconApp');
+      for(i=0; i<icons.length; i++) {
+          icons[i].style.transition    = '';
+          icons[i].style.pointerEvents = '';
+          icons[i].style.opacity       = "1";
+      }
+    }, 400);
+  }
+}, false);
+
+
 function showContacts(startRow) {
-  var element1 = "<th><a href='Navigation App Map.html' onclick='saveFriendName(";
-  var element2 = ")'><div class='iconApp' draggable='false'><img class='iconApp' draggable='false' src='../Messaging App/Images/Letters/";
+  var element1 = "<th> <div class='iconApp' onclick='confirmFriend(event,";
+  var element2 = ")' draggable='false'><img class='iconApp' draggable='false' src='../Messaging App/Images/Letters/";
   var element3 = ".png'></div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";
 
   var contacts = JSON.parse(sessionStorage.getItem("contacts"));
   contacts.sort();
 
-  slider.scrollTop = 10;
   anchors = [];
   var contact_Table = document.getElementById("Table");
 
   for (var i = 0; i < contacts.length; i++) {
-    anchors.push(i*170 + 10);
+    anchors.push(i*160+10);
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + contacts[i][0] + element3 + contacts[i] + element4;
   }
-  console.log(anchors);
+  slider.scrollTop = 10;
 }
