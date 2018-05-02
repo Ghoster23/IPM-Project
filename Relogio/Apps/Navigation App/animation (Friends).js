@@ -1,5 +1,5 @@
 var opened = false;
-var friend = {}; 
+var friend = {};
 
 function saveFriendName() {
   sessionStorage.setItem("friend", friend.name);
@@ -19,7 +19,7 @@ function confirmFriend(e,name){
 
   var icondiv              = icon.closest('div');
   icondiv.style.transition = "transform 0.3s"
-  icondiv.style.transform  = "scale(1.5,1.5)"; 
+  icondiv.style.transform  = "scale(1.5,1.5)";
   icondiv.style.pointerEvents = "none";
 
   var confText = document.createElement('span');
@@ -27,7 +27,7 @@ function confirmFriend(e,name){
   confText.innerHTML = "Pedir\nlocaliza&ccedil&atildeo\na " + name + "?";
   var row = icon.closest('tr');
   row.appendChild(confText);
-  
+
   var sub = row.getElementsByClassName('appSubtitle')[0];
   sub.style.opacity = "0";
 
@@ -36,11 +36,11 @@ function confirmFriend(e,name){
   var accept = document.getElementById('Accept');
   accept.style.transform = "scale(1,1)";
 
-} 
+}
 
 
 slider.addEventListener("scroll", function() {
-  if(opened == true){ 
+  if(opened == true){
     opened = false;
     confText.style.transition = "opacity 0.2s ease-in-out";
     confText.style.opacity    = "0";
@@ -66,9 +66,10 @@ slider.addEventListener("scroll", function() {
 
 
 function showContacts(startRow) {
+  var source;
   var element1 = "<th> <div class='iconApp' onclick='confirmFriend(event,";
-  var element2 = ")' draggable='false'><img class='iconApp' draggable='false' src='../Messaging App/Images/Letters/";
-  var element3 = ".png'></div></a><figcaption class='appSubtitle'> ";
+  var element2 = ")' draggable='false'><img class='iconApp' draggable='false' src=";
+  var element3 = "</div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";
 
   var contacts = JSON.parse(sessionStorage.getItem("contacts"));
@@ -80,7 +81,13 @@ function showContacts(startRow) {
   for (var i = 0; i < contacts.length; i++) {
     anchors.push(i*160+10);
 
-    contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + contacts[i][0] + element3 + contacts[i] + element4;
+    if (getRandomArbitrary(0, 10) <= 5) {
+      source = "'Images/Friend.png'>";
+    } else {
+      source = "'../Messaging App/Images/Letters/" + contacts[i][0] + ".png'>";
+    }
+
+    contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
   }
   slider.scrollTop = 10;
 }

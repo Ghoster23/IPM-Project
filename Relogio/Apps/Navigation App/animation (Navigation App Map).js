@@ -22,7 +22,8 @@ function markerPosition() {
 
     switch(marker) {
         case "0":
-          tg = "Palcos";
+          tg = "Informacoes";
+          document.getElementById("Target").style.fontSize = "17px";
         break;
 
         case "1":
@@ -30,15 +31,23 @@ function markerPosition() {
         break;
 
         case "2":
-          tg = "Bebidas";
+          tg = "Palcos";
         break;
 
         case "3":
-          tg = "Comida";
+          tg = "Bebidas";
         break;
 
         case "4":
+          tg = "Comida";
+        break;
+
+        case "5":
           tg = sessionStorage.getItem("friend");
+        break;
+
+        case "6":
+          tg = "Saidas";
         break;
     }
 
