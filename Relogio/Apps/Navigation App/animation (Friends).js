@@ -11,7 +11,7 @@ function cancelFriend(){
 }
 
 function confirmFriend(e,name){
-  friend.name = name;
+  friend.name           = name;
   opened                = true;
   var icon              = e.target;
   icon.style.transition = "opacity 0.5s ease-in-out";
@@ -91,3 +91,16 @@ function showContacts(startRow) {
   }
   slider.scrollTop = 10;
 }
+
+function setNavigAlert(){
+  //give visual feedback that request was sent
+  cancelFriend();
+  setAlert();
+  var accept = document.getElementById('Sent');
+  accept.style.transform = "scale(1,1)";
+  setTimeout(function() {
+    accept.style.transform = "scale(0,0)";
+  }, 1000);
+
+}
+
