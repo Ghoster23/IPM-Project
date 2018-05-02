@@ -16,10 +16,10 @@
 
 #Arrow {
   position: absolute;
-  width: 120px;
-  height: 120px;
-  margin-left: 22%;
-  margin-top: 22%;
+  width: 100px;
+  height: 100px;
+  margin-left: 27%;
+  margin-top: 27%;
 }
 
 #Marker {
@@ -40,9 +40,6 @@
 
 #Map {
   position: absolute;
-  width: 400px;
-  height: 400px;
-
 }
 
 #Target {
