@@ -1,0 +1,22 @@
+#Touch_Screen {
+  background-color: #17BF15;
+}
+
+#Text {
+  position:    absolute;
+  width:       210px;
+  height:      210px;
+  top:         47px;
+  left:        2px;
+  color:       white;
+  text-align:  center;
+  font-family: "Open Sans", sans-serif;
+  font-size:   20px;
+  text-shadow: 0px 0px 15px #000000;
+}
+
+#Symbol {
+  position: absolute;
+  top: 55%;
+  left: 38%;
+}
