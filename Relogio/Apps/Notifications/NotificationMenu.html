@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Navega&ccedil;&atilde;o - Amigos</title>
         <link rel="stylesheet" href="../../style (Watch).css">
         <link rel="stylesheet" href="../style (Menu).css">
-        <link rel="stylesheet" href="style (Friends).css">
+        <link rel="stylesheet" href="style (NotificationMenu).css">
     </head>
 
-    <body onload="showContacts(0)">
+    <body onload="showNotifications(0)">
         <a href="../../../index.html">
             <img id="Back_Arrow" src="../../../Images/Arrow.png">
         </a>
@@ -22,19 +21,16 @@
                 </div>
 
                 <!-- Back Button -->
-                <a href="Navigation App.html">
+                <a onclick="goBack()">
                     <img id="Back" src="../Images/back.png">
                 </a>
             </div>
 
             <!-- Cancel -->
-            <img id="Cancel" onclick="cancelFriend()" src="../Images/cancel.png">
+            <img id="Cancel" onclick="denyNotification()" src="../Images/cancel.png">
 
             <!-- Accept -->
-            <img id="Accept" onclick="setNavigAlert()" src="../Images/accept.png">
-
-             <!-- Sent -->
-             <img id="Sent" src="../Images/Sent.gif">
+            <img id="Accept" onclick="acceptNotification()" src="../Images/accept.png">
 
             <!-- Bezle -->
             <img id="Bezel" src="../../Images/Bezel.png">
@@ -44,11 +40,13 @@
                 <div id="Button"></div>
             </a>
         </div>
-
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
         <script src="../animation (Menu).js"></script>
-        <script src="animation (Navigation App).js"></script>
-        <script src="animation (Navigation App Map).js"></script>
-        <script src="animation (Friends).js"></script>
+        <script src="NotificationMenu.js"></script>
         <script src="../../notifications.js"></script>
     </body>
 </html>
