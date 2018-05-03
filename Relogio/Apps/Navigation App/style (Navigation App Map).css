@@ -2,6 +2,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+#Touch_Screen {
+  background: rgb(232,232,232);
+}
+
 #LookAt {
   position: absolute;
   width: 200px;
