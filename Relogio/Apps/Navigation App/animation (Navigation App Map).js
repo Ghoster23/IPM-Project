@@ -16,18 +16,17 @@ var ty = 0;
 
 var dist = 0;
 
-function drawMap() {
-  var mapX = px - 105;
-  var mapY = py - 105;
-  var mapW = 210;
+function drawMap(){
+  var mapW = 210 * zoom;
   var mapH = mapW;
 
-  ctx.drawImage(map, mapX / zoom, mapY / zoom,
-                mapW * zoom, mapH * zoom, 0, 0, 210, 210);
+  var mapX = px - mapW/2;
+  var mapY = py - mapH/2;
 
+  ctx.drawImage(map, mapX, mapY, mapW, mapH,
+                  0,    0, 210, 210);
 
-  ctx.drawImage(marker,0,0,64,64,tx*zoom-mapX/zoom - 20,ty*zoom-mapY/zoom - 40,40,40);
-
+  ctx.drawImage(marker,0,0,64,64,tx - mapX - 20,ty - mapY - 40,40,40);
 
   setInterval(drawMap,500);
 }
@@ -101,6 +100,7 @@ function markerPosition() {
     document.getElementById("Target").innerHTML   = tg;
     document.getElementById("Distance").innerHTML = dist + " m";
 
+    setZoom(1);
     drawMap();
 }
 
