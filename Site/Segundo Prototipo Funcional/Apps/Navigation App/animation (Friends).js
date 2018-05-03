@@ -90,7 +90,7 @@ function showContacts(startRow) {
 function setNavigAlert(){
   //give visual feedback that request was sent
   cancelFriend();
-  setAlert(friend.name,friend.name+" aceitou\no seu pedido.\nNavegar at&eacute local?","NavigateToFriend",getRandomArbitrary(2000, 7500));
+  setAlert(friend.name,friend.name+" aceitou\no seu pedido.\nNavegar at&eacute local?","NavigateToFriend",2000);
   var accept = document.getElementById('Sent');
   accept.style.transform = "scale(1,1)";
   document.getElementById("menu").style.overflow = "hidden";
@@ -100,3 +100,4 @@ function setNavigAlert(){
   }, 1300);
 
 }
+

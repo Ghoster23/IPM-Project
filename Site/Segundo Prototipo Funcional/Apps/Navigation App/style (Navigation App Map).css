@@ -1,0 +1,106 @@
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+#Touch_Screen {
+  background: rgb(232,232,232);
+}
+
+#LookAt {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+#Self {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+#Arrow {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin-left: 27%;
+  margin-top: 27%;
+}
+
+#Marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 47%;
+  margin-top: 47%;
+}
+
+#TextBoxes {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+#Map {
+  position: absolute;
+}
+
+#Target {
+  position: absolute;
+  width: 97px;
+  height: 27px;
+  font-size:   20px;
+  top: 8%;
+  left: 28%;
+  text-align: center;
+  line-height: 28px;
+}
+
+#Distance {
+  position: absolute;
+  width: 78px;
+  height: 19px;
+  font-size:   16px;
+  top: 82.5%;
+  left: 33%;
+  line-height: 22px;
+  text-align: center;
+}
+
+#MovimentButtons {
+  position: absolute;
+  top: 48%;
+  left: 62%;
+}
+
+#MovimentButtons_Buttons {
+  width: 147px;
+  margin-left: 25%;
+}
+
+#Up_Button {
+  margin-bottom: 4px;
+  margin-left: 50px;
+}
+
+#Up_Arrow {
+  transform: rotate(-90deg);
+}
+
+#Down_Arrow {
+  transform: rotate(90deg);
+}
+
+#Left_Arrow {
+  transform: rotate(180deg);
+}
+
+.buttonArrow {
+  width: 30px;
+  height: 30px;
+}

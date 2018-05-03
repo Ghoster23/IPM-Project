@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Navega&ccedil;&atilde;o</title>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Navigation App).css">
+    </head>
+
+    <body>
+        <a href="../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+                      <!-- Info Point -->
+                      <tr>
+                          <th>
+                              <a href="Navigation App Map.html" onclick="saveNavInfo('0')">
+                                  <img class="iconApp" draggable="false" src="Images/Info Point.png">
+                              </a>
+                              <figcaption class="appSubtitle"> Centro de <br> Informa&ccedil;&otilde;es </figcaption>
+                          </th>
+                      </tr>
+
+                      <!-- WC -->
+                      <tr>
+                          <th>
+                              <a href="Navigation App Map.html" onclick="saveNavInfo('1')">
+                                  <img class="iconApp" draggable="false" src="Images/WC.png">
+                              </a>
+                              <figcaption class="appSubtitle"> WC </figcaption>
+                          </th>
+                      </tr>
+
+                      <!-- Stages -->
+                        <tr>
+                            <th>
+                                <a href="Navigation App Map.html" onclick="saveNavInfo('2')">
+                                    <img class="iconApp" draggable="false" src="Images/Stages.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Palcos </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Drinks -->
+                        <tr>
+                            <th>
+                                <a href="Navigation App Map.html" onclick="saveNavInfo('3')">
+                                    <img class="iconApp" draggable="false" src="Images/Drinks.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Bebidas </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Food -->
+                        <tr>
+                            <th>
+                                <a href="Navigation App Map.html" onclick="saveNavInfo('4')">
+                                    <img class="iconApp" draggable="false" src="Images/Food.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Comida </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Friends -->
+                        <tr>
+                            <th>
+                                <a href="Friends.html" onclick="saveNavInfo('5')">
+                                    <img class="iconApp" draggable="false" src="Images/Contacts.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Amigos </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Exit -->
+                        <tr>
+                            <th>
+                                <a href="Navigation App Map.html" onclick="saveNavInfo('6')">
+                                    <img class="iconApp" draggable="false" src="Images/Exit.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Sa&iacute;das </figcaption>
+                            </th>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <!-- Back Button -->
+                <a href="../Menu.html">
+                    <img id="Back" src="../Images/back.png">
+                </a>
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles_Navigation" src="../Health App/Images/progress3.png">
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <script src="../animation (Menu).js"></script>
+        <script src="animation (Navigation App).js"></script>
+        <script src="../../notifications.js"></script>
+    </body>
+</html>
