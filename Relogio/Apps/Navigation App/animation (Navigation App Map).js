@@ -70,6 +70,8 @@ function markerPosition() {
     tx = getRandomArbitrary(241,662);
     ty = getRandomArbitrary(187,551);
 
+    var tg = "???";
+
     switch(marker) {
         case "0":
           tg = "Informacoes";
@@ -115,11 +117,10 @@ function markerPosition() {
     var rot2 = Math.atan2((py-ty),(px-tx)) * (180/Math.PI) + 180;
     dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
 
-    var tg = "???";
-
     rotateElement("LookAt", rot1);
     rotateElement("Arrow",  rot2);
 
+    console.log(tg);
     document.getElementById("Target").innerHTML   = tg;
     document.getElementById("Distance").innerHTML = dist + " m";
 
