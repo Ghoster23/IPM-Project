@@ -16,7 +16,7 @@ var ty = 0;
 
 var dist = 0;
 
-function drawMap(){
+function drawMap() {
   var mapX = px - 105;
   var mapY = py - 105;
   var mapW = 210;
@@ -60,7 +60,7 @@ function markerPosition() {
 
     var rot1 = getRandomArbitrary(0,360);
     var rot2 = Math.atan2((py-ty),(px-tx)) * (180/Math.PI) + 180;
-    var dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
+    dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
 
     var tg = "???";
 
@@ -102,4 +102,48 @@ function markerPosition() {
     document.getElementById("Distance").innerHTML = dist + " m";
 
     drawMap();
+}
+
+// updateLookAt --> Function that update the vison cone's angle
+function updateLookAt(newAngle) {
+  //TODO --> unfinished
+
+  updateLookAt = rotateElement;
+}
+
+// changePosition --> Function that simulate the person's moviments
+function changePosition(mov) {
+  switch (mov) {
+    case 1:
+      if (py > 100) { py -= 5; }
+    break;
+
+    case 2:
+    if (px > 93) { px -= 5; }
+    break;
+
+    case 3:
+      if (py < 629) { py += 5; }
+    break;
+
+    case 4:
+      if (px < 796) { px += 5; }
+    break;
+  }
+
+  var rot2 = Math.atan2((py-ty),(px-tx)) * (180/Math.PI) + 180;
+  rotateElement("Arrow",  rot2);
+
+  rotateElement("LookAt", rot2);
+
+  dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
+  document.getElementById("Distance").innerHTML = dist + " m";
+
+  if (dist < 60) {
+    document.getElementById("Arrow").style.display = "none";
+  } else {
+    document.getElementById("Arrow").style.display = "block";
+  }
+
+  drawMap();
 }
