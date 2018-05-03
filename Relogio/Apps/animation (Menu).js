@@ -91,6 +91,21 @@ function closest(position) {
     return ans;
 }
 
+function closestindex(position) {
+    var i = 0;
+    var minDiff = 1000;
+    var ans;
+    for(i in anchors) {
+         var m = Math.abs(position-anchors[i]);
+         if(m < minDiff) {
+            minDiff = m;
+            ans = i;
+        }
+    }
+    return ans;
+}
+
+
 //----------------------this bit handles the SOS button-----------------------------
 var timer;
 var count = 0;
@@ -116,17 +131,18 @@ function mousedownfunction() {
         }
     }, 20);
 }
-document.getElementById("iconSOS").addEventListener("mousedown",  mousedownfunction);
-document.getElementById("iconSOS").addEventListener("touchstart", mousedownfunction);
+var sos = document.getElementById("iconSOS");
+sos && sos.addEventListener("mousedown",  mousedownfunction);
+sos && sos.addEventListener("touchstart", mousedownfunction);
 
 //used for event releasing mouse and start decrementing count variable
 function mouseupfunction() {
     if (timer) clearInterval(timer)
     mouse_is_down = false;
 }
-document.getElementById("iconSOS").addEventListener("mouseleave", mouseupfunction);
-document.getElementById("iconSOS").addEventListener("mouseup",    mouseupfunction);
-document.getElementById("iconSOS").addEventListener("touchend",   mouseupfunction);
+sos && sos.addEventListener("mouseleave", mouseupfunction);
+sos && sos.addEventListener("mouseup",    mouseupfunction);
+sos && sos.addEventListener("touchend",   mouseupfunction);
 
 //  take care of sosconfirm
 var ctx2   = document.getElementById("sosconfirm").getContext("2d");

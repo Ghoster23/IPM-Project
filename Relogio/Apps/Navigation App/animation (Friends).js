@@ -1,11 +1,6 @@
 var opened = false;
 var friend = {};
 
-function saveFriendName() {
-  sessionStorage.setItem("friend", friend.name);
-  document.location.href = "Navigation App Map.html";
-}
-
 function cancelFriend(){
   slider.scroll({ top: slider.scrollTop+0.5, left: 0, behavior: "smooth" });
 }
@@ -95,12 +90,14 @@ function showContacts(startRow) {
 function setNavigAlert(){
   //give visual feedback that request was sent
   cancelFriend();
-  setAlert();
+  setAlert(friend.name,friend.name+" aceitou\no seu pedido.\nNavegar at&eacute local?","NavigateToFriend",2000);
   var accept = document.getElementById('Sent');
   accept.style.transform = "scale(1,1)";
+  document.getElementById("menu").style.overflow = "hidden";
   setTimeout(function() {
+    document.getElementById("menu").style.overflow = "auto";
     accept.style.transform = "scale(0,0)";
-  }, 1000);
+  }, 1300);
 
 }
 

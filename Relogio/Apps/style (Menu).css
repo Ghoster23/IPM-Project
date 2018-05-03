@@ -73,6 +73,10 @@
     pointer-events:  none;
 }
 
+.Floater:active{
+    animation: boing 300ms ease-in-out;
+}
+
 @keyframes boing {
     15%, 40%, 75%, 100% {
         transform-origin: center center;
@@ -90,3 +94,4 @@
         transform: scale(1, 1);
     }
 }
+
