@@ -17,6 +17,7 @@ var ty = 0;
 
 var dist = 0;
 
+
 function drawMap(){
   setInterval(drawMap,1000);
 
@@ -43,6 +44,7 @@ function drawMap(){
   ctx.drawImage(marker,0,0,64,64,(tx - mapX) / zoom - 20,(ty - mapY) / zoom - 40,40,40);
 }
 
+
 function setZoom(amount){
   zoom = amount;
 }
@@ -55,10 +57,18 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-//Function that updates the clock hands' position
+
+//Function that updates the element's position
 function rotateElement(id, angle) {
   document.getElementById(id).style.transform = "rotate(" + angle + "deg)";
 }
+
+
+// updatesDist --> updates the distance between the user and the target.
+function updatesDist() {
+  dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
+}
+
 
 //decide on the string to put for the result :)
 function markerPosition() {
@@ -128,12 +138,6 @@ function markerPosition() {
     target = 1;
 }
 
-// updateLookAt --> Function that update the vison cone's angle
-function updateLookAt(newAngle) {
-  //TODO --> unfinished
-
-  updateLookAt = rotateElement;
-}
 
 // changePosition --> Function that simulate the person's moviments
 function changePosition(mov) {
@@ -158,12 +162,15 @@ function changePosition(mov) {
   var rot2 = Math.atan2((py-ty),(px-tx)) * (180/Math.PI) + 180;
   rotateElement("Arrow",  rot2);
 
+  document.getElementById("LookAt").style.transition = "transform 1s ease-in";
   rotateElement("LookAt", rot2);
 
-  dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
+  updatesDist();
   document.getElementById("Distance").innerHTML = dist + " m";
 
-  if (dist < 60) {
+  if (dist <= 15) {
+    document.location.href = "End Navigation.html";
+  } else if (dist < 60) {
     document.getElementById("Arrow").style.display = "none";
   } else {
     document.getElementById("Arrow").style.display = "block";
