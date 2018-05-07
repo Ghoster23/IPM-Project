@@ -16,6 +16,7 @@ var tx = 0;
 var ty = 0;
 
 var dist = 0;
+var tg   = "???";
 
 
 function drawMap(){
@@ -43,7 +44,6 @@ function drawMap(){
 
   ctx.drawImage(marker,0,0,64,64,(tx - mapX) / zoom - 20,(ty - mapY) / zoom - 40,40,40);
 }
-
 
 function setZoom(amount){
   zoom = amount;
@@ -80,7 +80,7 @@ function markerPosition() {
     tx = getRandomArbitrary(241,662);
     ty = getRandomArbitrary(187,551);
 
-    var tg = "???";
+    tg = "???";
 
     switch(marker) {
         case "0":
@@ -130,12 +130,19 @@ function markerPosition() {
     rotateElement("LookAt", rot1);
     rotateElement("Arrow",  rot2);
 
-    console.log(tg);
-    document.getElementById("Target").innerHTML   = tg;
+    document.getElementById("Target").innerHTML   = "Navegar?";
     document.getElementById("Distance").innerHTML = dist + " m";
 
     drawMap();
-    target = 1;
+}
+
+function confirm(){
+  document.getElementById("Target").innerHTML = tg;
+
+  target = 1;
+
+  document.getElementById("Confirm").style.left = '100%';
+  document.getElementById("Back").src = "Images/Map/back.png";
 }
 
 
