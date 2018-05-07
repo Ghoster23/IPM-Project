@@ -1,4 +1,15 @@
 .iconApp {
   background-color: rgb(41, 171, 226);
   border-radius: 50%;
+  width:   90px;
+  height:  90px;
+  opacity: 0.3s ease-in-out;
+}
+
+.menu {
+  left: 6px;
+}
+
+figcaption {
+  padding-top: 5px;
 }

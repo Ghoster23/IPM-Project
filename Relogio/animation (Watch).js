@@ -37,9 +37,9 @@ function changeText(id, txt) {
   document.getElementById(id).innerHTML = txt;
 }
 
-function none() {}
-
 function saveContacts() {
-  sessionStorage.setItem("contacts", JSON.stringify(["Alexandre", "Antonio", "Ash", "Frost", "Frown"]));
-  saveContacts = none;
+  var contacts = sessionStorage.getItem("contacts");
+  if (contacts == null) {
+    sessionStorage.setItem("contacts", JSON.stringify(["Alexandre", "Antonio", "Ash", "Frost", "Frown"]));
+  }
 }
