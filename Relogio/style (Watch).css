@@ -37,6 +37,7 @@
     width:    224px;
     top:      3%;
     left:     0%;
+    pointer-events: none;
 }
 
 #Button {

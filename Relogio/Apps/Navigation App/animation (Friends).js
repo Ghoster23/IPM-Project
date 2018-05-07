@@ -2,7 +2,7 @@ var opened = false;
 var friend = {};
 
 function cancelFriend(){
-  slider.scroll({ top: slider.scrollTop+0.5, left: 0, behavior: "smooth" });
+  slider.scroll({ top: slider.scrollTop+1, left: 0, behavior: "smooth" });
 }
 
 function confirmFriend(e,name){
