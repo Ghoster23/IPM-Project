@@ -2,7 +2,7 @@ var opened = false;
 var friend = {};
 
 function cancelFriend(){
-  slider.scroll({ top: slider.scrollTop+0.5, left: 0, behavior: "smooth" });
+  slider.scroll({ top: slider.scrollTop+1, left: 0, behavior: "smooth" });
 }
 
 function confirmFriend(e,name){
@@ -62,7 +62,7 @@ slider.addEventListener("scroll", function() {
 
 function showContacts(startRow) {
   var source;
-  var element1 = "<th> <div class='iconApp' onclick='confirmFriend(event,";
+  var element1 = "<th><div class='iconApp' onclick='confirmFriend(event,";
   var element2 = ")' draggable='false'><img class='iconApp' draggable='false' src=";
   var element3 = "</div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";

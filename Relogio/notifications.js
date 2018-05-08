@@ -240,6 +240,8 @@ function createFloater(){
   floater = document.querySelector("#Floater");
     
   floater.addEventListener("mousedown", (e) => {
+    floater.style.transition = "";
+    counter.style.transition = "";
     down = true;
     x_ = e.clientX;
     y_ = e.clientY;
@@ -247,6 +249,8 @@ function createFloater(){
 
   floater.addEventListener("mousemove", (e) => {
     if (!down) return;
+    movefloater = true;
+    
     e.preventDefault();
     
     newx = x_ - e.clientX;
@@ -254,10 +258,9 @@ function createFloater(){
     x_ = e.clientX;
     y_ = e.clientY;
     
-    clickable = false;
     var floater = document.getElementById("Floater");
 
-    if(dist(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=80){
+    if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
       //do nada
     }else{
       floater.style.top = (floater.offsetTop - newy) + "px";
@@ -275,22 +278,21 @@ function createFloater(){
 
   floater.addEventListener("mouseup", () => {
     down = false;
-    var floater = document.getElementById("Floater");
+    insetfloater();
     window.setTimeout(() =>{
-      clickable = true;
-    },300);
+      movefloater = false;
+    },100);
   });
 
   floater.addEventListener("mouseleave", () => {
     down = false;
     window.setTimeout(() =>{
-      clickable = true;
-    },300);
+      movefloater = false;
+    },100);
   });
 
   floater.addEventListener("click", () => {
-   
-      console.log("lets goooo");
+    if(movefloater == false){
       var dir = window.location.pathname;
       var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
       switch(dirname){
@@ -304,15 +306,48 @@ function createFloater(){
           document.location.href = "../Notifications/NotificationMenu.html";
         break;
       }
+    }
   });
 }
 
 var _x =0, _y=0, newx = 0, newy = 0;
-var down = false, clickable = true;
+var down = false, movefloater = false;
 
-function dist(x1,y1,x2,y2){
+function distfloater(x1,y1,x2,y2){
   var a = Math.abs(x2-x1);
   var b = Math.abs(y2-y1);
   var distan = Math.sqrt((a*a)+(b*b));
   return distan;
+}
+
+function toRadians (angle) {
+  return angle * (Math.PI / 180);
+}
+
+function insetfloater(){
+  var floater = document.getElementById("Floater");
+  var counter  = document.getElementById("Counter");
+  floater.style.transition = "all 0.5s ease 0s";
+  counter.style.transition = "all 0.5s ease 0s";
+
+  len2center = distfloater(77,88,floater.offsetLeft,floater.offsetTop);
+
+  var angle = Math.atan2((floater.offsetTop-88),(floater.offsetLeft-77)) * (180/Math.PI);
+
+  var ltarget = floater.offsetLeft + (90-len2center) * Math.cos(toRadians(angle)); 
+  var ttarget = floater.offsetTop + (90-len2center) * Math.sin(toRadians(angle));
+
+  if(angle<-145 || angle>=145){
+    ltarget=136;
+    ttarget=24;
+  }
+
+  floater.style.left = ltarget+"px";
+  floater.style.top = ttarget+"px";
+
+  counter.style.left    = parseInt(floater.style.left,10)+10 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+10 +"px";
+
+  var coords = [floater.style.left,floater.style.top];
+  sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
 }
