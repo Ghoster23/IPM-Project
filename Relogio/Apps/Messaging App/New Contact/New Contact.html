@@ -14,13 +14,30 @@
 
         <div id="Clock">
             <div id="Touch_Screen">
+                <table id="Table">
+                    <tr>
+                        <th>
+                            <img id="Dictate" class="option" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
+                            <figcaption id="DictateSub" class="optionSubtitle"> Ditar </figcaption>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img id="Write" class="option" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
+                            <figcaption id="WriteSub" class="optionSubtitle"> Escrever </figcaption>
+                        </th>
+                    </tr>
+                </table>
+
                 <input id="New_Name" type="text" placeholder="Novo Contacto" min="1" maxlength="10">
 
-                <a href="../Messaging App.html">
-                    <img id="Cancel" class="controlButton" src="../../Images/cancel.png">
-                </a>
-
+                <img id="Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
                 <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
+
+                <!-- Back Button -->
+                <a href="../Messaging App.html">
+                    <img id="Back" src="../../Images/back.png">
+                </a>
             </div>
 
             <!-- Bezle -->
@@ -32,7 +49,7 @@
             </a>
         </div>
 
-        <script src="../../../notifications.js"></script>
         <script src="animation (New Contact).js"></script>
+        <script src="../../../notifications.js"></script>
     </body>
 </html>

@@ -2,6 +2,7 @@
   position: absolute;
   width: 180px;
   height: 20px;
+  top: 0px;
   left: 15px;
   padding-top: 19px;
   padding-bottom: 0px;
@@ -10,6 +11,16 @@
   font-family: "Open Sans", sans-serif;
   font-size: 17px;
   filter: drop-shadow(0px 0px 4px #000);
+  visibility: hidden;
+  opacity: 0;
+}
+
+#Write {
+  top: -68px;
+}
+
+#WriteSub {
+  top: -74px;
 }
 
 #Cancel {
@@ -17,15 +28,37 @@
 }
 
 #Done {
-  left: 95px;
+  left: 125px;
 }
 
 .controlButton {
-  position: relative;
-  top: 52px;
+  position: absolute;
+  top: 60px;
   width: 30px;
   height: 30px;
   filter: drop-shadow(0px 0px 4px #000);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.option {
+  position: relative;
+  top: -30px;
+  left: 17px;
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0px 0px 4px #000);
+}
+
+.optionSubtitle {
+  position:       relative;
+  top:            -34px;
+  left:           17px;
+  color:          white;
+  font-family:    "Open Sans", sans-serif;
+  text-decoration: none;
+  font-weight:     400;
+  text-shadow:     0px 0px 4px #000000;
 }
 
 ::placeholder {
@@ -35,4 +68,21 @@
 @keyframes highlight {
   50% { background-color: rgb(230, 100, 104); }
   100% { background-color: white; }
+}
+
+@keyframes fadeAway {
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes appear {
+  100% { opacity: 1; visibility: visible; }
+}
+
+@keyframes DictateChoosen {
+  to { top: 55px; }
+}
+
+@keyframes goBackToPlace {
+  to   { top: -30px; }
+  100% { opacity: 1; visibility: visible; }
 }
