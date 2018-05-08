@@ -4,6 +4,7 @@
         <title>Mensagens - Menu</title>
         <link rel="stylesheet" href="../../style (Watch).css">
         <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Messaging Menu).css">
     </head>
 
     <body>
@@ -13,34 +14,37 @@
 
         <div id="Clock">
             <div id="Touch_Screen">
-                <div class="menu" id="menu">
+                <div class="menu" onscroll="updateProgress()">
                     <table id="Table">
+
+                        <!-- Send Location -->
+                        <tr>
+                            <th>
+                                <img class="iconApp" draggable="false" src="Images/addsymbol.png">
+                                <figcaption class="appSubtitle"> Enviar<br>Localiza&ccedil;&atilde;o </figcaption>
+                            </th>
+                        </tr>
+
                         <!-- Premade Messages -->
                         <tr>
                             <th>
-                                <a>
-                                    <img class="iconApp" draggable="false" src="Images/premademessage.png">
-                                </a>
-                                <figcaption class="appSubtitle"> Mensagens<br>Predefindas </figcaption>
+                                <img class="iconApp" draggable="false" src="Images/premademessage.png">
+                                <figcaption class="appSubtitle"> Predefinidas </figcaption>
                             </th>
                         </tr>
 
                         <!-- Write Message -->
                         <tr>
                             <th>
-                                <a>
-                                    <img class="iconApp" draggable="false" src="Images/keyboard.png">
-                                </a>
+                                <img class="iconApp" draggable="false" src="Images/keyboard.png">
                                 <figcaption class="appSubtitle"> Escrever </figcaption>
                             </th>
                         </tr>
 
-                        <!-- Dictate Messages -->
+                        <!-- Dictate Message -->
                         <tr>
                             <th>
-                                <a>
-                                    <img class="iconApp" draggable="false" src="Images/microphone.png">
-                                </a>
+                                <img class="iconApp" draggable="false" src="Images/microphone.png">
                                 <figcaption class="appSubtitle"> Ditar </figcaption>
                             </th>
                         </tr>
@@ -67,5 +71,6 @@
 
         <script src="../../notifications.js"></script>
         <script src="../animation (Menu).js"></script>
+        <script src="animation (Messaging Menu).js"></script>
     </body>
 </html>
