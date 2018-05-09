@@ -17,6 +17,7 @@
 
 #Write {
   top: -68px;
+  cursor: pointer;
 }
 
 #WriteSub {
@@ -25,10 +26,12 @@
 
 #Cancel {
   left: 55px;
+  cursor: pointer;
 }
 
 #Done {
   left: 125px;
+  cursor: pointer;
 }
 
 .controlButton {
@@ -48,6 +51,7 @@
   width: 65px;
   height: 65px;
   filter: drop-shadow(0px 0px 4px #000);
+  cursor: pointer;
 }
 
 .optionSubtitle {

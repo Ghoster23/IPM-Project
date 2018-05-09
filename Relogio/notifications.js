@@ -110,7 +110,7 @@ function ExecuteNotification(targetname){
       if(targetname == notif.name){
         alerts.splice(i,1);
 
-        console.log("Notification received!!!");
+        console.log(notif.name);
         addNotification(notif);
 
         break;
@@ -202,6 +202,9 @@ function createFloater(){
     case "Watch.html":
       floater.src = 'Apps/Images/notification.png'; 
     break;
+    case "New%20Contact.html":
+      floater.src = "../../Images/notification.png"; 
+    break;
     default:
       floater.src = "../Images/notification.png";
     break;
@@ -215,22 +218,23 @@ function createFloater(){
 
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
 
-  counter.innerHTML        = notifications.length;
-  counter.style.position   = "absolute";
-  counter.style.textAlign  = "center";
-  counter.style.color      = "white";
-  counter.style.fontFamily = "'Open Sans', sans-serif";
-  counter.style.fontWeight = "normal";
-  counter.style.fontSize   = "14px";
-  counter.style.textShadow = "0px 0px 3px #000000";
+  counter.innerHTML          = notifications.length;
+  counter.style.position     = "absolute";
+  counter.style.textAlign    = "center";
+  counter.style.color        = "rgb(41, 204, 141)"; 
+  counter.style.fontFamily   = "'Open Sans', sans-serif";
+  counter.style.fontWeight   = "bold";
+  counter.style.fontSize     = "14px";
+  counter.style.userSelect   = "none";
+  counter.style.pointerEvents= "none";
 
   var floatercoords = sessionStorage.getItem("Floatercoords");
   if(floatercoords){
     floatercoords=JSON.parse(floatercoords);
     floater.style.left    = floatercoords[0];
     floater.style.top     = floatercoords[1];
-    counter.style.left    = parseInt(floater.style.left,10)+10 +"px";
-    counter.style.top     = parseInt(floater.style.top,10)+10 +"px";
+    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
   }
   
   var touch_screen = document.getElementById("Clock");
@@ -239,18 +243,24 @@ function createFloater(){
 
   floater = document.querySelector("#Floater");
     
-  floater.addEventListener("mousedown", (e) => {
+  floater.addEventListener("mousedown", notifdown);
+  floater.addEventListener("touchstart", notifdown);
+
+  function notifdown(e){
     floater.style.transition = "";
     counter.style.transition = "";
     down = true;
     x_ = e.clientX;
     y_ = e.clientY;
-  });
+  }
 
   floater.addEventListener("mousemove", (e) => {
     if (!down) return;
-    movefloater = true;
     
+    window.setTimeout(() =>{
+      movefloater = true;
+    },100);
+
     e.preventDefault();
     
     newx = x_ - e.clientX;
@@ -271,25 +281,58 @@ function createFloater(){
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
  
     var counter  = document.getElementById("Counter");
-    counter.style.left    = parseInt(floater.style.left,10)+10 +"px";
-    counter.style.top     = parseInt(floater.style.top,10)+10 +"px";
+    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
 
   });
 
-  floater.addEventListener("mouseup", () => {
+  floater.addEventListener("touchmove", notifmove);
+
+  function notifmove(e){
+    if (!down) return;
+    
+    window.setTimeout(() =>{
+      movefloater = true;
+    },100);
+
+    e.preventDefault();
+  
+    var mousex = e.clientY || e.targetTouches[0].pageX;
+    var mousey = e.clientY || e.targetTouches[0].pageY;
+
+    newx = x_ - mousex;
+    newy = y_ - mousey;
+    x_ = mousex
+    y_ = mousey;
+    
+    var floater = document.getElementById("Floater");
+
+    if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
+      //do nada
+    }else{
+      floater.style.top = (floater.offsetTop - newy) + "px";
+      floater.style.left = (floater.offsetLeft - newx) + "px";
+    }
+
+    var coords = [floater.style.left,floater.style.top];
+    sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
+  
+    var counter  = document.getElementById("Counter");
+    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
+  }
+
+  floater.addEventListener("mouseup", notifend);
+  floater.addEventListener("mouseleave", notifend);
+  floater.addEventListener("touchend", notifend);
+
+  function notifend(){
     down = false;
     insetfloater();
     window.setTimeout(() =>{
       movefloater = false;
     },100);
-  });
-
-  floater.addEventListener("mouseleave", () => {
-    down = false;
-    window.setTimeout(() =>{
-      movefloater = false;
-    },100);
-  });
+  }
 
   floater.addEventListener("click", () => {
     if(movefloater == false){
@@ -301,6 +344,9 @@ function createFloater(){
         break;
         case "Watch.html":
           document.location.href = "Apps/Notifications/NotificationMenu.html"; 
+        break;
+        case "New%20Contact.html":
+          document.location.href = "../../Notifications/NotificationMenu.html"; 
         break;
         default:
           document.location.href = "../Notifications/NotificationMenu.html";
@@ -345,9 +391,10 @@ function insetfloater(){
   floater.style.left = ltarget+"px";
   floater.style.top = ttarget+"px";
 
-  counter.style.left    = parseInt(floater.style.left,10)+10 +"px";
-  counter.style.top     = parseInt(floater.style.top,10)+10 +"px";
+  counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
 
   var coords = [floater.style.left,floater.style.top];
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
 }
+
