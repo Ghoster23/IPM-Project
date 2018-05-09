@@ -25,13 +25,13 @@ function optionChoosen(choosen) {
       break;
   }
 
-  subChoosen.style.animation    = "fadeAway 1s ease-in";
-  optNotChoosen.style.animation = "fadeAway 1s ease-in";
-  subNotChoosen.style.animation = "fadeAway 1s ease-in";
-  back.style.animation = "fadeAway 1s ease-in";
+  subChoosen.style.animation    = "fadeAway 0.5s ease-in";
+  optNotChoosen.style.animation = "fadeAway 0.5s ease-in";
+  subNotChoosen.style.animation = "fadeAway 0.5s ease-in";
+  back.style.animation = "fadeAway 0.5s ease-in";
 
   if (choosen == 1) {
-    optChoosen.style.animation = "fadeAway 1s ease-in";
+    optChoosen.style.animation = "fadeAway 0.5s ease-in";
   }
 
   setTimeout(function() {
@@ -50,12 +50,14 @@ function optionChoosen(choosen) {
     subNotChoosen.style.visibility = "hidden";
     back.style.visibility = "hidden";
 
-    newName.style.animation = "appear 1s ease-in";
-    cancel.style.animation  = "appear 1s ease-in";
-    done.style.animation    = "appear 1s ease-in";
+    newName.style.animation = "appear 0.5s ease-in";
+    cancel.style.animation  = "appear 0.5s ease-in";
+    done.style.animation    = "appear 0.5s ease-in";
+
+    newName.value = "";
 
     if (choosen == 0) {
-      optChoosen.style.animation = "DictateChoosen 1s ease-in";
+      optChoosen.style.animation = "DictateChoosen 0.5s ease-in";
     } else {
       optChoosen.style.animation  = "";
       optChoosen.style.opacity    = "0";
@@ -82,9 +84,9 @@ function optionChoosen(choosen) {
         optChoosen.style.opacity    = "0";
         optChoosen.style.visibility = "hidden";
       }
-    }, 1000);
+    }, 500);
 
-  }, 1000);
+  }, 500);
 }
 
 function cancelChoice() {
@@ -148,9 +150,10 @@ function saveNewFriend() {
   var name  = input.value;
 
   var emptyName = (name == "");
-  var wrongName = ((name[0] < "a") || (name[0] > "z"));
+  var goodName = (((name[0] >= "a") && (name[0] <= "z")) ||
+                  ((name[0] >= "A") && (name[0] <= "Z")));
 
-  if ((emptyName == true) || (wrongName == true)) {
+  if ((emptyName == true) || (goodName == false)) {
     input.style.fontSize = "15px";
     input.style.animation = "highlight 2s ease-in-out";
     setTimeout(function() { input.style.animation =""; }, 2000);
