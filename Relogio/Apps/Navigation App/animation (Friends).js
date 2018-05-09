@@ -98,5 +98,4 @@ function setNavigAlert(){
     document.getElementById("menu").style.overflow = "auto";
     accept.style.transform = "scale(0,0)";
   }, 1300);
-
 }

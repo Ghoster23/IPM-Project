@@ -199,8 +199,8 @@ function insetfloater(){
   floater.style.left = ltarget+"px";
   floater.style.top = ttarget+"px";
 
-  counter.style.left    = parseInt(floater.style.left,10)+10 +"px";
-  counter.style.top     = parseInt(floater.style.top,10)+10 +"px";
+  counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
 
   var coords = [floater.style.left,floater.style.top];
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));

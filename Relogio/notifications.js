@@ -222,6 +222,8 @@ function createFloater(){
     case "Watch.html":
       floater.src = 'Apps/Images/notification.png'; 
     break;
+    case "Write%20Message.html":
+    case "Premade%20Messages%20Menu.html":
     case "New%20Contact.html":
       floater.src = "../../Images/notification.png"; 
     break;
@@ -366,6 +368,8 @@ function createFloater(){
         case "Watch.html":
           document.location.href = "Apps/Notifications/NotificationMenu.html"; 
         break;
+        case "Write%20Message.html":
+        case "Premade%20Messages%20Menu.html":
         case "New%20Contact.html":
           document.location.href = "../../Notifications/NotificationMenu.html"; 
         break;
@@ -422,3 +426,19 @@ function insetfloater(){
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
 }
 
+
+/*=======================| TO USE LATER |=====================
+
+
+function setSMSAlert(){
+  setAlert("friend.name",friend.name+" aceitou\no seu pedido.\nNavegar at&eacute local?","NavigateToFriend",getRandomArbitrary(2000, 7500));
+  var accept = document.getElementById('Sent');
+  accept.style.transform = "scale(1,1)";
+  document.getElementById("menu").style.overflow = "hidden";
+  setTimeout(function() {
+    document.getElementById("menu").style.overflow = "auto";
+    accept.style.transform = "scale(0,0)";
+  }, 1300);
+}
+
+*/
