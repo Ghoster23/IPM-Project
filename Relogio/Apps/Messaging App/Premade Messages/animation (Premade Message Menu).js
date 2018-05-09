@@ -1,18 +1,20 @@
-anchors = [0, 183, 348, 530];
-slider.scrollTop = 183;
+slider.scrollTop = 0;
+anchors = [0, 159, 318, 477, 636];
 
-//changes the image to show that the menu has changed
 function updateProgress() {
-    if (slider.scrollTop <= 91.5) {
-        document.getElementById("Progress_Circles").src = "../../Images/progress1.png";
+    if (slider.scrollTop <= 79.5) {
+        document.getElementById("Progress_Circles_5").src = "../../Health App/Images/progress1.png";
     }
-    if (slider.scrollTop > 91.5 && slider.scrollTop <= 274.5) {
-        document.getElementById("Progress_Circles").src = "../../Images/progress2.png";
+    if (slider.scrollTop > 79.5 && slider.scrollTop <= 238.5) {
+        document.getElementById("Progress_Circles_5").src = "../../Health App/Images/progress2.png";
     }
-    if (slider.scrollTop > 274.5 && slider.scrollTop <= 430.5) {
-        document.getElementById("Progress_Circles").src = "../../Images/progress3.png";
+    if (slider.scrollTop > 238.5 && slider.scrollTop <= 397.5) {
+        document.getElementById("Progress_Circles_5").src = "../../Health App/Images/progress3.png";
     }
-    if (slider.scrollTop > 430.5) {
-        document.getElementById("Progress_Circles").src = "../../Images/progress4.png";
+    if (slider.scrollTop > 397.5 && slider.scrollTop <= 556.5) {
+        document.getElementById("Progress_Circles_5").src = "../../Health App/Images/progress4.png";
+    }
+    if (slider.scrollTop > 556.5) {
+        document.getElementById("Progress_Circles_5").src = "../../Health App/Images/progress5.png";
     }
 }
