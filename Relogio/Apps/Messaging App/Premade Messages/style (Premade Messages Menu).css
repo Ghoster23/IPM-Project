@@ -1,0 +1,21 @@
+.menu {
+  left: -35px;
+}
+
+.premadeMessageTemplate {
+  width: 125px;
+  height: 65px;
+}
+
+.premadeMessage {
+  position: relative;
+  top: 58px;
+  left: 65px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  text-decoration: none;
+  font-weight:     400;
+  text-shadow:     0px 0px 4px #000000;
+  pointer-events:  none;
+}

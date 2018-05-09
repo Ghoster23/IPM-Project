@@ -1,6 +1,6 @@
 function optionChoosen(choosen) {
   var back    = document.getElementById("Back");
-  var newName = document.getElementById("New_Name");
+  var newName = document.getElementById("Input");
   var cancel  = document.getElementById("Cancel");
   var done    = document.getElementById("Done");
 
@@ -90,7 +90,7 @@ function optionChoosen(choosen) {
 }
 
 function cancelChoice() {
-  var newName   = document.getElementById("New_Name");
+  var newName   = document.getElementById("Input");
   var cancel    = document.getElementById("Cancel");
   var done      = document.getElementById("Done");
 
@@ -146,7 +146,7 @@ function cancelChoice() {
 }
 
 function saveNewFriend() {
-  var input = document.getElementById("New_Name");
+  var input = document.getElementById("Input");
   var name  = input.value;
 
   var emptyName = (name == "");

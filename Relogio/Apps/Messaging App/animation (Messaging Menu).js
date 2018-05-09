@@ -16,3 +16,7 @@ function updateProgress() {
         document.getElementById("Progress_Circles").src = "../Images/progress4.png";
     }
 }
+
+function saveWriteMode(mode) {
+  sessionStorage.setItem("writeMode", mode);
+}
