@@ -20,3 +20,11 @@ function updateProgress() {
 function saveWriteMode(mode) {
   sessionStorage.setItem("writeMode", mode);
 }
+
+function sent(){
+  document.getElementById("Sent").style.transform = "scale(1,1)";
+
+  setTimeout(function(){
+    document.getElementById("Sent").style.transform = "scale(0,0)";
+  }, 1300);
+}
