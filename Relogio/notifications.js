@@ -30,7 +30,6 @@ function setAlert(name,text,functionName,timeStep){
 
 //run this function onunload
 function updateAlerts(){
-  console.log("update");
 
   var alerts = sessionStorage.getItem("alerts");
   //if array does exists parse it
@@ -55,8 +54,6 @@ function updateAlerts(){
 
 /*run this function on load*/
 function loadAlerts(){
-
-  console.log("Alerts loaded");
 
   var alerts = sessionStorage.getItem("alerts");
   //if array does not exist create it else just parse it
@@ -109,8 +106,6 @@ function ExecuteNotification(targetname){
       //if this is the notification that came to conclusion remove it
       if(targetname == notif.name){
         alerts.splice(i,1);
-
-        console.log(notif.name);
         addNotification(notif);
 
         break;
@@ -152,12 +147,37 @@ function addNotification(notif){
   }
   else{
     var floater = document.getElementById("Floater");
-    floater.style.animation = "boing 300ms ease-in-out";
+    if(floater){
+      floater.style.animation = "boing 300ms ease-in-out";
+      setTimeout(function() {
+        floater.style.animation = "";
+      }, 1000);
+    }
     var counter  = document.getElementById("Counter");
-    counter.innerHTML        = notifications.length;
-    setTimeout(function() {
-      floater.style.animation = "";
-    }, 1000);
+    if(counter){
+      counter.innerHTML        = notifications.length;
+    }
+  }
+
+  var dir = window.location.pathname;
+  var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
+
+  if( dirname == "NotificationMenu.html"){
+    //lets add that new notification to this menu
+  
+    var element1 = "<th> <div class='iconApp'";
+    var element2 = "draggable='false'> <span id ='notText'>";
+    var element3 = "</span>";
+
+    var notifications = JSON.parse(sessionStorage.getItem("notifications"));
+    var contact_Table = document.getElementById("Table");
+
+    var body = contact_Table.tBodies[0];
+    var rows = body.rows;
+    
+    // pick the last and prepend
+    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + element2 + notif.text + element3);
+    anchors.push(i*138+10);
   }
 }
          
@@ -233,9 +253,10 @@ function createFloater(){
     floatercoords=JSON.parse(floatercoords);
     floater.style.left    = floatercoords[0];
     floater.style.top     = floatercoords[1];
-    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
-    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
   }
+
+  counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
   
   var touch_screen = document.getElementById("Clock");
   touch_screen.insertBefore(floater,document.getElementById("Bezel"));
@@ -354,6 +375,9 @@ function createFloater(){
       }
     }
   });
+
+  insetfloater();
+
 }
 
 var _x =0, _y=0, newx = 0, newy = 0;
