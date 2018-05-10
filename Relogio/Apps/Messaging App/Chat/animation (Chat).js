@@ -24,7 +24,8 @@ function fixMessage(message) {
 
 function showMessages() {
   var chatTable = document.getElementById("Table");
-  var messages  = JSON.parse(sessionStorage.getItem("chat" + sessionStorage.getItem("friend")));
+  var friend    = sessionStorage.getItem("friend");
+  var messages  = JSON.parse(sessionStorage.getItem("chat" + friend));
   var element1  = "<img class=";
   var element2  = " draggable='false' src='../Images/";
   var element3  = "<span class=";
@@ -33,6 +34,8 @@ function showMessages() {
   var imgClass;
   var spanClass;
   var image;
+
+  document.getElementById("FriendName").innerHTML = friend;
 
   for (var i = 0; i < messages.length; i++) {
     var m = fixMessage(messages[i][1]);

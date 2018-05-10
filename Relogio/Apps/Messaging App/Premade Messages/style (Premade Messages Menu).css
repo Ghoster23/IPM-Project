@@ -28,3 +28,7 @@
   text-decoration: none;
   display: block;
 }
+
+.premadeMessageTemplate:active, .premadeMessage:active {
+    animation: boing 300ms ease-in-out;
+}
