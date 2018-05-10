@@ -19,6 +19,6 @@
 .option {
   top: 102px;
   left: 71px;
-  visibility: visible;;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
 }

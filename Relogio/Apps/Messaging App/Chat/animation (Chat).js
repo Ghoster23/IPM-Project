@@ -10,10 +10,15 @@ function fixMessage(message) {
   for (var w of words) {
     count += w.length;
 
-    if (count >= 15) {
-      count = 0;
-      newMessage += "<br>";
+    if (count >= 10) {
       justALine  = false;
+      if (words.length == 1) {
+        return (w.slice(0, 10) + "<br>" + w.slice(10));
+      } else {
+        count = 0;
+        newMessage += "<br>";
+        justALine  = false;
+      }
     }
 
     newMessage += " " + w;
@@ -61,6 +66,8 @@ function showMessages() {
 
     chatTable.insertRow(i).innerHTML = element1 + imgClass + element2 + image + element3 + spanClass + element4 + m + element5;
   }
+
+  slider.scrollTop = messages.length * 150;
 }
 
 function anchor2closest() { }
