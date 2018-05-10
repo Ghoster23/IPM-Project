@@ -1,0 +1,56 @@
+#Table {
+  width: 150px;
+  margin-left: 40px;
+  border-collapse: collapse;
+  vertical-align: middle;
+}
+
+#Input {
+  width: 165px;
+  top: 165px;
+  left: 20px;
+  padding-top: 1px;
+  padding-bottom: 20px;
+  font-size: 14px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.sendTemplate, .receivedTemplate {
+  position: relative;
+  left: 25px;
+  width: 125px;
+  height: 65px;
+}
+
+.receivedTemplate {
+  left: 5px;
+}
+
+.sendMessage, .just1LineSend, .receivedMessage, .just1LineReceived {
+  position: relative;
+  width: 105px;
+  left: 25px;
+  margin-top: -65px;
+  margin-bottom: 25px;
+  padding-top: 7%;
+  padding-left: 7%;
+  text-align: justify;
+  white-space: pre;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  text-shadow: 0px 0px 3px #000000;
+  text-decoration: none;
+  display: block;
+}
+
+.just1LineSend, .just1LineReceived {
+  margin-bottom: 28px;
+  padding-top: 15%;
+}
+
+.receivedMessage, .just1LineReceived {
+  left: 5px;
+}

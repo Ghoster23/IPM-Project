@@ -50,7 +50,7 @@ function sendSMSPremade(smsNum) {
       break;
 
     case 4:
-      sendSMS("Sai; do recinto.");
+      sendSMS("Sai do recinto.");
       break;
   }
 }
