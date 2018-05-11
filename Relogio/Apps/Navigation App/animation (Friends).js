@@ -76,8 +76,10 @@ function showContacts(startRow) {
   for (var i = 0; i < contacts.length; i++) {
     anchors.push(i*160+10);
 
-    if (getRandomArbitrary(0, 10) <= 5) {
-      source = "'Images/Friend.png'>";
+    var r = getRandomArbitrary(0, 100);
+
+    if (r <= 45) {
+      source = "'../Messaging App/Images/Avatars/" + contacts[i][0] + ".png'>";
     } else {
       source = "'../Messaging App/Images/Letters/" + contacts[i][0] + ".png'>";
     }
