@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mensagens - </title>
+        <title>Mensagens - Conversa</title>
         <link rel="stylesheet" href="../../../style (Watch).css">
         <link rel="stylesheet" href="../../style (Menu).css">
         <link rel="stylesheet" href="../New Contact/style (New Contact).css">
-        <link rel="stylesheet" href="style (Write Message).css">
+        <link rel="stylesheet" href="../Write Message/style (Write Message).css">
+        <link rel="stylesheet" href="style (Chat).css">
     </head>
 
-    <body onload="chooseWriteMode()">
+    <body onload="showMessages()">
         <a href="../../../index.html">
             <img id="Back_Arrow" src="../../../../Images/Arrow.png">
         </a>
 
         <div id="Clock">
+            <!-- Dark Background -->
             <div id="Touch_Screen">
-                <textarea id="Input" rows="1" maxlength="20"></textarea>
+                <div class="menu" id="menu">
+                    <table id="Table">
+                    </table>
+                </div>
 
+                <img id="FriendBox" src="../Images/text_box.png">
+                <span id="FriendName"></span>
+                <textarea id="Input" placeholder="Escrever Mensagem" rows="1" maxlength="20"></textarea>
+
+                <!-- Back Button -->
                 <a href="../Messaging Menu.html">
-                    <img id="Cancel" class="controlButton" src="../../Images/cancel.png">
+                    <img id="Back" src="../../Images/back.png">
                 </a>
-                <img id="Done" class="controlButton" onclick="checkSMS(Input.value)" src="../../Images/accept.png">
-
-                <img id="Dictate" class="option" draggable="false" src="../Images/microphone.png">
             </div>
 
             <!-- Bezle -->
@@ -35,7 +42,7 @@
         </div>
 
         <script src="../../../notifications.js"></script>
-        <script src="../Premade Messages/animation (Premade Message Menu).js"></script>
-        <script src="animation (Write Message).js"></script>
+        <script src="../../animation (Menu).js"></script>
+        <script src="animation (Chat).js"></script>
     </body>
 </html>
