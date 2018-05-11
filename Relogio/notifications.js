@@ -14,9 +14,15 @@ function setAlert(name,text,functionName,timeStep){
 
   var notif = {};
   notif.name     = name;                                                       //name of person that sent                                               //function to run when clicked
+<<<<<<< HEAD
+  notif.text     = text;                                                       //notification text 
+  notif.function = functionName;                                               //function that will be called upon clicking
+  notif.timeStep = timeStep;                                                   //amount of time to wait 
+=======
   notif.text     = text;                                        //notification text
   notif.function = functionName;                                         //function that will be called upon clicking
   notif.timeStep = timeStep;                                                      //amount of time to wait
+>>>>>>> 6f759983084d9c776b7bd9b7b57525a714340893
   notif.timer    = setTimeout(ExecuteNotification,notif.timeStep,notif.name);  //timer
   notif.inittime = (new Date()).getTime();                                     //time the alarm was set
 
@@ -30,7 +36,7 @@ function setAlert(name,text,functionName,timeStep){
 
 //run this function onunload
 function updateAlerts(){
-
+  console.log(href);
   var alerts = sessionStorage.getItem("alerts");
   //if array does exists parse it
   if(alerts){
