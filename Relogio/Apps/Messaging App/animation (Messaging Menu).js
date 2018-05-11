@@ -20,3 +20,12 @@ function updateProgress() {
 function saveWriteMode(mode) {
   sessionStorage.setItem("writeMode", mode);
 }
+
+function sent(){
+  document.getElementById("Sent").style.transform = "scale(1,1)";
+  document.getElementsByClassName("menu")[0].style.overflow = "hidden";
+  setTimeout(function(){
+    document.getElementsByClassName("menu")[0].style.overflow = "auto";
+    document.getElementById("Sent").style.transform = "scale(0,0)";
+  }, 1300);
+}
