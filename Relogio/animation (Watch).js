@@ -40,6 +40,6 @@ function changeText(id, txt) {
 function saveContacts() {
   var contacts = sessionStorage.getItem("contacts");
   if (contacts == null) {
-    sessionStorage.setItem("contacts", JSON.stringify(["Alexandre", "Antonio", "Ash", "Frost", "Frown"]));
+    sessionStorage.setItem("contacts", JSON.stringify(["Alexandre", "Bia", "MoostAsh", "Lost", "Frown"]));
   }
 }
