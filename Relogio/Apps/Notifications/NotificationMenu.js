@@ -14,8 +14,8 @@ slider.addEventListener("scroll", function() {
 
 function showNotifications(startRow) {
   var source;
-  var element1 = "<th> <div class='iconApp'";
-  var element2 = "draggable='false'> <span id ='notText'>";
+  var element1 = "<th> <div class='iconApp' style='background:";
+  var element2 = ";' draggable='false'> <span id ='notText'>";
   var element3 = "</span>";
 
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
@@ -26,7 +26,15 @@ function showNotifications(startRow) {
   for (var i = 0; i < notifications.length; i++) {
     var notif = notifications[i];
     anchors.push(i*138+10);
-    contact_Table.insertRow(i+startRow).innerHTML = element1 + element2 + notif.text + element3;
+    switch(notif.function){
+      case "NavigateToFriend":
+        var backcolor = "#8d23c2";
+      break;
+      case "go2conversation":
+        var backcolor = "#2bade0";
+      break;
+    }
+    contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.text + element3;
   }
   contact_Table.insertRow(i+startRow).innerHTML = "<br>";
   slider.scrollTop = 10;

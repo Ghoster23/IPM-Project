@@ -1,5 +1,6 @@
 window.addEventListener('load', loadAlerts);
 window.addEventListener('unload', updateAlerts);
+window.addEventListener('dblclick', setSMSAlert)
 
 //run this function to set a new alert 
 function setAlert(name,text,functionName,timeStep){
@@ -80,6 +81,7 @@ function loadAlerts(){
   var notifications = sessionStorage.getItem("notifications");
   if(notifications){
     createFloater();
+    createminifloaters();
   }
   else{
     var floater = document.getElementById("Floater");
@@ -94,7 +96,13 @@ function loadAlerts(){
 
 /*function called by alert*/ 
 function ExecuteNotification(targetname){
-  
+
+  if(sessionStorage.getItem("Deleted")=="true"){
+    sessionStorage.setItem("Deleted","false");
+    createFloater();
+    createminifloaters();
+  }
+
   var alerts = sessionStorage.getItem("alerts");
   //if array does exists parse it
   if(alerts){
@@ -107,7 +115,6 @@ function ExecuteNotification(targetname){
       if(targetname == notif.name){
         alerts.splice(i,1);
         addNotification(notif);
-
         break;
       }
     }
@@ -121,7 +128,6 @@ function ExecuteNotification(targetname){
 };
 
 function addNotification(notif){
-
   var notifications = sessionStorage.getItem("notifications");
   //if array does not exist create it else just parse it
   if(!notifications){
@@ -143,7 +149,9 @@ function addNotification(notif){
   sessionStorage.setItem("notifications",JSON.stringify(notifications));
   
   if(notifications.length == 1){
+    sessionStorage.setItem("Deleted","false");
     createFloater();
+    createminifloaters();
   }
   else{
     var floater = document.getElementById("Floater");
@@ -156,6 +164,7 @@ function addNotification(notif){
     var counter  = document.getElementById("Counter");
     if(counter){
       counter.innerHTML        = notifications.length;
+      createminifloaters();
     }
   }
 
@@ -200,6 +209,9 @@ function removeNotification(i){
 }
 
 function createFloater(){
+  if(sessionStorage.getItem("Deleted")=="true"){
+    return;
+  }
 
   var dir = window.location.pathname;
   var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
@@ -208,32 +220,15 @@ function createFloater(){
     return;
   }
   var counter      = document.createElement("span");
-  var floater      = document.createElement("img");
+  var floater      = document.createElement("div");
 
   counter.id       = "Counter";
 
   floater.id       = "Floater";
   floater.className= "Floater";
 
-  switch(dirname){
-    case "Menu.html":
-      floater.src = 'Images/notification.png'; 
-    break;
-    case "Watch.html":
-      floater.src = 'Apps/Images/notification.png'; 
-    break;
-    case "Write%20Message.html":
-    case "Premade%20Messages%20Menu.html":
-    case "New%20Contact.html":
-      floater.src = "../../Images/notification.png"; 
-    break;
-    default:
-      floater.src = "../Images/notification.png";
-    break;
-  }
-
   floater.style.position = "absolute";
-  floater.style.height   = "60px";
+  floater.style.height   = "45px";
   floater.style.cursor   = "pointer";
   floater.style.left     = "136px";
   floater.style.top      = "24px";
@@ -243,7 +238,7 @@ function createFloater(){
   counter.innerHTML          = notifications.length;
   counter.style.position     = "absolute";
   counter.style.textAlign    = "center";
-  counter.style.color        = "rgb(41, 204, 141)"; 
+  counter.style.color        = "#8d23c2"; 
   counter.style.fontFamily   = "'Open Sans', sans-serif";
   counter.style.fontWeight   = "bold";
   counter.style.fontSize     = "14px";
@@ -257,8 +252,8 @@ function createFloater(){
     floater.style.top     = floatercoords[1];
   }
 
-  counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
-  counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
+  counter.style.left    = parseInt(floater.style.left,10)+20 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+16  +"px";
   
   var touch_screen = document.getElementById("Clock");
   touch_screen.insertBefore(floater,document.getElementById("Bezel"));
@@ -280,6 +275,11 @@ function createFloater(){
   floater.addEventListener("mousemove", (e) => {
     if (!down) return;
     
+    var trash=document.getElementById("Trash");
+    if(!trash){
+      createTrash();
+    }
+ 
     window.setTimeout(() =>{
       movefloater = true;
     },100);
@@ -293,7 +293,7 @@ function createFloater(){
     
     var floater = document.getElementById("Floater");
 
-    if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
+    if(distfloater(85,95,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
       //do nada
     }else{
       floater.style.top = (floater.offsetTop - newy) + "px";
@@ -304,8 +304,8 @@ function createFloater(){
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
  
     var counter  = document.getElementById("Counter");
-    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
-    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
+    counter.style.left    = parseInt(floater.style.left,10)+20 +"px";
+    counter.style.top     = parseInt(floater.style.top,10)+16 +"px";
 
   });
 
@@ -313,6 +313,11 @@ function createFloater(){
 
   function notifmove(e){
     if (!down) return;
+
+    var trash=document.getElementById("Trash");
+    if(!trash){
+      createTrash();
+    }
     
     window.setTimeout(() =>{
       movefloater = true;
@@ -330,7 +335,7 @@ function createFloater(){
     
     var floater = document.getElementById("Floater");
 
-    if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
+    if(distfloater(85,95,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
       //do nada
     }else{
       floater.style.top = (floater.offsetTop - newy) + "px";
@@ -341,17 +346,23 @@ function createFloater(){
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
   
     var counter  = document.getElementById("Counter");
-    counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
-    counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
+    counter.style.left    = parseInt(floater.style.left,10)+20 +"px";
+    counter.style.top     = parseInt(floater.style.top,10)+16 +"px";
   }
 
   floater.addEventListener("mouseup", notifend);
-  floater.addEventListener("mouseleave", notifend);
+  touch_screen.addEventListener("mouseleave", notifend);
   floater.addEventListener("touchend", notifend);
 
   function notifend(){
     down = false;
     insetfloater();
+    
+    if(sessionStorage.getItem("Deleted")=="false"){
+      console.log("notifend");
+      removeTrash();
+    }
+    
     window.setTimeout(() =>{
       movefloater = false;
     },100);
@@ -399,14 +410,15 @@ function toRadians (angle) {
 }
 
 function insetfloater(){
+
   var floater = document.getElementById("Floater");
   var counter  = document.getElementById("Counter");
   floater.style.transition = "all 0.5s ease 0s";
   counter.style.transition = "all 0.5s ease 0s";
 
-  len2center = distfloater(77,88,floater.offsetLeft,floater.offsetTop);
+  len2center = distfloater(85,95,floater.offsetLeft,floater.offsetTop);
 
-  var angle = Math.atan2((floater.offsetTop-88),(floater.offsetLeft-77)) * (180/Math.PI);
+  var angle = Math.atan2((floater.offsetTop-95),(floater.offsetLeft-85)) * (180/Math.PI);
 
   var ltarget = floater.offsetLeft + (90-len2center) * Math.cos(toRadians(angle)); 
   var ttarget = floater.offsetTop + (90-len2center) * Math.sin(toRadians(angle));
@@ -415,30 +427,213 @@ function insetfloater(){
     ltarget=136;
     ttarget=24;
   }
+  if(angle<110 && angle>=70){
+    if(len2center>70){
+      ltarget=86;
+      ttarget=177;
+      sessionStorage.setItem("Deleted","true");
+      setTimeout(function() {
+        var touch_screen = document.getElementById("Clock");
+        touch_screen.removeChild(floater);
+        touch_screen.removeChild(counter);
+        sessionStorage.removeItem("Floatercoords");
+        removeTrash();
+      }, 600);
+    }
+  }
 
   floater.style.left = ltarget+"px";
   floater.style.top = ttarget+"px";
 
-  counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
-  counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
+  counter.style.left    = parseInt(floater.style.left,10)+20 +"px";
+  counter.style.top     = parseInt(floater.style.top,10)+16 +"px";
 
   var coords = [floater.style.left,floater.style.top];
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
 }
 
 
-/*=======================| TO USE LATER |=====================
-
-
 function setSMSAlert(){
-  setAlert("friend.name",friend.name+" aceitou\no seu pedido.\nNavegar at&eacute local?","NavigateToFriend",getRandomArbitrary(2000, 7500));
-  var accept = document.getElementById('Sent');
-  accept.style.transform = "scale(1,1)";
-  document.getElementById("menu").style.overflow = "hidden";
-  setTimeout(function() {
-    document.getElementById("menu").style.overflow = "auto";
-    accept.style.transform = "scale(0,0)";
-  }, 1300);
+  setAlert("Maria","Maria\noioi, tudo bem contigo?","go2conversation",3000);
 }
 
-*/
+function go2conversation(){
+  console.log("Conversation");
+}
+
+function createminifloaters(){
+
+  if(sessionStorage.getItem("Deleted")=="true"){
+    return;
+  }
+  
+  var dir = window.location.pathname;
+  var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
+
+  if(dirname == "NotificationMenu.html"){ return;}
+
+  //first things first lets do some clean up and make sure that they dont exist
+  var floater = document.getElementById("Floater");
+  temp = document.getElementById("Navigmini");
+  if(temp){
+    floater.removeChild(temp);
+  }
+  temp = document.getElementById("SMSmini");
+  if(temp){
+    floater.removeChild(temp);
+  }
+
+  //first let us iterate thrugh the array and find:
+  //      - order they should go in
+  //      - how many of each type there is
+
+  var notifications = JSON.parse(sessionStorage.getItem("notifications"));
+  var len = notifications.length;
+  var navigcount=0, smscount=0, mostrecent;
+  for (var i = 0; i < len; i++) {
+
+    var notif = notifications[i];
+    if(i==len-1){
+      mostrecent = notif.function;      
+    }
+    switch(notif.function){
+      case "NavigateToFriend":
+        navigcount++;
+      break;
+      case "go2conversation":
+        smscount++;
+      break;
+    }
+  }
+  //now that we have that info its a matter of making the images correspond
+  if(navigcount > 0){
+    var navigmini = document.createElement("img");
+    navigmini.style.height="45px";
+    navigmini.id = "Navigmini";
+    navigmini.style.position="absolute";
+
+    var dir = window.location.pathname;
+    var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
+    switch(dirname){
+      case "Menu.html":
+        navigmini.src = 'Images/notification.png'; 
+      break;
+      case "Watch.html":
+        navigmini.src = 'Apps/Images/notification.png'; 
+      break;
+      case "Write%20Message.html":
+      case "Premade%20Messages%20Menu.html":
+      case "New%20Contact.html":
+        navigmini.src = "../../Images/notification.png"; 
+      break;
+      default:
+        navigmini.src = "../Images/notification.png";
+      break;
+    }
+  }
+
+  if(smscount > 0){
+    var smsmini = document.createElement("img");
+    smsmini.style.height="45px";
+    smsmini.id = "SMSmini";
+    smsmini.style.position="absolute";
+
+    var dir = window.location.pathname;
+    var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
+    switch(dirname){
+      case "Menu.html":
+        smsmini.src = 'Images/notification2.png'; 
+      break;
+      case "Watch.html":
+        smsmini.src = 'Apps/Images/notification2.png'; 
+      break;
+      case "Write%20Message.html":
+      case "Premade%20Messages%20Menu.html":
+      case "New%20Contact.html":
+        smsmini.src = "../../Images/notification2.png"; 
+      break;
+      default:
+        smsmini.src = "../Images/notification2.png"; 
+      break;
+    }
+  }
+
+  if(mostrecent == "NavigateToFriend"){
+    
+    var counter =document.getElementById("Counter");
+    if(counter){ counter.style.color = "#8d23c2";}
+
+    if(smscount>0){
+      floater.appendChild(smsmini);
+      smsmini.style.left = "5px";
+      smsmini.style.top = "5px";
+    }
+    if(navigcount>0){
+      floater.appendChild(navigmini);
+    }
+  }
+  else{
+
+    var counter =document.getElementById("Counter");
+    if(counter){ counter.style.color = "#2bade0"; }
+
+    if(navigcount>0){
+      floater.appendChild(navigmini);
+      navigmini.style.left = "5px";
+      navigmini.style.top = "5px";
+    }
+    if(smscount>0){
+      floater.appendChild(smsmini);
+    }
+    
+  }
+}
+
+function createTrash(){
+  var trash = document.createElement("img");
+  trash.id             = "Trash";
+  trash.style.position = "absolute";
+  trash.style.height   = "45px";
+  trash.style.cursor   = "pointer";
+  trash.style.left     = "86px";
+  trash.style.top      = "177px";
+  trash.style.transition = "transform 0.40s"
+  trash.style.transform = "scale(0)";
+  trash.style.pointerEvents = "none";
+  setTimeout(function() {
+    trash.style.transform = "scale(1)";
+  }, 100);
+
+  var dir = window.location.pathname;
+  var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
+  switch(dirname){
+    case "Menu.html":
+      trash.src = 'Images/trash.png'; 
+    break;
+    case "Watch.html":
+      trash.src = 'Apps/Images/trash.png'; 
+    break;
+    case "Write%20Message.html":
+    case "Premade%20Messages%20Menu.html":
+    case "New%20Contact.html":
+      trash.src = "../../Images/trash.png"; 
+    break;
+    default:
+      trash.src = "../Images/trash.png";
+    break;
+  }
+
+  var touch_screen = document.getElementById("Clock");
+  touch_screen.insertBefore(trash,document.getElementById("Bezel"));
+}
+function removeTrash(){
+  
+  var trash = document.getElementById("Trash");
+  var touch_screen = document.getElementById("Clock");
+  if(trash){
+    trash.style.transform = "scale(0)";
+    setTimeout(function() {
+      touch_screen.removeChild(trash);
+    }, 400); 
+  } 
+}
