@@ -8,18 +8,18 @@ function saveTestInfo(a, b){
 
 function updateProgress() {
     if (slider.scrollTop <= 93) {
-        document.getElementById("Progress_Circles_5").src = "Images/progress1.png";
+        document.getElementById("Progress_Circles_Health").src = "Images/progress1.png";
     }
     if (slider.scrollTop > 93 && slider.scrollTop <= 274) {
-        document.getElementById("Progress_Circles_5").src = "Images/progress2.png";
+        document.getElementById("Progress_Circles_Health").src = "Images/progress2.png";
     }
     if (slider.scrollTop > 274 && slider.scrollTop <= 466) {
-        document.getElementById("Progress_Circles_5").src = "Images/progress3.png";
+        document.getElementById("Progress_Circles_Health").src = "Images/progress3.png";
     }
     if (slider.scrollTop > 466 && slider.scrollTop <= 654) {
-        document.getElementById("Progress_Circles_5").src = "Images/progress4.png";
+        document.getElementById("Progress_Circles_Health").src = "Images/progress4.png";
     }
     if (slider.scrollTop > 654) {
-        document.getElementById("Progress_Circles_5").src = "Images/progress5.png";
+        document.getElementById("Progress_Circles_Health").src = "Images/progress5.png";
     }
 }

@@ -1,7 +1,7 @@
 window.addEventListener('load', loadAlerts);
 window.addEventListener('unload', updateAlerts);
 
-//run this function to set a new alert
+//run this function to set a new alert 
 function setAlert(name,text,functionName,timeStep){
   var alerts = sessionStorage.getItem("alerts");
   //if array does not exist create it else just parse it
@@ -14,21 +14,15 @@ function setAlert(name,text,functionName,timeStep){
 
   var notif = {};
   notif.name     = name;                                                       //name of person that sent                                               //function to run when clicked
-<<<<<<< HEAD
   notif.text     = text;                                                       //notification text 
   notif.function = functionName;                                               //function that will be called upon clicking
   notif.timeStep = timeStep;                                                   //amount of time to wait 
-=======
-  notif.text     = text;                                        //notification text
-  notif.function = functionName;                                         //function that will be called upon clicking
-  notif.timeStep = timeStep;                                                      //amount of time to wait
->>>>>>> 6f759983084d9c776b7bd9b7b57525a714340893
   notif.timer    = setTimeout(ExecuteNotification,notif.timeStep,notif.name);  //timer
   notif.inittime = (new Date()).getTime();                                     //time the alarm was set
 
   //place notif in notification array
   alerts.push(notif);
-
+  
   //update notification vector
   sessionStorage.setItem("alerts",JSON.stringify(alerts));
 
@@ -49,9 +43,9 @@ function updateAlerts(){
       var notif = alerts[i];
       var newtime = notif.timeStep - ( (new Date()).getTime() - notif.inittime);
       //update
-      notif.timeStep = newtime;
+      notif.timeStep = newtime;       
       //replace
-      newalerts.push(notif);
+      newalerts.push(notif); 
     }
     //update notification vector
     sessionStorage.setItem("alerts",JSON.stringify(newalerts));
@@ -70,7 +64,7 @@ function loadAlerts(){
     var len = alerts.length;
     for (var i = 0; i < len; i++) {
       var notif = alerts[i];
-
+    
       if(notif){
         notif.timer    = setTimeout(ExecuteNotification,notif.timeStep,notif.name);  //timer
         notif.inittime = (new Date()).getTime();                                     //time the alarm was set
@@ -98,9 +92,9 @@ function loadAlerts(){
 
 
 
-/*function called by alert*/
+/*function called by alert*/ 
 function ExecuteNotification(targetname){
-
+  
   var alerts = sessionStorage.getItem("alerts");
   //if array does exists parse it
   if(alerts){
@@ -138,16 +132,16 @@ function addNotification(notif){
   }
 
   var newnotif = {};
-  newnotif.name     = notif.name;           //name of person that sent
-  newnotif.text     = notif.text;           //notification text
+  newnotif.name     = notif.name;           //name of person that sent                                            
+  newnotif.text     = notif.text;           //notification text 
   newnotif.function = notif.function;       //function to run when clicked
 
   //place notif in notification array
   notifications.push(newnotif);
-
+  
   //update notification vector
   sessionStorage.setItem("notifications",JSON.stringify(notifications));
-
+  
   if(notifications.length == 1){
     createFloater();
   }
@@ -170,7 +164,7 @@ function addNotification(notif){
 
   if( dirname == "NotificationMenu.html"){
     //lets add that new notification to this menu
-
+  
     var element1 = "<th> <div class='iconApp'";
     var element2 = "draggable='false'> <span id ='notText'>";
     var element3 = "</span>";
@@ -180,15 +174,15 @@ function addNotification(notif){
 
     var body = contact_Table.tBodies[0];
     var rows = body.rows;
-
+    
     // pick the last and prepend
     rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + element2 + notif.text + element3);
     anchors.push(i*138+10);
   }
 }
-
+         
 function removeNotification(i){
-
+ 
   var notifications = sessionStorage.getItem("notifications");
   //if array does not exist create it else just parse it
   if(notifications){
@@ -196,7 +190,7 @@ function removeNotification(i){
 
     //remove it
     notifications.splice(i,1);
-
+      
     if(notifications.length<=0){
       sessionStorage.removeItem("notifications");
     }else{
@@ -223,15 +217,15 @@ function createFloater(){
 
   switch(dirname){
     case "Menu.html":
-      floater.src = 'Images/notification.png';
+      floater.src = 'Images/notification.png'; 
     break;
     case "Watch.html":
-      floater.src = 'Apps/Images/notification.png';
+      floater.src = 'Apps/Images/notification.png'; 
     break;
     case "Write%20Message.html":
     case "Premade%20Messages%20Menu.html":
     case "New%20Contact.html":
-      floater.src = "../../Images/notification.png";
+      floater.src = "../../Images/notification.png"; 
     break;
     default:
       floater.src = "../Images/notification.png";
@@ -249,7 +243,7 @@ function createFloater(){
   counter.innerHTML          = notifications.length;
   counter.style.position     = "absolute";
   counter.style.textAlign    = "center";
-  counter.style.color        = "rgb(41, 204, 141)";
+  counter.style.color        = "rgb(41, 204, 141)"; 
   counter.style.fontFamily   = "'Open Sans', sans-serif";
   counter.style.fontWeight   = "bold";
   counter.style.fontSize     = "14px";
@@ -265,13 +259,13 @@ function createFloater(){
 
   counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
   counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
-
+  
   var touch_screen = document.getElementById("Clock");
   touch_screen.insertBefore(floater,document.getElementById("Bezel"));
   touch_screen.insertBefore(counter,document.getElementById("Bezel"));
 
   floater = document.querySelector("#Floater");
-
+    
   floater.addEventListener("mousedown", notifdown);
   floater.addEventListener("touchstart", notifdown);
 
@@ -285,18 +279,18 @@ function createFloater(){
 
   floater.addEventListener("mousemove", (e) => {
     if (!down) return;
-
+    
     window.setTimeout(() =>{
       movefloater = true;
     },100);
 
     e.preventDefault();
-
+    
     newx = x_ - e.clientX;
     newy = y_ - e.clientY;
     x_ = e.clientX;
     y_ = e.clientY;
-
+    
     var floater = document.getElementById("Floater");
 
     if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
@@ -308,7 +302,7 @@ function createFloater(){
 
     var coords = [floater.style.left,floater.style.top];
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
-
+ 
     var counter  = document.getElementById("Counter");
     counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
     counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
@@ -319,13 +313,13 @@ function createFloater(){
 
   function notifmove(e){
     if (!down) return;
-
+    
     window.setTimeout(() =>{
       movefloater = true;
     },100);
 
     e.preventDefault();
-
+  
     var mousex = e.clientY || e.targetTouches[0].pageX;
     var mousey = e.clientY || e.targetTouches[0].pageY;
 
@@ -333,7 +327,7 @@ function createFloater(){
     newy = y_ - mousey;
     x_ = mousex
     y_ = mousey;
-
+    
     var floater = document.getElementById("Floater");
 
     if(distfloater(77,88,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
@@ -345,7 +339,7 @@ function createFloater(){
 
     var coords = [floater.style.left,floater.style.top];
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
-
+  
     var counter  = document.getElementById("Counter");
     counter.style.left    = parseInt(floater.style.left,10)+27 +"px";
     counter.style.top     = parseInt(floater.style.top,10)+22 +"px";
@@ -372,12 +366,12 @@ function createFloater(){
           document.location.href = "Notifications/NotificationMenu.html";
         break;
         case "Watch.html":
-          document.location.href = "Apps/Notifications/NotificationMenu.html";
+          document.location.href = "Apps/Notifications/NotificationMenu.html"; 
         break;
         case "Write%20Message.html":
         case "Premade%20Messages%20Menu.html":
         case "New%20Contact.html":
-          document.location.href = "../../Notifications/NotificationMenu.html";
+          document.location.href = "../../Notifications/NotificationMenu.html"; 
         break;
         default:
           document.location.href = "../Notifications/NotificationMenu.html";
@@ -414,7 +408,7 @@ function insetfloater(){
 
   var angle = Math.atan2((floater.offsetTop-88),(floater.offsetLeft-77)) * (180/Math.PI);
 
-  var ltarget = floater.offsetLeft + (90-len2center) * Math.cos(toRadians(angle));
+  var ltarget = floater.offsetLeft + (90-len2center) * Math.cos(toRadians(angle)); 
   var ttarget = floater.offsetTop + (90-len2center) * Math.sin(toRadians(angle));
 
   if(angle<-145 || angle>=145){

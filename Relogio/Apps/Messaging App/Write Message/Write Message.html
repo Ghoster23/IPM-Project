@@ -8,19 +8,17 @@
         <link rel="stylesheet" href="style (Write Message).css">
     </head>
 
-    <body onload="chooseWriteMode()">
+    <body>
         <a href="../../../index.html">
             <img id="Back_Arrow" src="../../../../Images/Arrow.png">
         </a>
 
         <div id="Clock">
             <div id="Touch_Screen">
-                <textarea id="Input" rows="1" maxlength="20"></textarea>
+                <input id="Input" type="text" min="1">
 
-                <a href="../Messaging Menu.html">
-                    <img id="Cancel" class="controlButton" src="../../Images/cancel.png">
-                </a>
-                <img id="Done" class="controlButton" onclick="checkSMS(Input.value)" src="../../Images/accept.png">
+                <img id="Cancel" class="controlButton" onclick="document.location.href = '../Messaging Menu.html'" src="../../Images/cancel.png">
+                <img id="Done" class="controlButton" src="../../Images/accept.png">
 
                 <img id="Dictate" class="option" draggable="false" src="../Images/microphone.png">
             </div>
@@ -35,7 +33,5 @@
         </div>
 
         <script src="../../../notifications.js"></script>
-        <script src="../Premade Messages/animation (Premade Message Menu).js"></script>
-        <script src="animation (Write Message).js"></script>
     </body>
 </html>

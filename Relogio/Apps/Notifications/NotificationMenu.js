@@ -9,7 +9,7 @@ slider.addEventListener("scroll", function() {
   cancel.style.transform = "scale("+scale+")";
   var accept = document.getElementById('Accept');
   accept.style.transform = "scale("+scale+")";
-
+    
 }, false);
 
 function showNotifications(startRow) {
@@ -40,10 +40,9 @@ function acceptNotification(){
   removeNotification(i);
   var contact_Table = document.getElementById("Table");
   contact_Table.deleteRow(i);
-
+  
   switch(notif.function){
     case "NavigateToFriend":
-      localStorage.setItem("label", "5");
       sessionStorage.setItem("friend", notif.name);
       document.location.href = "../Navigation App/Navigation App Map.html";
     break;
@@ -58,9 +57,10 @@ function denyNotification(){
   removeNotification(i);
   var contact_Table = document.getElementById("Table");
   contact_Table.deleteRow(i);
-
+  
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
   if(!notifications){
     window.history.back();
   }
 }
+

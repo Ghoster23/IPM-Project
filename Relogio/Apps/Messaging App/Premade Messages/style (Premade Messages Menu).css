@@ -1,9 +1,5 @@
-#Just1Line_1, #Just1Line_2 {
-  padding-top: 15px;
-}
-
 .menu {
-  left: -6px;
+  left: -35px;
 }
 
 .premadeMessageTemplate {
@@ -13,22 +9,13 @@
 
 .premadeMessage {
   position: relative;
-  width: 105px;
-  left: 5px;
-  top: -60px;
-  padding-top: 7%;
-  padding-left: 7%;
-  text-align: justify;
-  white-space: pre;
+  top: 58px;
+  left: 65px;
   color: white;
   font-family: "Open Sans", sans-serif;
-  font-weight: normal;
-  font-size: 14px;
-  text-shadow: 0px 0px 3px #000000;
+  font-size: 17px;
   text-decoration: none;
-  display: block;
-}
-
-.premadeMessageTemplate:active, .premadeMessage:active {
-    animation: boing 300ms ease-in-out;
+  font-weight:     400;
+  text-shadow:     0px 0px 4px #000000;
+  pointer-events:  none;
 }
