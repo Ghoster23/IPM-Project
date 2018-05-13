@@ -1,3 +1,5 @@
+var writeMode;
+
 function optionChoosen(choosen) {
   var back    = document.getElementById("Back");
   var newName = document.getElementById("Input");
@@ -8,6 +10,8 @@ function optionChoosen(choosen) {
   var subChoosen;
   var optNotChoosen;
   var subNotChoosen;
+
+  writeMode = choosen;
 
   switch (choosen) {
     case 0:
@@ -58,6 +62,8 @@ function optionChoosen(choosen) {
 
     if (choosen == 0) {
       optChoosen.style.animation = "DictateChoosen 0.5s ease-in";
+      var dictSimul = document.getElementById("DictateSimul");
+      dictSimul.style.animation = "appear 0.5s ease-in";
     } else {
       optChoosen.style.animation  = "";
       optChoosen.style.opacity    = "0";
@@ -80,6 +86,9 @@ function optionChoosen(choosen) {
 
       if (choosen == 0) {
         optChoosen.style.top = "55px";
+        dictSimul.style.animation  = "";
+        dictSimul.style.visibility = "visible";
+        dictSimul.style.opacity    = "1";
       } else {
         optChoosen.style.opacity    = "0";
         optChoosen.style.visibility = "hidden";
@@ -93,6 +102,7 @@ function cancelChoice() {
   var newName   = document.getElementById("Input");
   var cancel    = document.getElementById("Cancel");
   var done      = document.getElementById("Done");
+  var dictSimul = document.getElementById("DictateSimul");
 
   var back      = document.getElementById("Back");
   var dictIcon  = document.getElementById("Dictate");
@@ -100,9 +110,10 @@ function cancelChoice() {
   var writeIcon = document.getElementById("Write");
   var writeSub  = document.getElementById("WriteSub");
 
-  newName.style.animation = "fadeAway 0.5s ease-in";
-  cancel.style.animation  = "fadeAway 0.5s ease-in";
-  done.style.animation    = "fadeAway 0.5s ease-in";
+  newName.style.animation   = "fadeAway 0.5s ease-in";
+  cancel.style.animation    = "fadeAway 0.5s ease-in";
+  done.style.animation      = "fadeAway 0.5s ease-in";
+  dictSimul.style.animation = "fadeAway 0.5s ease-in";
 
   back.style.animation      = "appear 0.5s ease-in";
   dictSub.style.animation   = "appear 0.5s ease-in";
@@ -115,19 +126,22 @@ function cancelChoice() {
     newName.style.animation   = "";
     cancel.style.animation    = "";
     done.style.animation      = "";
+    dictSimul.style.animation = "";
     back.style.animation      = "";
     dictIcon.style.animation  = "";
     dictSub.style.animation   = "";
     writeIcon.style.animation = "";
     writeSub.style.animation  = "";
 
-    newName.style.opacity = "0";
-    cancel.style.opacity  = "0";
-    done.style.opacity    = "0";
+    newName.style.opacity   = "0";
+    cancel.style.opacity    = "0";
+    done.style.opacity      = "0";
+    dictSimul.style.opacity = "0";
 
-    newName.style.visibility = "hidden";
-    cancel.style.visibility  = "hidden";
-    done.style.visibility    = "hidden";
+    newName.style.visibility   = "hidden";
+    cancel.style.visibility    = "hidden";
+    done.style.visibility      = "hidden";
+    dictSimul.style.visibility = "hidden";
 
     back.style.opacity      = "1";
     dictIcon.style.opacity  = "1";
@@ -147,19 +161,41 @@ function cancelChoice() {
 
 function saveNewFriend() {
   var input = document.getElementById("Input");
-  var name  = input.value;
+  var name;
+
+  switch (writeMode) {
+    case 0:
+      var simul = document.getElementById("DictateSimul");
+      name = simul.value;
+      break;
+
+    case 1:
+      name = input.value;
+      break;
+  }
 
   var emptyName = (name == "");
-  var goodName = (((name[0] >= "a") && (name[0] <= "z")) ||
-                  ((name[0] >= "A") && (name[0] <= "Z")));
+  var goodName  = (((name[0] >= "a") && (name[0] <= "z")) ||
+                   ((name[0] >= "A") && (name[0] <= "Z")));
 
   if ((emptyName == true) || (goodName == false)) {
     input.style.fontSize = "15px";
     input.style.animation = "highlight 2s ease-in-out";
-    setTimeout(function() { input.style.animation =""; }, 2000);
+
+    if (writeMode == 0) { simul.style.animation = "highlight 2s ease-in-out"; }
+
+    setTimeout(function() {
+      input.style.animation ="";
+
+      if (writeMode == 0) { simul.style.animation = ""; }
+    }, 2000);
+
+    if (writeMode == 0) { simul.value = ""; }
 
     if (emptyName == true) {
       input.placeholder = "Campo Obrigatorio";
+
+      if (writeMode == 0) { input.value = ""; }
     } else {
       input.value = "";
       input.placeholder = "Comecar com letra";
