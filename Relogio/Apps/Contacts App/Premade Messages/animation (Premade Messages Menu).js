@@ -53,4 +53,6 @@ function sendSMSPremade(smsNum) {
       sendSMS("Sai do recinto.");
       break;
   }
+
+  document.location.href = "../Chat/Chat.html";
 }

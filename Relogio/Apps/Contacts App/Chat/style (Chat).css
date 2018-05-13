@@ -49,14 +49,11 @@
   left: 5px;
 }
 
-.sendMessage, .just1LineSend, .receivedMessage, .just1LineReceived {
+.sendMessage, .receivedMessage {
   position: relative;
-  width:    105px;
-  left:     25px;
-  margin-top:    -65px;
-  margin-bottom: 25px;
-  padding-top:   7%;
-  padding-left:  7%;
+  width: 80px;
+  left: 60px;
+  padding: 5px;
   text-align:    justify;
   white-space:   pre;
   color: white;
@@ -65,14 +62,20 @@
   font-size:   14px;
   text-shadow: 0px 0px 3px #000000;
   text-decoration: none;
+  background-size: cover;
+  background-image: url("../Images/send background.png");
   display: block;
 }
 
-.just1LineSend, .just1LineReceived {
-  margin-bottom: 28px;
-  padding-top:   15%;
+.receivedMessage {
+  left: 5px;
+  color: black;
+  text-shadow: 0px 0px 0px #000000;
+  background-image: url("../Images/received background.png");
 }
 
-.receivedMessage, .just1LineReceived {
-  left: 5px;
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
