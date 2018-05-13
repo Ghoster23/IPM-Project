@@ -40,6 +40,7 @@ function showMessages() {
   var spanClass;
   var image;
 
+  document.title += " " + friend;
   document.getElementById("FriendName").innerHTML = friend;
 
   for (var i = 0; i < messages.length; i++) {

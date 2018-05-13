@@ -31,7 +31,7 @@ function saveName(friendName) {
 
 function showContacts(startRow) {
   var source;
-  var element1 = "<th><a href='Messaging Menu.html'><div class='iconApp' draggable='false' onclick='saveName(";
+  var element1 = "<th><a href='Chat/Chat.html'><div class='iconApp' draggable='false' onclick='saveName(";
   var element2 = ")'><img class='iconApp' draggable='false' src=";
   var element3 = "</div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";

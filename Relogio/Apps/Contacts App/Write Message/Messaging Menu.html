@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>Mensagens - Menu</title>
-        <link rel="stylesheet" href="../../style (Watch).css">
-        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="../../../style (Watch).css">
+        <link rel="stylesheet" href="../../style (Menu).css">
         <link rel="stylesheet" href="style (Messaging Menu).css">
     </head>
 
     <body>
         <a href="../../../index.html">
-            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+            <img id="Back_Arrow" src="../../../../Images/Arrow.png">
         </a>
 
         <div id="Clock">
@@ -20,7 +20,7 @@
                         <!-- Send Location -->
                         <tr>
                             <th>
-                                <img class="iconApp" draggable="false" src="Images/sendlocation.png" onclick="sent()">
+                                <img class="iconApp" draggable="false" src="../Images/sendlocation.png" onclick="sent()">
                                 <figcaption class="appSubtitle"> Enviar<br>Localiza&ccedil;&atilde;o </figcaption>
                             </th>
                         </tr>
@@ -28,8 +28,8 @@
                         <!-- Premade Messages -->
                         <tr>
                             <th>
-                                <a href="Premade Messages/Premade Messages Menu.html">
-                                    <img class="iconApp" draggable="false" src="Images/premademessage.png">
+                                <a href="../Premade Messages/Premade Messages Menu.html">
+                                    <img class="iconApp" draggable="false" src="../Images/premademessage.png">
                                 </a>
                                 <figcaption class="appSubtitle"> Predefinidas </figcaption>
                             </th>
@@ -38,8 +38,8 @@
                         <!-- Write Message -->
                         <tr>
                             <th>
-                                <a href="Write Message/Write Message.html">
-                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(0)" src="Images/keyboard.png">
+                                <a href="Write Message.html">
+                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(0)" src="../Images/keyboard.png">
                                 </a>
                                 <figcaption class="appSubtitle"> Escrever </figcaption>
                             </th>
@@ -48,8 +48,8 @@
                         <!-- Dictate Message -->
                         <tr>
                             <th>
-                                <a href="Write Message/Write Message.html">
-                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(1)" src="Images/microphone.png">
+                                <a href="Write Message.html">
+                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(1)" src="../Images/microphone.png">
                                 </a>
                                 <figcaption class="appSubtitle"> Ditar </figcaption>
                             </th>
@@ -58,28 +58,29 @@
                 </div>
 
                 <!-- Sent -->
-                <img id="Sent" src="Images/Sent.gif">
+                <img id="Sent" src="../Images/Sent.gif">
 
                 <!-- Back Button -->
-                <a href="Messaging App.html">
-                    <img id="Back" src="../Images/back.png">
+                <a href="../Chat/Chat.html">
+                    <img id="Back" src="../../Images/back.png">
                 </a>
 
                 <!-- Progress Circles -->
-                <img id="Progress_Circles" src="../Images/progress2.png">
+                <img id="Progress_Circles" src="../../Images/progress2.png">
             </div>
 
             <!-- Bezle -->
-            <img id="Bezel" src="../../Images/Bezel.png">
+            <img id="Bezel" src="../../../Images/Bezel.png">
 
             <!-- Button -->
-            <a href="../../Watch.html">
+            <a href="../../../Watch.html">
                 <div id="Button"></div>
             </a>
         </div>
 
-        <script src="../../notifications.js"></script>
-        <script src="../animation (Menu).js"></script>
+        <script src="../../../notifications.js"></script>
+        <script src="../../animation (Menu).js"></script>
+        <script src="../Premade Messages/animation (Premade Messages Menu).js"></script>
         <script src="animation (Messaging Menu).js"></script>
     </body>
 </html>

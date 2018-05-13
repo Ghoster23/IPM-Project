@@ -168,6 +168,6 @@ function saveNewFriend() {
     var contacts = JSON.parse(sessionStorage.getItem("contacts"));
     contacts.push(name);
     sessionStorage.setItem("contacts", JSON.stringify(contacts));
-    document.location.href = "../Messaging App.html";
+    document.location.href = "../Contacts App.html";
   }
 }
