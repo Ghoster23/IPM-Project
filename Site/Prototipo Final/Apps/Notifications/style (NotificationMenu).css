@@ -1,0 +1,56 @@
+.iconApp {
+  background-color: #8d23c2;
+  border-radius: 15%;
+  width: 140px;
+  height: 90px;
+  opacity: 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.menu {
+  left: 6px;
+}
+
+figcaption {
+  padding-top: 5px;
+}
+
+#notText{
+  position   : relative;
+  text-align : left;
+  white-space: normal;
+  color      : white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size  : 14px;
+  text-shadow: 0px 0px 3px #000000;
+  transition: opacity 1s ease-in-out;
+  display    : block;
+  left:      15px;
+  top:       5px;
+  max-width: 120px;
+  word-wrap: break-word;
+}
+
+#Cancel,#Accept{
+  position  : absolute;
+  height    : 26px;
+  left      : 35%;
+  top       : 52%;
+  transform : scale(1,1);
+  transition: transform 0.10s;
+  filter    : drop-shadow(0px 0px 0.5px rgb(0, 0, 0));
+  cursor    : pointer;
+  z-index: 1;
+}
+#Accept{
+  left     : 56%;
+}
+
+#Back{
+  cursor: pointer;
+}
+
+#Table{
+  border-spacing: 33px 46px;
+}
