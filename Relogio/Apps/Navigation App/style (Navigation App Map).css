@@ -84,9 +84,8 @@
 }
 
 #MovimentButtons {
-  position: absolute;
-  top: 48%;
-  left: 62%;
+  margin-bottom: 50px;
+  visibility: hidden;
 }
 
 #MovimentButtons_Buttons {

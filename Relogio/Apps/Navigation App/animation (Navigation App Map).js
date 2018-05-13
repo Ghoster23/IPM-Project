@@ -143,6 +143,8 @@ function confirm(){
 
   document.getElementById("Confirm").style.left = '100%';
   document.getElementById("Back").src = "Images/Map/back.png";
+
+  document.getElementById("MovimentButtons").style.visibility = "visible";
 }
 
 
@@ -195,7 +197,7 @@ function insetfloater(){
 
   ltarget=146;
   ttarget=34;
-  
+
   floater.style.left = ltarget+"px";
   floater.style.top = ttarget+"px";
 

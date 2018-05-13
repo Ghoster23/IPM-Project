@@ -79,9 +79,9 @@ function showContacts(startRow) {
     var r = getRandomArbitrary(0, 100);
 
     if (r <= 45) {
-      source = "'../Messaging App/Images/Avatars/" + contacts[i][0] + ".png'>";
+      source = "'../Contacts App/Images/Avatars/" + contacts[i][0] + ".png'>";
     } else {
-      source = "'../Messaging App/Images/Letters/" + contacts[i][0] + ".png'>";
+      source = "'../Contacts App/Images/Letters/" + contacts[i][0] + ".png'>";
     }
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;

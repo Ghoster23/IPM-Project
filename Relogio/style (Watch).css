@@ -60,10 +60,48 @@
     font-size:   20px;
 }
 
+#Auxiliary {
+  position: absolute;
+  top: 40%;
+  left: 65%;
+}
+
+#From {
+  width: 380px;
+  height: 25px;
+  line-height: 25px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#Message {
+  line-height: 25px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+#SendMessage {
+  position: relative;
+  top: 15px;
+  right: 220px;
+}
+
 .hand {
     position:      absolute;
     width:         220px;
     top:           -1%;
     left:          -2%;
     border-radius: 50%;
+}
+
+@keyframes highlight {
+  50% { background-color: rgb(230, 100, 104); }
+  100% { background-color: white; }
+}
+
+@keyframes GoodHighlight {
+  50% { background-color: #17BF15; }
+  100% { background-color: white; }
 }

@@ -58,18 +58,26 @@
             </a>
         </div>
 
-        <div id=MovimentButtons>
-          <p id="MovimentButtons_Text">Use as setas para simular o seu movimento!</p>
-          <div id="MovimentButtons_Buttons">
-            <button id="Up_Button" onclick="changePosition(1)"><img id="Up_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button><br>
-            <button id="Left_Button" onclick="changePosition(2)"><img id="Left_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
-            <button id="Down_Button" onclick="changePosition(3)"><img id="Down_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
-            <button id="Right_Button" onclick="changePosition(4)"><img id="Right_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
-          </div>
+        <div id="Auxiliary">
+            <div id=MovimentButtons>
+                <p id="MovimentButtons_Text">Use as setas para simular o seu movimento!</p>
+                <div id="MovimentButtons_Buttons">
+                    <button id="Up_Button" onclick="changePosition(1)"><img id="Up_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button><br>
+                    <button id="Left_Button" onclick="changePosition(2)"><img id="Left_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                    <button id="Down_Button" onclick="changePosition(3)"><img id="Down_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                    <button id="Right_Button" onclick="changePosition(4)"><img id="Right_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                </div>
+            </div>
+
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" maxlength="20" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
         </div>
 
+
+        <script src="../../animation (Watch).js"></script>
         <script src="../../notifications.js"></script>
         <script src="animation (Navigation App Map).js"></script>
-        
+
     </body>
 </html>

@@ -35,13 +35,9 @@
 }
 
 #DictateSimul {
-  position: absolute;
-  top: 40%;
-  left: 65%;
-  width: 380px;
-  height: 25px;
   line-height: 25px;
   text-align: center;
+  margin-bottom: 50px;
   visibility: hidden;
   opacity: 0;
 }
@@ -78,12 +74,7 @@
 }
 
 ::placeholder {
-  opacity: 0.5;
-}
-
-@keyframes highlight {
-  50% { background-color: rgb(230, 100, 104); }
-  100% { background-color: white; }
+  opacity: 1;
 }
 
 @keyframes fadeAway {
