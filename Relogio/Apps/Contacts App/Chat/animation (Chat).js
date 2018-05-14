@@ -1,6 +1,17 @@
-var maxPerLine = 9;
+var maxPerLine = 11;
 var nLines;
 var count;
+
+
+function fixWord(word) {
+  if (word.length > maxPerLine) {
+    nLines++;
+    return word.slice(0, maxPerLine) + "<br> " + fixWord(word.slice(maxPerLine));
+  } else {
+    return word;
+  }
+}
+
 
 function fixMessage(message) {
   var words = message.split(" ");
@@ -13,11 +24,11 @@ function fixMessage(message) {
     count += w.length;
 
     if (count > maxPerLine) {
-      nLines++;
       if (w.length > maxPerLine) {
-        newMessage += (" " + w.slice(0, maxPerLine) + "<br> " + w.slice(maxPerLine));
+        newMessage += (" " + fixWord(w));
         count = w.length - maxPerLine;
       } else {
+        nLines++;
         newMessage += "<br> " + w;
         count = w.length;
       }
@@ -28,6 +39,7 @@ function fixMessage(message) {
 
   return newMessage;
 }
+
 
 function showMessages() {
   var chatTable = document.getElementById("Table");
@@ -58,7 +70,10 @@ function showMessages() {
     for (var i = 0; i < messages.length; i++) {
       m = fixMessage(messages[i][1]);
 
-      w = (nLines == 1 ? 19+11.25*count : 120);
+      w = 19 + 11.25*count;
+      if ((nLines != 1) || (w > 120)) {
+        w = 120;
+      }
 
       if (messages[i][0] == 0) { // received
         image = image1 + "receivedTemplate" + image2 + (20*nLines + 10) + image3 + w + image4 + 5 + image5 + "received background.png" + image6;
@@ -74,5 +89,6 @@ function showMessages() {
     slider.scrollTop = messages.length * 120;
   }
 }
+
 
 function anchor2closest() { }
