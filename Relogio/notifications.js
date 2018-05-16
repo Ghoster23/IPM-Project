@@ -1,6 +1,6 @@
 window.addEventListener('load', loadAlerts);
 window.addEventListener('unload', updateAlerts);
-window.addEventListener('dblclick', setSMSAlert)
+//window.addEventListener('dblclick', setSMSAlert)
 
 //run this function to set a new alert 
 function setAlert(name,text,functionName,timeStep){
@@ -235,7 +235,10 @@ function createFloater(){
 
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
 
-  counter.innerHTML          = notifications.length;
+  if(notifications){
+    counter.innerHTML          = notifications.length;
+  }
+  counter.innerHTML          = "1";
   counter.style.position     = "absolute";
   counter.style.textAlign    = "center";
   counter.style.color        = "#8d23c2"; 

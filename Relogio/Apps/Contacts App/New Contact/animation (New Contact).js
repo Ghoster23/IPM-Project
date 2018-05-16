@@ -52,7 +52,7 @@ function optionChoosen(choosen) {
     subChoosen.style.visibility    = "hidden";
     optNotChoosen.style.visibility = "hidden";
     subNotChoosen.style.visibility = "hidden";
-    back.style.visibility = "hidden";
+    back.style.visibility = "hidden";   
 
     newName.style.animation = "appear 0.5s ease-in";
     cancel.style.animation  = "appear 0.5s ease-in";
@@ -65,6 +65,9 @@ function optionChoosen(choosen) {
       var dictSimul = document.getElementById("DictateSimul");
       dictSimul.style.animation = "appear 0.5s ease-in";
     } else {
+
+      createKeyboard("Input");
+
       optChoosen.style.animation  = "";
       optChoosen.style.opacity    = "0";
       optChoosen.style.visibility = "hidden";
@@ -99,6 +102,9 @@ function optionChoosen(choosen) {
 }
 
 function cancelChoice() {
+
+  removeKeyboard();
+
   var newName   = document.getElementById("Input");
   var cancel    = document.getElementById("Cancel");
   var done      = document.getElementById("Done");
