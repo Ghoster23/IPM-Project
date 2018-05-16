@@ -40,8 +40,8 @@
 
 .sendTemplate, .receivedTemplate {
   position: relative;
-  left:   25px;
-  width:  125px;
+  left: 35px;
+  width: 120px;
   height: 65px;
 }
 
@@ -51,19 +51,20 @@
 
 .sendMessage, .receivedMessage {
   position: relative;
-  width: 80px;
-  left: 60px;
+  width: 110px;
+  top: -4px;
+  left: 35px;
   padding: 5px;
-  text-align:    justify;
-  white-space:   pre;
+  margin-top: -50px;
+  text-align: justify;
+  white-space: pre;
   color: white;
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
-  font-size:   14px;
+  font-size: 15px;
+  line-height: 20px;
   text-shadow: 0px 0px 3px #000000;
   text-decoration: none;
-  background-size: cover;
-  background-image: url("../Images/send background.png");
   display: block;
 }
 
@@ -71,11 +72,4 @@
   left: 5px;
   color: black;
   text-shadow: 0px 0px 0px #000000;
-  background-image: url("../Images/received background.png");
-}
-
-
-img {
-  max-width: 100%;
-  max-height: 100%;
 }
