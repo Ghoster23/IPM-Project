@@ -4,7 +4,8 @@ function chooseWriteMode() {
   writeMode = sessionStorage.getItem("writeMode");
   var input = document.getElementById("Input");
 
-  if (writeMode == 0) { // White Mode
+  if (writeMode == 0) { // Write Mode
+    createKeyboard("Input");
     document.title += " Escrever";
     input.placeholder = "Escreva";
   } else {  // Dictate Mode

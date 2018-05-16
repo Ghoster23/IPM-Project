@@ -31,7 +31,7 @@ function setAlert(name,text,functionName,timeStep){
 
 //run this function onunload
 function updateAlerts(){
-  console.log(href);
+
   var alerts = sessionStorage.getItem("alerts");
   //if array does exists parse it
   if(alerts){
