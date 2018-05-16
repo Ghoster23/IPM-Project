@@ -63,7 +63,7 @@ slider.addEventListener("scroll", function() {
 function showContacts(startRow) {
   var source;
   var element1 = "<th><div class='iconApp' onclick='confirmFriend(event,";
-  var element2 = ")' draggable='false'><img class='iconApp' draggable='false' src=";
+  var element2 = ")' draggable='false'><img class='iconPic' draggable='false' src=";
   var element3 = "</div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";
 
@@ -86,6 +86,7 @@ function showContacts(startRow) {
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
   }
+
   slider.scrollTop = 10;
 }
 

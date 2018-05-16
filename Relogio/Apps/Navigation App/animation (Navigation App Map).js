@@ -22,15 +22,7 @@ var tg   = "???";
 function drawMap(){
   setInterval(drawMap,1000);
 
-  if(zoom != target){
-    changeZoom(0.05);
-
-    if(Math.abs(zoom - target) > 0.05){
-      setInterval(drawMap,50);
-    }else {
-      zoom = target;
-    }
-  }
+  zoom = approach(zoom,target,0.05);
 
   var mapW = 210 * zoom;
   var mapH = mapW;
@@ -49,8 +41,28 @@ function setZoom(amount){
   zoom = amount;
 }
 
-function changeZoom(rate){
-  zoom += (target - zoom) * rate;
+function min(v1,v2){
+  if(v1 < v2){
+    return v1;
+  }else{
+    return v2;
+  }
+}
+
+function approach(current,target,rate){
+  current += (target - current) * rate;
+
+  if(current != target){
+    if(Math.abs(current - target) >= rate){
+      setInterval(drawMap,50);
+
+    }else {
+      current = target;
+
+    }
+  }
+
+  return current;
 }
 
 function getRandomArbitrary(min, max) {
@@ -127,6 +139,9 @@ function markerPosition() {
     var rot2 = Math.atan2((py-ty),(px-tx)) * (180/Math.PI) + 180;
     dist = Math.round(Math.sqrt(Math.pow(Math.abs(py-ty),2) + Math.pow(Math.abs(px-tx),2)));
 
+    zoom   = dist / 80;
+    target = zoom;
+
     rotateElement("LookAt", rot1);
     rotateElement("Arrow",  rot2);
 
@@ -139,7 +154,7 @@ function markerPosition() {
 function confirm(){
   document.getElementById("Target").innerHTML = tg;
 
-  target = 1;
+  target = min(1,zoom);
 
   document.getElementById("Confirm").style.left = '100%';
   document.getElementById("Back").src = "Images/Map/back.png";

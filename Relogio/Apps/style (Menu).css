@@ -61,6 +61,15 @@
     animation: boing 300ms ease-in-out;
 }
 
+.iconPic {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+}
+.iconPic:active {
+    animation: boing 300ms ease-in-out;
+}
+
 
 .appSubtitle {
     position:       relative;
