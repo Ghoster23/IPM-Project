@@ -32,7 +32,7 @@ function saveName(friendName) {
 function showContacts(startRow) {
   var source;
   var element1 = "<th><a href='Chat/Chat.html'><div class='iconApp' draggable='false' onclick='saveName(";
-  var element2 = ")'><img class='iconApp' draggable='false' src=";
+  var element2 = ")'><img class='iconPic' draggable='false' src=";
   var element3 = "</div></a><figcaption class='appSubtitle'> ";
   var element4 = " </figcaption></th>";
 
@@ -46,12 +46,13 @@ function showContacts(startRow) {
     anchors.push(i*161+190);
 
     if (getRandomArbitrary(0, 10) <= 5) {
-      source = "'Images/Friend.png'>";
+      source = "'Images/Avatars/" + contacts[i][0] + ".png'>";
     } else {
       source = "'Images/Letters/" + contacts[i][0] + ".png'>";
     }
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
   }
+  x
   slider.scrollTop = 190;
 }
