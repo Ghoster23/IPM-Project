@@ -6,6 +6,12 @@
   opacity: 0.3s ease-in-out;
 }
 
+.iconPic {
+  width:   90px;
+  height:  90px;
+  opacity: 0.3s ease-in-out;
+}
+
 .menu {
   left: 6px;
 }

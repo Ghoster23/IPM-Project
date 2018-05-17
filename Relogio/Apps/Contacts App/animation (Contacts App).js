@@ -11,7 +11,7 @@ slider.addEventListener("scroll", function() {
 
     setTimeout(function() {
       confText.remove();
-      var icons = document.getElementsByClassName('iconApp');
+      var icons = document.getElementsByClassName('iconPic');
       for(i=0; i<icons.length; i++) {
           icons[i].style.transition    = '';
           icons[i].style.pointerEvents = '';
@@ -53,6 +53,6 @@ function showContacts(startRow) {
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
   }
-  x
+
   slider.scrollTop = 190;
 }

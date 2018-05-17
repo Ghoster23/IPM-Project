@@ -43,11 +43,10 @@ figcaption {
   left     : 51%;
 }
 #Sent{
-  height    :90px;
-  left      :29%;
-  top       :28.5%;
+  height    :95px;
+  left      :28%;
+  top       :27.5%;
   position  : absolute;
   transform : scale(0,0);
   transition: transform 0.10s;
 }
-

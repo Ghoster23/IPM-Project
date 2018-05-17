@@ -49,11 +49,15 @@ slider.addEventListener("scroll", function() {
 
     setTimeout(function() {
       confText.remove();
-      var icons = document.getElementsByClassName('iconApp');
+      var circles = document.getElementsByClassName('iconApp');
+      var icons   = document.getElementsByClassName('iconPic');
       for(i=0; i<icons.length; i++) {
-          icons[i].style.transition    = '';
-          icons[i].style.pointerEvents = '';
-          icons[i].style.opacity       = "1";
+        circles[i].style.transition    = '';
+        circles[i].style.pointerEvents = '';
+        circles[i].style.opacity       = "1";
+        icons[i].style.transition    = '';
+        icons[i].style.pointerEvents = '';
+        icons[i].style.opacity       = "1";
       }
     }, 400);
   }
