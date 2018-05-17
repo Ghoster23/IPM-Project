@@ -60,7 +60,8 @@ function showContacts(startRow) {
           source = "'Images/contact.png'>";
       }
     } else {
-      source = "'Images/Letters/" + contacts[i][0] + ".png'>";
+      var letter = contacts[i][0].toUpperCase();
+      source = "'Images/Letters/" + letter + ".png'>";
     }
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
