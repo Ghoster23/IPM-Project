@@ -250,6 +250,7 @@ function createFloater(){
   floater.style.cursor   = "pointer";
   floater.style.left     = "136px";
   floater.style.top      = "24px";
+  floater.style.filter     = "drop-shadow(0px 0px 2px #000)";
 
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
 
@@ -313,6 +314,18 @@ function createFloater(){
     
     var floater = document.getElementById("Floater");
 
+    //make trash signal
+    len2center = distfloater(85,95,floater.offsetLeft,floater.offsetTop);
+
+    var angle = Math.atan2((floater.offsetTop-95),(floater.offsetLeft-85)) * (180/Math.PI);
+
+    if(angle<110 && angle>=70 && len2center>70){
+      signalTrash();
+    }
+    else{
+      unsignalTrash();
+    }
+
     if(distfloater(85,95,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
       //do nada
     }else{
@@ -354,6 +367,18 @@ function createFloater(){
     y_ = mousey;
     
     var floater = document.getElementById("Floater");
+
+    //make trash signal
+    len2center = distfloater(85,95,floater.offsetLeft,floater.offsetTop);
+
+    var angle = Math.atan2((floater.offsetTop-95),(floater.offsetLeft-85)) * (180/Math.PI);
+
+    if(angle<110 && angle>=70 && len2center>70){
+      signalTrash();
+    }
+    else{
+      unsignalTrash();
+    }
 
     if(distfloater(85,95,floater.offsetLeft - newx,floater.offsetTop - newy)>=95){
       //do nada
@@ -399,6 +424,8 @@ function createFloater(){
         case "Watch.html":
           document.location.href = "Apps/Notifications/NotificationMenu.html"; 
         break;
+        case "Chat.html":
+        case "Write%20Message.html":
         case "Write%20Message.html":
         case "Premade%20Messages%20Menu.html":
         case "New%20Contact.html":
@@ -532,6 +559,7 @@ function createminifloaters(){
       case "Watch.html":
         navigmini.src = 'Apps/Images/notification.png'; 
       break;
+      case "Chat.html":
       case "Write%20Message.html":
       case "Premade%20Messages%20Menu.html":
       case "New%20Contact.html":
@@ -558,6 +586,7 @@ function createminifloaters(){
       case "Watch.html":
         smsmini.src = 'Apps/Images/notification2.png'; 
       break;
+      case "Chat.html":
       case "Write%20Message.html":
       case "Premade%20Messages%20Menu.html":
       case "New%20Contact.html":
@@ -600,17 +629,34 @@ function createminifloaters(){
   }
 }
 
+function signalTrash(){
+  var trash = document.getElementById("Trash");
+  if(!trash){
+    return;
+  }
+  trash.style.transform  = "scale(1.35)";
+}
+
+function unsignalTrash(){
+  var trash = document.getElementById("Trash");
+  if(!trash){
+    return;
+  }
+  trash.style.transform  = "scale(1)";
+}
+
 function createTrash(){
   var trash = document.createElement("img");
-  trash.id             = "Trash";
-  trash.style.position = "absolute";
-  trash.style.height   = "45px";
-  trash.style.cursor   = "pointer";
-  trash.style.left     = "86px";
-  trash.style.top      = "177px";
+  trash.id               = "Trash";
+  trash.style.position   = "absolute";
+  trash.style.height     = "45px";
+  trash.style.cursor     = "pointer";
+  trash.style.left       = "86px";
+  trash.style.top        = "177px";
   trash.style.transition = "transform 0.40s"
-  trash.style.transform = "scale(0)";
+  trash.style.transform  = "scale(0)";
   trash.style.pointerEvents = "none";
+  trash.style.filter     = "drop-shadow(0px 0px 3px #000)";
   setTimeout(function() {
     trash.style.transform = "scale(1)";
   }, 100);
@@ -624,6 +670,7 @@ function createTrash(){
     case "Watch.html":
       trash.src = 'Apps/Images/trash.png'; 
     break;
+    case "Chat.html":
     case "Write%20Message.html":
     case "Premade%20Messages%20Menu.html":
     case "New%20Contact.html":
