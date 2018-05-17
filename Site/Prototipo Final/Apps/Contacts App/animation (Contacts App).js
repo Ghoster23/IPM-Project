@@ -46,7 +46,19 @@ function showContacts(startRow) {
     anchors.push(i*161+190);
 
     if (getRandomArbitrary(0, 10) <= 5) {
-      source = "'Images/Avatars/" + contacts[i][0] + ".png'>";
+
+      switch (contacts[i]) {
+        case "Alexandre":
+        case "Benjamin":
+        case "Catarina":
+        case "Rui":
+        case "Tobias":
+          source = "'Images/Avatars/" + contacts[i][0] + ".png'>";
+          break;
+
+        default:
+          source = "'Images/contact.png'>";
+      }
     } else {
       source = "'Images/Letters/" + contacts[i][0] + ".png'>";
     }
