@@ -93,6 +93,9 @@ function sendToWatch() {
     }
     sessionStorage.setItem("chat" + from.value, JSON.stringify(chatWithFriend));
 
+    //send notification
+    setAlert(from.value,message.value,"go2conversation",2000);
+
     from.placeholder    = "De";
     message.placeholder = "Escreva aqui uma mensagem para enviar ao relogio!";
 

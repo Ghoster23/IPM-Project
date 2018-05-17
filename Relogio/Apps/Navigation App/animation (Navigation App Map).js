@@ -204,7 +204,7 @@ function changePosition(mov) {
 }
 
 
-function insetfloater(){
+/*function insetfloater(){
   var floater = document.getElementById("Floater");
   var counter  = document.getElementById("Counter");
   floater.style.transition = "all 0.5s ease 0s";
@@ -221,4 +221,4 @@ function insetfloater(){
 
   var coords = [floater.style.left,floater.style.top];
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
-}
+}*/

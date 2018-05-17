@@ -1,6 +1,3 @@
-//this file takes care of everything keyboard related so we can have input anywhere we might want
-//window.addEventListener('load', createKeyboard2("Input"));
-
 /*===============================================================
 ||||||||||||||||| KEYBOARD 1 (QWERTY STYLE) |||||||||||||||||||||||
 =================================================================*/
@@ -1202,13 +1199,13 @@ function createKeyboard2nums(inputid){
     })
 }  
 
-var down = false;
+var down        = false;
 var letterindex = 0;
-var keyflag = false;
-var keytimer = null;
-var key  ="";
-var lowercase = true;
-var nums = false; 
+var keyflag     = false;
+var keytimer    = null;
+var key         = "";
+var lowercase   = true;
+var nums        = false; 
 
 function writetoinput(value){
 

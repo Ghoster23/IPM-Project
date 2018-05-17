@@ -1,7 +1,5 @@
 window.addEventListener('load', loadAlerts);
 window.addEventListener('unload', updateAlerts);
-//window.addEventListener('dblclick', setSMSAlert)
-
 //run this function to set a new alert 
 function setAlert(name,text,functionName,timeStep){
   var alerts = sessionStorage.getItem("alerts");
@@ -92,10 +90,12 @@ function loadAlerts(){
   }
 }
 
-
-
+  
 /*function called by alert*/ 
 function ExecuteNotification(targetname){
+
+  var dir = window.location.pathname;
+  var dirname = dir.substring(dir.lastIndexOf("/")+1,dir.length);
 
   if(sessionStorage.getItem("Deleted")=="true"){
     sessionStorage.setItem("Deleted","false");
@@ -114,7 +114,16 @@ function ExecuteNotification(targetname){
       //if this is the notification that came to conclusion remove it
       if(targetname == notif.name){
         alerts.splice(i,1);
-        addNotification(notif);
+        //check if the alert was of type message and if you are already in the chat dont make a notif
+        if(notif.function == "go2conversation" && 
+           dirname == "Chat.html" && 
+           sessionStorage.getItem("friend") == notif.name){
+
+          location.reload();
+        }
+        else{
+          addNotification(notif);
+        }
         break;
       }
     }
@@ -174,18 +183,27 @@ function addNotification(notif){
   if( dirname == "NotificationMenu.html"){
     //lets add that new notification to this menu
   
-    var element1 = "<th> <div class='iconApp'";
-    var element2 = "draggable='false'> <span id ='notText'>";
+    var element1 = "<th> <div class='iconApp' style='background:";
+    var element2 = ";' draggable='false'> <span id ='notText'>";
     var element3 = "</span>";
 
     var notifications = JSON.parse(sessionStorage.getItem("notifications"));
     var contact_Table = document.getElementById("Table");
 
+    switch(newnotif.function){
+      case "NavigateToFriend":
+        var backcolor = "#8d23c2";
+      break;
+      case "go2conversation":
+        var backcolor = "#2bade0";
+      break;
+    }
+
     var body = contact_Table.tBodies[0];
     var rows = body.rows;
     
     // pick the last and prepend
-    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + element2 + notif.text + element3);
+    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.text + element3);
     anchors.push(i*138+10);
   }
 }
@@ -235,10 +253,9 @@ function createFloater(){
 
   var notifications = JSON.parse(sessionStorage.getItem("notifications"));
 
-  if(notifications){
-    counter.innerHTML          = notifications.length;
-  }
-  counter.innerHTML          = "1";
+
+  counter.innerHTML          = notifications.length;
+  
   counter.style.position     = "absolute";
   counter.style.textAlign    = "center";
   counter.style.color        = "#8d23c2"; 
@@ -348,7 +365,7 @@ function createFloater(){
     var coords = [floater.style.left,floater.style.top];
     sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
   
-    var counter  = document.getElementById("Counter");
+    var counter           = document.getElementById("Counter");
     counter.style.left    = parseInt(floater.style.left,10)+20 +"px";
     counter.style.top     = parseInt(floater.style.top,10)+16 +"px";
   }
@@ -453,15 +470,6 @@ function insetfloater(){
 
   var coords = [floater.style.left,floater.style.top];
   sessionStorage.setItem("Floatercoords",JSON.stringify(coords));
-}
-
-
-function setSMSAlert(){
-  setAlert("Maria","Maria\noioi, tudo bem contigo?","go2conversation",3000);
-}
-
-function go2conversation(){
-  console.log("Conversation");
 }
 
 function createminifloaters(){

@@ -55,11 +55,16 @@ function acceptNotification(){
       sessionStorage.setItem("friend", notif.name);
       document.location.href = "../Navigation App/Navigation App Map.html";
     break;
+    case "go2conversation":
+      sessionStorage.setItem("friend",notif.name);
+      document.location.href = "../Contacts App/Chat/Chat.html";
+    break;
     default:
       console.log("nada");
     break;
   }
 }
+
 
 function denyNotification(){
   i = closestindex(slider.scrollTop);
