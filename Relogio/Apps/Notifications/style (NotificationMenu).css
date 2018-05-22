@@ -32,6 +32,25 @@ figcaption {
   word-wrap: break-word;
 }
 
+#noTieneText{
+  position   : relative;
+  text-align : left;
+  white-space: normal;
+  color      : white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size  : 14px;
+  text-shadow: 0px 0px 3px #000000;
+  transition: opacity 1s ease-in-out;
+  display    : block;
+  left:      10px;
+  top:       36px;
+  max-width: 140px;
+  word-wrap: break-word;
+}
+
+
+
 #Cancel,#Accept{
   position  : absolute;
   height    : 26px;

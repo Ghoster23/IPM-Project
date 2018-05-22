@@ -18,10 +18,20 @@ function showNotifications(startRow) {
   var element2 = ";' draggable='false'> <span id ='notText'>";
   var element3 = "</span>";
 
-  var notifications = JSON.parse(sessionStorage.getItem("notifications"));
+  var notifications = sessionStorage.getItem("notifications");
+  if(notifications){
+    notifications = JSON.parse(notifications);
+  }
 
   anchors = [];
   var contact_Table = document.getElementById("Table");
+
+  if(!notifications){
+    contact_Table.insertRow(0).innerHTML="<span id ='noTieneText'> N&atildeo tem notifica&ccedil&otildees </span>";
+    document.getElementById("Accept").outerHTML = "";
+    document.getElementById("Cancel").outerHTML = "";
+    return;
+  }
 
   for (var i = 0; i < notifications.length; i++) {
     var notif = notifications[i];
@@ -34,7 +44,10 @@ function showNotifications(startRow) {
         var backcolor = "#2bade0";
       break;
     }
-    contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.text + element3;
+    if(notif.text.length >= 35){
+      notif.text = notif.text.substr(0,30) + "...";
+    }
+    contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) +":<br>"+ notif.text + element3;
   }
   contact_Table.insertRow(i+startRow).innerHTML = "<br>";
   slider.scrollTop = 10;
