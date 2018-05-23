@@ -1,172 +1,232 @@
 var writeMode;
+var dictating = false;
 
-function optionChoosen(choosen) {
+slider.scrollTop = 165;
+
+var anchors = [0, 165, 340];//pls set this if you are copy pasting to make a new menu
+
+function updateProgress() {
+    if (slider.scrollTop <= 82.5) {
+        document.getElementById("Progress_Circles").src = "../Images/progress1.png";
+    }
+    if (slider.scrollTop > 82.5 && slider.scrollTop <= 247.5) {
+        document.getElementById("Progress_Circles").src = "../Images/progress2.png";
+    }
+    if (slider.scrollTop > 247.5 && slider.scrollTop <= 427.5) {
+        document.getElementById("Progress_Circles").src = "../Images/progress3.png";
+    }
+}
+
+function hideInputOptions(){
+  var newName = document.getElementById("Input");
+  var table   = document.getElementById("Table");
+  var prog    = document.getElementById("Progress_Circles");
   var back    = document.getElementById("Back");
+
+  newName.value = "";
+
+  table.style.animation = "fadeAway 0.5s ease-in";
+  prog.style.animation  = "fadeAway 0.5s ease-in";
+  back.style.animation  = "fadeAway 0.5s ease-in";
+
+  setTimeout(function (){
+    table.style.animation = "";
+    prog.style.animation  = "";
+    back.style.animation  = "";
+
+    table.style.animation = "0";
+    prog.style.animation  = "0";
+    back.style.opacity    = "0";
+
+    table.style.visibility = "hidden";
+    prog.style.visibility  = "hidden";
+    back.style.visibility  = "hidden";
+  },
+  500);
+}
+
+function showInputOptions(){
+  var table = document.getElementById("Table");
+  var prog  = document.getElementById("Progress_Circles");
+  var back  = document.getElementById("Back");
+
+  table.style.animation = "appear 0.5s ease-in";
+  prog.style.animation  = "appear 0.5s ease-in";
+  back.style.animation  = "appear 0.5s ease-in";
+
+  setTimeout(function (){
+    table.style.animation = "";
+    prog.style.animation  = "";
+    back.style.animation  = "";
+
+    table.style.animation = "1";
+    prog.style.animation  = "1";
+    back.style.opacity    = "1";
+
+    table.style.visibility = "visible";
+    prog.style.visibility  = "visible";
+    back.style.visibility  = "visible";
+  },
+  500);
+}
+
+function showInputMethod(){
   var newName = document.getElementById("Input");
   var cancel  = document.getElementById("Cancel");
   var done    = document.getElementById("Done");
 
-  var optChoosen;
-  var subChoosen;
-  var optNotChoosen;
-  var subNotChoosen;
+  newName.style.animation = "appear 0.5s ease-in";
+  cancel.style.animation  = "appear 0.5s ease-in";
+  done.style.animation    = "appear 0.5s ease-in";
 
+  if (writeMode == 0) {
+    var button    = document.getElementById("Dictate_Button");
+    button.style.animation    = "appear 0.5s ease-in";
+  } else {
+    createKeyboard("Input");
+  }
+
+  setTimeout(function (){
+    newName.style.animation    = "";
+    cancel.style.animation     = "";
+    done.style.animation       = "";
+
+    newName.style.visibility = "visible";
+    cancel.style.visibility  = "visible";
+    done.style.visibility    = "visible";
+
+    newName.style.opacity = "1";
+    cancel.style.opacity  = "1";
+    done.style.opacity    = "1";
+
+    if (writeMode == 0) {
+      button.style.animation  = "";
+      button.style.visibility = "visible";
+      button.style.opacity    = "1";
+
+    }
+  },
+  500);
+}
+
+function hideInputMethod(){
+  var newName = document.getElementById("Input");
+  var cancel  = document.getElementById("Cancel");
+  var done    = document.getElementById("Done");
+
+  newName.value = "";
+
+  newName.style.animation = "fadeAway 0.5s ease-in";
+  cancel.style.animation  = "fadeAway 0.5s ease-in";
+  done.style.animation    = "fadeAway 0.5s ease-in";
+
+  if (writeMode == 0) {
+    var dictSimul = document.getElementById("DictateSimul");
+    var button    = document.getElementById("Dictate_Button");
+    if(dictSimul.style.visibility != "hidden"){
+      dictSimul.style.animation = "fadeAway 0.5s ease-in";
+    }
+    button.style.animation    = "fadeAway 0.5s ease-in";
+  }
+
+  setTimeout(function (){
+    newName.style.animation    = "";
+    cancel.style.animation     = "";
+    done.style.animation       = "";
+
+    newName.style.visibility = "hidden";
+    cancel.style.visibility  = "hidden";
+    done.style.visibility    = "hidden";
+
+    newName.style.opacity = "0";
+    cancel.style.opacity  = "0";
+    done.style.opacity    = "0";
+
+    if (writeMode == 0) {
+      button.style.animation  = "";
+      button.style.visibility = "hidden";
+      button.style.opacity    = "0";
+
+      dictSimul.style.animation  = "";
+      dictSimul.style.visibility = "hidden";
+      dictSimul.style.opacity    = "0";
+
+    } else {
+      removeKeyboard();
+    }
+  },
+  500);
+}
+
+function optionChoosen(choosen) {
   writeMode = choosen;
 
-  switch (choosen) {
-    case 0:
-      optChoosen = document.getElementById("Dictate");
-      subChoosen = document.getElementById("DictateSub");
-      optNotChoosen = document.getElementById("Write");
-      subNotChoosen = document.getElementById("WriteSub");
-      break;
-
-    case 1:
-      optChoosen = document.getElementById("Write");
-      subChoosen = document.getElementById("WriteSub");
-      optNotChoosen = document.getElementById("Dictate");
-      subNotChoosen = document.getElementById("DictateSub");
-      break;
-  }
-
-  subChoosen.style.animation    = "fadeAway 0.5s ease-in";
-  optNotChoosen.style.animation = "fadeAway 0.5s ease-in";
-  subNotChoosen.style.animation = "fadeAway 0.5s ease-in";
-  back.style.animation = "fadeAway 0.5s ease-in";
-
-  if (choosen == 1) {
-    optChoosen.style.animation = "fadeAway 0.5s ease-in";
-  }
-
   setTimeout(function() {
-    subChoosen.style.animation    = "";
-    optNotChoosen.style.animation = "";
-    subNotChoosen.style.animation = "";
-    back.style.animation = "";
-
-    subChoosen.style.opacity    = "0";
-    optNotChoosen.style.opacity = "0";
-    subNotChoosen.style.opacity = "0";
-    back.style.opacity = "0";
-
-    subChoosen.style.visibility    = "hidden";
-    optNotChoosen.style.visibility = "hidden";
-    subNotChoosen.style.visibility = "hidden";
-    back.style.visibility = "hidden";   
-
-    newName.style.animation = "appear 0.5s ease-in";
-    cancel.style.animation  = "appear 0.5s ease-in";
-    done.style.animation    = "appear 0.5s ease-in";
-
-    newName.value = "";
-
-    if (choosen == 0) {
-      optChoosen.style.animation = "DictateChoosen 0.5s ease-in";
-      var dictSimul = document.getElementById("DictateSimul");
-      dictSimul.style.animation = "appear 0.5s ease-in";
-    } else {
-
-      createKeyboard("Input");
-
-      optChoosen.style.animation  = "";
-      optChoosen.style.opacity    = "0";
-      optChoosen.style.visibility = "hidden";
-    }
+    hideInputOptions(writeMode);
 
     setTimeout(function() {
-      optChoosen.style.animation = "";
-      newName.style.animation    = "";
-      cancel.style.animation     = "";
-      done.style.animation       = "";
+      showInputMethod(writeMode);
 
-      newName.style.visibility = "visible";
-      cancel.style.visibility  = "visible";
-      done.style.visibility    = "visible";
-
-      newName.style.opacity = "1";
-      cancel.style.opacity  = "1";
-      done.style.opacity    = "1";
-
-      if (choosen == 0) {
-        optChoosen.style.top = "55px";
-        dictSimul.style.animation  = "";
-        dictSimul.style.visibility = "visible";
-        dictSimul.style.opacity    = "1";
-      } else {
-        optChoosen.style.opacity    = "0";
-        optChoosen.style.visibility = "hidden";
-      }
     }, 500);
 
   }, 500);
 }
 
 function cancelChoice() {
-
-  removeKeyboard();
-
-  var newName   = document.getElementById("Input");
-  var cancel    = document.getElementById("Cancel");
-  var done      = document.getElementById("Done");
-  var dictSimul = document.getElementById("DictateSimul");
-
-  var back      = document.getElementById("Back");
-  var dictIcon  = document.getElementById("Dictate");
-  var dictSub   = document.getElementById("DictateSub");
-  var writeIcon = document.getElementById("Write");
-  var writeSub  = document.getElementById("WriteSub");
-
-  newName.style.animation   = "fadeAway 0.5s ease-in";
-  cancel.style.animation    = "fadeAway 0.5s ease-in";
-  done.style.animation      = "fadeAway 0.5s ease-in";
-  dictSimul.style.animation = "fadeAway 0.5s ease-in";
-
-  back.style.animation      = "appear 0.5s ease-in";
-  dictSub.style.animation   = "appear 0.5s ease-in";
-  writeIcon.style.animation = "appear 0.5s ease-in";
-  writeSub.style.animation  = "appear 0.5s ease-in";
-
-  dictIcon.style.animation = "goBackToPlace 0.5s ease-in";
-
   setTimeout(function() {
-    newName.style.animation   = "";
-    cancel.style.animation    = "";
-    done.style.animation      = "";
-    dictSimul.style.animation = "";
-    back.style.animation      = "";
-    dictIcon.style.animation  = "";
-    dictSub.style.animation   = "";
-    writeIcon.style.animation = "";
-    writeSub.style.animation  = "";
+    hideInputMethod(writeMode);
 
-    newName.style.opacity   = "0";
-    cancel.style.opacity    = "0";
-    done.style.opacity      = "0";
-    dictSimul.style.opacity = "0";
+    setTimeout(function() {
+      showInputOptions(writeMode);
 
-    newName.style.visibility   = "hidden";
-    cancel.style.visibility    = "hidden";
-    done.style.visibility      = "hidden";
-    dictSimul.style.visibility = "hidden";
+    }, 500);
 
-    back.style.opacity      = "1";
-    dictIcon.style.opacity  = "1";
-    dictSub.style.opacity   = "1";
-    writeIcon.style.opacity = "1";
-    writeSub.style.opacity  = "1";
-
-    back.style.visibility      = "visible";
-    dictIcon.style.visibility  = "visible";
-    dictSub.style.visibility   = "visible";
-    writeIcon.style.visibility = "visible";
-    writeSub.style.visibility  = "visible";
-
-    dictIcon.style.top = "-30px";
   }, 500);
 }
 
-function saveNewFriend() {
+function startDictation(){
+  var dictSimul = document.getElementById("DictateSimul");
+  var dictationButton = document.getElementById("Dictate_Button");
+  dictSimul.style.animation = "appear 0.5s ease-in";
+  dictationButton.style.animation = "pulse 1s ease-in infinite";
+
   var input = document.getElementById("Input");
+  input.value = "";
+
+  setTimeout(function(){
+    dictSimul.style.animation  = "";
+    dictSimul.style.visibility = "visible";
+    dictSimul.style.opacity    = "1";
+  }
+  ,500);
+}
+
+function endDictation(){
+  var dictSimul = document.getElementById("DictateSimul");
+  var dictationButton = document.getElementById("Dictate_Button");
+  dictSimul.style.animation = "fadeAway 0.5s ease-in";
+  dictationButton.style.animation = "";
+  dictating = false;
+
+  setTimeout(function(){
+    dictSimul.style.animation  = "";
+    dictSimul.style.visibility = "hidden";
+    dictSimul.style.opacity    = "0";
+  }
+  ,500);
+}
+
+function dictationButton(){
+  if(dictating){
+    endDictation();
+    dictating = false;
+  }else {
+    startDictation();
+    dictating = true;
+  }
+}
+
+function saveNewFriend() {
   var name;
 
   switch (writeMode) {
@@ -176,6 +236,7 @@ function saveNewFriend() {
       break;
 
     case 1:
+      var input = document.getElementById("Input");
       name = input.value;
       break;
   }
@@ -210,6 +271,11 @@ function saveNewFriend() {
     var contacts = JSON.parse(sessionStorage.getItem("contacts"));
     contacts.push(name);
     sessionStorage.setItem("contacts", JSON.stringify(contacts));
-    document.location.href = "../Contacts App.html";
+
+    hideInputMethod();
+    setTimeout(function() {
+      document.location.href = "../Contacts App.html";
+    },
+    500);
   }
 }

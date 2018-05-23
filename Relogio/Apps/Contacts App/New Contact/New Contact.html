@@ -13,26 +13,49 @@
         </a>
 
         <div id="Clock">
+            <!-- Dark Background -->
             <div id="Touch_Screen">
-                <table id="Table">
-                    <tr>
-                        <th>
-                            <img id="Dictate" class="option" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
-                            <figcaption id="DictateSub" class="optionSubtitle"> Ditar </figcaption>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <img id="Write" class="option" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
-                            <figcaption id="WriteSub" class="optionSubtitle"> Escrever </figcaption>
-                        </th>
-                    </tr>
-                </table>
+                <div class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+
+                        <!-- Dictate -->
+                        <tr>
+                            <th>
+                                <img id="Dictate" class="iconApp" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
+
+                                <figcaption id="DictateSub" class="appSubtitle"> Ditar </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Write -->
+                        <tr>
+                            <th>
+                                <img id="Write" class="iconApp" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
+
+                                <figcaption id="WriteSub" class="appSubtitle"> Escrever </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- NFC -->
+                        <tr>
+                            <th>
+                                <img id="NFC" class="iconApp" draggable="false" onclick="optionChoosen(2)" src="../Images/keyboard.png">
+
+                                <figcaption id="NFCSub" class="appSubtitle"> NFC </figcaption>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
 
                 <input id="Input" type="text" placeholder="Novo Contacto" min="1" maxlength="10">
 
                 <img id="Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
                 <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
+
+                <img id="Dictate_Button" class="controlButton" onclick="dictationButton()" src="../Images/microphone.png">
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles" src="../Images/progress2.png">
 
                 <!-- Back Button -->
                 <a href="../Contacts App.html">
@@ -50,15 +73,16 @@
         </div>
 
         <div id="Auxiliary">
-            <textarea id="DictateSimul" maxlength="10" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
+          <textarea id="DictateSimul" maxlength="10" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
 
-            <input id="From" maxlength="10" placeholder="De" type="text">
-            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
-            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+          <input id="From" maxlength="10" placeholder="De" type="text">
+          <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+          <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
         </div>
 
         <script src="../../../keyboard.js"></script>
         <script src="../../../animation (Watch).js"></script>
+        <script src="../../animation (Menu).js"></script>
         <script src="animation (New Contact).js"></script>
         <script src="../../../notifications.js"></script>
     </body>
