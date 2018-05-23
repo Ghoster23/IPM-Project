@@ -4,7 +4,7 @@ let startY   = 0;
 let scrollTop;
 slider.scrollTop = 340;
 
-var anchors = [0, 165, 340, 515];//pls set this if you are copy pasting to make a new menu
+var anchors = [0, 165, 340, 505, 675];//pls set this if you are copy pasting to make a new menu
 
 var timer = null;
 
@@ -66,8 +66,11 @@ function updateProgress() {
     if (slider.scrollTop > 247.5 && slider.scrollTop <= 427.5) {
         document.getElementById("Progress_Circles").src = "Images/progress3.png";
     }
-    if (slider.scrollTop > 427.5) {
+    if (slider.scrollTop > 427.5 && slider.scrollTop <= 597.5) {
         document.getElementById("Progress_Circles").src = "Images/progress4.png";
+    }
+    if (slider.scrollTop > 597.5) {
+        document.getElementById("Progress_Circles").src = "Images/progress5.png";
     }
 }
 

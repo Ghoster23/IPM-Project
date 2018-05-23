@@ -1211,6 +1211,7 @@ function writetoinput(value){
 
     inputid = sessionStorage.getItem("inputid");
     input = document.getElementById(inputid);
+    input.scrollTop = 99999;
 
     switch(value){
         case "Spacebar":
