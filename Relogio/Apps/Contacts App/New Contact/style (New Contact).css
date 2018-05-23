@@ -1,3 +1,7 @@
+figcaption {
+  padding-top: 5px;
+}
+
 #Input {
   position: absolute;
   width: 180px;
@@ -12,7 +16,6 @@
   font-size: 17px;
   filter: drop-shadow(0px 0px 4px #000);
   visibility: hidden;
-  opacity: 0;
 }
 
 #Cancel {
@@ -30,7 +33,6 @@
   text-align: center;
   margin-bottom: 50px;
   visibility: hidden;
-  opacity: 0;
 }
 
 #Dictate_Button {
@@ -39,14 +41,60 @@
   top: 52%;
   left: 32.4%;
   visibility: hidden;
-  opacity: 0;
 }
 
 #Progress_Circles {
-  top: 30%;
-  left: 87%;
-  height: 75px;
+  position: absolute;
+  height:   50px;
+  top:      80px;
+  left:     190px;
+}
 
+#Confirm {
+  position: absolute;
+  top:  55px;
+  left: 35px;
+  visibility: hidden;
+}
+
+#Confirm_Box {
+  width:  145px;
+  height: 95px;
+}
+
+#Confirm_Text, #Confirm_Contact {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  padding: 5px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+#Confirm_Contact {
+  width: 133px;
+  top: 25px;
+  left: 1px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#Confirm_Done, #Confirm_Cancel {
+  top: 55px;
+  filter: drop-shadow(0px 0px 1px #000);
+}
+
+#Confirm_Done {
+  left: 95px;
+}
+
+#Confirm_Cancel {
+  left: 20px;
 }
 
 .controlButton {
@@ -56,12 +104,15 @@
   height: 30px;
   filter: drop-shadow(0px 0px 4px #000);
   visibility: hidden;
-  opacity: 0;
 }
 
 .iconApp {
   height: 95px;
   width:  95px;
+}
+
+.menu {
+  left: 2px;
 }
 
 ::placeholder {

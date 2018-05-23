@@ -15,14 +15,13 @@
         <div id="Clock">
             <!-- Dark Background -->
             <div id="Touch_Screen">
-                <div class="menu" onscroll="updateProgress()">
+                <div id="menu" class="menu" onscroll="updateProgress()">
                     <table id="Table">
-
+                        <br>
                         <!-- Dictate -->
                         <tr>
                             <th>
                                 <img id="Dictate" class="iconApp" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
-
                                 <figcaption id="DictateSub" class="appSubtitle"> Ditar </figcaption>
                             </th>
                         </tr>
@@ -31,7 +30,6 @@
                         <tr>
                             <th>
                                 <img id="Write" class="iconApp" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
-
                                 <figcaption id="WriteSub" class="appSubtitle"> Escrever </figcaption>
                             </th>
                         </tr>
@@ -40,7 +38,6 @@
                         <tr>
                             <th>
                                 <img id="NFC" class="iconApp" draggable="false" onclick="optionChoosen(2)" src="../Images/keyboard.png">
-
                                 <figcaption id="NFCSub" class="appSubtitle"> NFC </figcaption>
                             </th>
                         </tr>
@@ -53,6 +50,14 @@
                 <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
 
                 <img id="Dictate_Button" class="controlButton" onclick="dictationButton()" src="../Images/microphone.png">
+
+                <div id="Confirm">
+                    <img id="Confirm_Box" src="../Images/send background.png">
+                    <span id="Confirm_Text">Enviar pedido a:</span>
+                    <span id="Confirm_Contact"></span>
+                    <img id="Confirm_Cancel" class="controlButton" onclick="cancelConf()" src="../../Images/cancel.png">
+                    <img id="Confirm_Done" class="controlButton" onclick="sendInvite()" src="../../Images/accept.png">
+                </div>
 
                 <!-- Progress Circles -->
                 <img id="Progress_Circles" src="../Images/progress2.png">
@@ -80,10 +85,10 @@
           <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
         </div>
 
-        <script src="../../../keyboard.js"></script>
         <script src="../../../animation (Watch).js"></script>
+        <script src="../../../keyboard.js"></script>
+        <script src="../../../notifications.js"></script>
         <script src="../../animation (Menu).js"></script>
         <script src="animation (New Contact).js"></script>
-        <script src="../../../notifications.js"></script>
     </body>
 </html>

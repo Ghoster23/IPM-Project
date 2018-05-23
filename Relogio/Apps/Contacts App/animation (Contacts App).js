@@ -43,16 +43,29 @@ function showContacts(startRow) {
   var contact_Table = document.getElementById("Table");
 
   for (var i = 0; i < contacts.length; i++) {
-    anchors.push(i*161+190);
+    anchors.push(i*161 + 10);
 
     if (getRandomArbitrary(0, 10) <= 5) {
-      source = "'Images/Avatars/" + contacts[i][0] + ".png'>";
+
+      switch (contacts[i]) {
+        case "Alexandre":
+        case "Benjamin":
+        case "Catarina":
+        case "Rui":
+        case "Tobias":
+          source = "'Images/Avatars/" + contacts[i][0] + ".png'>";
+          break;
+
+        default:
+          source = "'Images/contact.png'>";
+      }
     } else {
-      source = "'Images/Letters/" + contacts[i][0] + ".png'>";
+      var letter = contacts[i][0].toUpperCase();
+      source = "'Images/Letters/" + letter + ".png'>";
     }
 
     contact_Table.insertRow(i+startRow).innerHTML = element1 + JSON.stringify(contacts[i]) + element2 + source + element3 + contacts[i] + element4;
   }
 
-  slider.scrollTop = 190;
+  slider.scrollTop = 10;
 }

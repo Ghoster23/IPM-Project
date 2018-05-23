@@ -3,10 +3,10 @@ var nLines;
 var count;
 
 
-function fixWord(word) {
+function fixWord(word, stillInPrevLine) {
   if (word.length > maxPerLine) {
     nLines++;
-    return word.slice(0, maxPerLine) + "<br> " + fixWord(word.slice(maxPerLine));
+    return word.slice(0, stillInPrevLine) + "<br> " + fixWord(word.slice(stillInPrevLine), 0);
   } else {
     return word;
   }
@@ -25,8 +25,8 @@ function fixMessage(message) {
 
     if (count > maxPerLine) {
       if (w.length > maxPerLine) {
-        newMessage += (" " + fixWord(w));
-        count = w.length - maxPerLine;
+        count -= maxPerLine;
+        newMessage += (" " + fixWord(w, w.length - count));
       } else {
         nLines++;
         newMessage += "<br> " + w;

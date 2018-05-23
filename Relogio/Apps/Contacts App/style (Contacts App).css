@@ -1,3 +1,12 @@
+#New_Contact {
+  position: absolute;
+  width:  55px;
+  height: 55px;
+  top:    75px;
+  left:   165px;
+  border-radius: 50%;
+}
+
 .iconApp {
   background-color: rgb(41, 171, 226);
   border-radius: 50%;
@@ -13,7 +22,7 @@
 }
 
 .menu {
-  left: 6px;
+  left: 2px;
 }
 
 figcaption {

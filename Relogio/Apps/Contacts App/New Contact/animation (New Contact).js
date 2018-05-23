@@ -1,281 +1,238 @@
 var writeMode;
 var dictating = false;
 
-slider.scrollTop = 165;
+slider.scrollTop = 180;
 
-var anchors = [0, 165, 340];//pls set this if you are copy pasting to make a new menu
+var anchors = [10, 180, 350]; //pls set this if you are copy pasting to make a new menu
+
 
 function updateProgress() {
-    if (slider.scrollTop <= 82.5) {
+    if (slider.scrollTop <= 95) {
         document.getElementById("Progress_Circles").src = "../Images/progress1.png";
     }
-    if (slider.scrollTop > 82.5 && slider.scrollTop <= 247.5) {
+    if (slider.scrollTop > 95 && slider.scrollTop <= 265) {
         document.getElementById("Progress_Circles").src = "../Images/progress2.png";
     }
-    if (slider.scrollTop > 247.5 && slider.scrollTop <= 427.5) {
+    if (slider.scrollTop > 265) {
         document.getElementById("Progress_Circles").src = "../Images/progress3.png";
     }
 }
 
-function hideInputOptions(){
-  var newName = document.getElementById("Input");
-  var table   = document.getElementById("Table");
-  var prog    = document.getElementById("Progress_Circles");
-  var back    = document.getElementById("Back");
 
-  newName.value = "";
-
-  table.style.animation = "fadeAway 0.5s ease-in";
-  prog.style.animation  = "fadeAway 0.5s ease-in";
-  back.style.animation  = "fadeAway 0.5s ease-in";
-
-  setTimeout(function (){
-    table.style.animation = "";
-    prog.style.animation  = "";
-    back.style.animation  = "";
-
-    table.style.animation = "0";
-    prog.style.animation  = "0";
-    back.style.opacity    = "0";
-
-    table.style.visibility = "hidden";
-    prog.style.visibility  = "hidden";
-    back.style.visibility  = "hidden";
-  },
-  500);
+function hideInputOptions() {
+  document.getElementById("Table").style.visibility = "hidden";
+  document.getElementById("Back").style.visibility  = "hidden";
+  document.getElementById("Progress_Circles").style.visibility = "hidden";
 }
 
-function showInputOptions(){
-  var table = document.getElementById("Table");
-  var prog  = document.getElementById("Progress_Circles");
-  var back  = document.getElementById("Back");
 
-  table.style.animation = "appear 0.5s ease-in";
-  prog.style.animation  = "appear 0.5s ease-in";
-  back.style.animation  = "appear 0.5s ease-in";
+function showInputOptions() {
+  slider.scrollTop = 180;
 
-  setTimeout(function (){
-    table.style.animation = "";
-    prog.style.animation  = "";
-    back.style.animation  = "";
-
-    table.style.animation = "1";
-    prog.style.animation  = "1";
-    back.style.opacity    = "1";
-
-    table.style.visibility = "visible";
-    prog.style.visibility  = "visible";
-    back.style.visibility  = "visible";
-  },
-  500);
+  document.getElementById("Table").style.visibility = "visible";
+  document.getElementById("Back").style.visibility  = "visible";
+  document.getElementById("Progress_Circles").style.visibility = "visible";
 }
 
-function showInputMethod(){
-  var newName = document.getElementById("Input");
-  var cancel  = document.getElementById("Cancel");
-  var done    = document.getElementById("Done");
 
-  newName.style.animation = "appear 0.5s ease-in";
-  cancel.style.animation  = "appear 0.5s ease-in";
-  done.style.animation    = "appear 0.5s ease-in";
-
-  if (writeMode == 0) {
-    var button    = document.getElementById("Dictate_Button");
-    button.style.animation    = "appear 0.5s ease-in";
-  } else {
-    createKeyboard("Input");
-  }
-
-  setTimeout(function (){
-    newName.style.animation    = "";
-    cancel.style.animation     = "";
-    done.style.animation       = "";
-
-    newName.style.visibility = "visible";
-    cancel.style.visibility  = "visible";
-    done.style.visibility    = "visible";
-
-    newName.style.opacity = "1";
-    cancel.style.opacity  = "1";
-    done.style.opacity    = "1";
+function hideInputMethod() {
+  if ((writeMode == 0) || (writeMode == 1)) {
+    document.getElementById("Input").style.visibility  = "hidden";
+    document.getElementById("Cancel").style.visibility = "hidden";
+    document.getElementById("Done").style.visibility   = "hidden";
 
     if (writeMode == 0) {
-      button.style.animation  = "";
-      button.style.visibility = "visible";
-      button.style.opacity    = "1";
-
-    }
-  },
-  500);
-}
-
-function hideInputMethod(){
-  var newName = document.getElementById("Input");
-  var cancel  = document.getElementById("Cancel");
-  var done    = document.getElementById("Done");
-
-  newName.value = "";
-
-  newName.style.animation = "fadeAway 0.5s ease-in";
-  cancel.style.animation  = "fadeAway 0.5s ease-in";
-  done.style.animation    = "fadeAway 0.5s ease-in";
-
-  if (writeMode == 0) {
-    var dictSimul = document.getElementById("DictateSimul");
-    var button    = document.getElementById("Dictate_Button");
-    if(dictSimul.style.visibility != "hidden"){
-      dictSimul.style.animation = "fadeAway 0.5s ease-in";
-    }
-    button.style.animation    = "fadeAway 0.5s ease-in";
-  }
-
-  setTimeout(function (){
-    newName.style.animation    = "";
-    cancel.style.animation     = "";
-    done.style.animation       = "";
-
-    newName.style.visibility = "hidden";
-    cancel.style.visibility  = "hidden";
-    done.style.visibility    = "hidden";
-
-    newName.style.opacity = "0";
-    cancel.style.opacity  = "0";
-    done.style.opacity    = "0";
-
-    if (writeMode == 0) {
-      button.style.animation  = "";
-      button.style.visibility = "hidden";
-      button.style.opacity    = "0";
-
-      dictSimul.style.animation  = "";
-      dictSimul.style.visibility = "hidden";
-      dictSimul.style.opacity    = "0";
-
+      document.getElementById("Dictate_Button").style.visibility = "hidden";
     } else {
       removeKeyboard();
     }
+  } else {
+    // Cenas do NFC
+  }
+}
+
+
+function showInputMethod() {
+  if ((writeMode == 0) || (writeMode == 1)) {
+    var input = document.getElementById("Input");
+    input.value = "";
+    input.style.visibility = "visible";
+    document.getElementById("Cancel").style.visibility = "visible";
+    document.getElementById("Done").style.visibility   = "visible";
+
+    if (writeMode == 0) {
+      document.getElementById("Dictate_Button").style.visibility = "visible";
+    } else {
+      createKeyboard("Input");
+    }
+  } else {
+    // Cenas do NFC
+  }
+}
+
+
+function fadeAwayInputMethod() {
+  var input  = document.getElementById("Input");
+  var done   = document.getElementById("Done");
+  var cancel = document.getElementById("Cancel");
+  var dictButton = document.getElementById("Dictate_Button");
+
+  input.style.animation  = "fadeAway 0.5s ease-in";
+  done.style.animation   = "fadeAway 0.5s ease-in";
+  cancel.style.animation = "fadeAway 0.5s ease-in";
+  dictButton.style.animation = "fadeAway 0.5s ease-in";
+
+  setTimeout(function () {
+    input.style.animation  = "";
+    done.style.animation   = "";
+    cancel.style.animation = "";
+    dictButton.style.animation = "";
+
+    input.style.animation  = "0";
+    done.style.animation   = "0";
+    cancel.style.animation = "0";
+    dictButton.style.animation = "0";
+
+    input.style.visibility  = "hidden";
+    done.style.visibility   = "hidden";
+    cancel.style.visibility = "hidden";
+    dictButton.style.visibility = "hidden";
   },
   500);
 }
+
+
+function appearConfElem() {
+  var conf   = document.getElementById("Confirm");
+  var done   = document.getElementById("Confirm_Done");
+  var cancel = document.getElementById("Confirm_Cancel");
+
+  conf.style.animation   = "appear 1s";
+  done.style.animation   = "appear 1s";
+  cancel.style.animation = "appear 1s";
+
+  setTimeout(function () {
+    conf.style.animation   = "";
+    done.style.animation   = "";
+    cancel.style.animation = "";
+
+    conf.style.opacity   = "1";
+    done.style.opacity   = "1";
+    cancel.style.opacity = "1";
+
+    conf.style.visibility   = "visible";
+    done.style.visibility   = "visible";
+    cancel.style.visibility = "visible";
+  }, 1000);
+}
+
+
+function hideConfElem() {
+  document.getElementById("Confirm").style.visibility = "hidden";
+  document.getElementById("Confirm_Done").style.visibility   = "hidden";
+  document.getElementById("Confirm_Cancel").style.visibility = "hidden";
+}
+
 
 function optionChoosen(choosen) {
   writeMode = choosen;
 
-  setTimeout(function() {
-    hideInputOptions(writeMode);
-
-    setTimeout(function() {
-      showInputMethod(writeMode);
-
-    }, 500);
-
-  }, 500);
+  hideInputOptions();
+  showInputMethod();
 }
 
 function cancelChoice() {
-  setTimeout(function() {
-    hideInputMethod(writeMode);
-
-    setTimeout(function() {
-      showInputOptions(writeMode);
-
-    }, 500);
-
-  }, 500);
+  hideInputMethod();
+  showInputOptions();
 }
 
-function startDictation(){
+
+function cancelConf() {
+  hideConfElem();
+  showInputOptions();
+}
+
+
+function startDictation() {
+  document.getElementById("Input").value = "";
+
+  document.getElementById("DictateSimul").style.visibility  = "visible";
+  document.getElementById("Dictate_Button").style.animation = "pulse 1s ease-in infinite";
+}
+
+
+function endDictation() {
   var dictSimul = document.getElementById("DictateSimul");
-  var dictationButton = document.getElementById("Dictate_Button");
-  dictSimul.style.animation = "appear 0.5s ease-in";
-  dictationButton.style.animation = "pulse 1s ease-in infinite";
 
-  var input = document.getElementById("Input");
-  input.value = "";
+  document.getElementById("Input").value = dictSimul.value;
+  dictSimul.value = "";
 
-  setTimeout(function(){
-    dictSimul.style.animation  = "";
-    dictSimul.style.visibility = "visible";
-    dictSimul.style.opacity    = "1";
-  }
-  ,500);
+  dictSimul.style.visibility = "hidden";
+
+  document.getElementById("Dictate_Button").style.animation = "";
 }
 
-function endDictation(){
-  var dictSimul = document.getElementById("DictateSimul");
-  var dictationButton = document.getElementById("Dictate_Button");
-  dictSimul.style.animation = "fadeAway 0.5s ease-in";
-  dictationButton.style.animation = "";
-  dictating = false;
 
-  setTimeout(function(){
-    dictSimul.style.animation  = "";
-    dictSimul.style.visibility = "hidden";
-    dictSimul.style.opacity    = "0";
-  }
-  ,500);
-}
-
-function dictationButton(){
-  if(dictating){
+function dictationButton() {
+  if(dictating) {
     endDictation();
     dictating = false;
-  }else {
+  } else {
     startDictation();
     dictating = true;
   }
 }
 
+
 function saveNewFriend() {
-  var name;
+  var input = document.getElementById("Input");
+  var name  = input.value;
+  var error = 0;
 
-  switch (writeMode) {
-    case 0:
-      var simul = document.getElementById("DictateSimul");
-      name = simul.value;
-      break;
-
-    case 1:
-      var input = document.getElementById("Input");
-      name = input.value;
-      break;
+  if (name == "") {
+    error = 1;
+  } else if (!(((name[0] >= "a") && (name[0] <= "z")) || ((name[0] >= "A") && (name[0] <= "Z")))) {
+      error = 2;
+  } else if ((JSON.parse(sessionStorage.getItem("contacts")).indexOf(name)) != -1) {
+    error = 3;
   }
 
-  var emptyName = (name == "");
-  var goodName  = (((name[0] >= "a") && (name[0] <= "z")) ||
-                   ((name[0] >= "A") && (name[0] <= "Z")));
-
-  if ((emptyName == true) || (goodName == false)) {
-    input.style.fontSize = "15px";
+  if (error != 0) {
+    input.style.fontSize  = "15px";
     input.style.animation = "highlight 2s ease-in-out";
 
-    if (writeMode == 0) { simul.style.animation = "highlight 2s ease-in-out"; }
+    setTimeout(function() { input.style.animation =""; }, 2000);
 
-    setTimeout(function() {
-      input.style.animation ="";
+    switch (error) {
+      case 1:
+        input.placeholder = "Campo Obrigatorio";
+        break;
 
-      if (writeMode == 0) { simul.style.animation = ""; }
-    }, 2000);
+      case 2:
+        input.value = "";
+        input.placeholder = "Comecar com letra";
+        break;
 
-    if (writeMode == 0) { simul.value = ""; }
-
-    if (emptyName == true) {
-      input.placeholder = "Campo Obrigatorio";
-
-      if (writeMode == 0) { input.value = ""; }
-    } else {
-      input.value = "";
-      input.placeholder = "Comecar com letra";
+      case 3:
+        input.value = "";
+        input.style.fontSize = "17px";
+        input.placeholder = "Novo Contacto";
+        break;
     }
   } else {
-    var contacts = JSON.parse(sessionStorage.getItem("contacts"));
-    contacts.push(name);
-    sessionStorage.setItem("contacts", JSON.stringify(contacts));
+    fadeAwayInputMethod();
 
-    hideInputMethod();
-    setTimeout(function() {
-      document.location.href = "../Contacts App.html";
-    },
-    500);
+    document.getElementById("Confirm_Contact").innerHTML = name;
+
+    appearConfElem();
   }
+}
+
+
+function sendInvite() {
+  var contacts = JSON.parse(sessionStorage.getItem("contacts"));
+  contacts.push(document.getElementById("Confirm_Contact").innerHTML);
+  sessionStorage.setItem("contacts", JSON.stringify(contacts));
+
+  document.location.href = "../Contacts App.html";
 }
