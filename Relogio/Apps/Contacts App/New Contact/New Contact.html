@@ -37,7 +37,7 @@
                         <!-- NFC -->
                         <tr>
                             <th>
-                                <img id="NFC" class="iconApp" draggable="false" onclick="optionChoosen(2)" src="../Images/keyboard.png">
+                                <img id="NFC" class="iconApp" draggable="false" onclick="optionChoosen(2)" src="../Images/nfc.png">
                                 <figcaption id="NFCSub" class="appSubtitle"> NFC </figcaption>
                             </th>
                         </tr>
@@ -50,6 +50,10 @@
                 <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
 
                 <img id="Dictate_Button" class="controlButton" onclick="dictationButton()" src="../Images/microphone.png">
+
+                <img id="NFC_Active" src="../Images/nfc_active.png">
+                <img id="NFC_Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
+                <span id="NFC_Prompt"> Encoste o seu relogio ao relogio cujo contacto quer adicionar. </span>
 
                 <div id="Confirm">
                     <img id="Confirm_Box" src="../Images/send background.png">
@@ -79,6 +83,8 @@
 
         <div id="Auxiliary">
           <textarea id="DictateSimul" maxlength="10" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
+          <textarea id="NFCSimul" maxlength="10" placeholder="Escreva aqui o nome da pessoa a adicionar." rows="1" cols="53"></textarea>
+          <button id="SendNFC" onclick="sendNFC()">Adicionar</button>
 
           <input id="From" maxlength="10" placeholder="De" type="text">
           <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>

@@ -1,10 +1,13 @@
 var writeMode;
 var dictating = false;
 
-slider.scrollTop = 180;
+slider.scrollTop = 190;
 
-var anchors = [10, 180, 350]; //pls set this if you are copy pasting to make a new menu
+var anchors = [10, 190, 360]; //pls set this if you are copy pasting to make a new menu
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
 function updateProgress() {
     if (slider.scrollTop <= 95) {
@@ -47,7 +50,13 @@ function hideInputMethod() {
       removeKeyboard();
     }
   } else {
-    // Cenas do NFC
+    document.getElementById("NFC_Prompt").style.visibility = "hidden";
+    document.getElementById("NFC_Cancel").style.visibility = "hidden";
+    document.getElementById("SendNFC").style.visibility = "hidden";
+    document.getElementById("NFCSimul").style.visibility = "hidden";
+    var nfc = document.getElementById("NFC_Active");
+    nfc.style.visibility = "hidden";
+    nfc.style.animation = "";
   }
 }
 
@@ -66,7 +75,13 @@ function showInputMethod() {
       createKeyboard("Input");
     }
   } else {
-    // Cenas do NFC
+    document.getElementById("NFC_Prompt").style.visibility = "visible";
+    document.getElementById("NFC_Cancel").style.visibility = "visible";
+    document.getElementById("SendNFC").style.visibility = "visible";
+    document.getElementById("NFCSimul").style.visibility = "visible";
+    var nfc = document.getElementById("NFC_Active");
+    nfc.style.visibility = "visible";
+    nfc.style.animation = "pulse 1.0s ease-in infinite";
   }
 }
 
@@ -133,6 +148,10 @@ function hideConfElem() {
   document.getElementById("Confirm_Cancel").style.visibility = "hidden";
 }
 
+function sendNFC(){
+  document.getElementById("Input").value = document.getElementById("NFCSimul").value;
+  saveNewFriend();
+}
 
 function optionChoosen(choosen) {
   writeMode = choosen;
@@ -222,12 +241,17 @@ function saveNewFriend() {
   } else {
     hideInputMethod();
 
-    document.getElementById("Confirm_Contact").innerHTML = name;
+    if(writeMode != 2){
+      document.getElementById("Confirm_Text").innerHTML = "Enviar pedido a:";
+      document.getElementById("Confirm_Contact").innerHTML = name;
+    }else {
+      document.getElementById("Confirm_Text").innerHTML = "Adicionar:";
+      document.getElementById("Confirm_Contact").innerHTML = name;
+    }
 
     appearConfElem();
   }
 }
-
 
 function sendInvite() {
   var contacts = JSON.parse(sessionStorage.getItem("contacts"));

@@ -18,6 +18,44 @@ figcaption {
   visibility: hidden;
 }
 
+#NFC_Prompt {
+  position: absolute;
+  top: 65%;
+  left:12.5%;
+  width: 160px;
+  height: 40px;
+  line-height: 18px;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  color: white;
+  filter: drop-shadow(0px 0px 2px #000);
+  visibility: hidden;
+}
+
+#SendNFC {
+  visibility: hidden;
+}
+
+#NFCSimul {
+  visibility: hidden;
+}
+
+#NFC_Active {
+  position: absolute;
+  top: 4%;
+  left: 3%;
+  width: 200px;
+  visibility: hidden;
+}
+
+#NFC_Cancel {
+  position: absolute;
+  top: 47%;
+  left: 43.5%;
+  visibility: hidden;
+}
+
 #Cancel {
   left: 55px;
   cursor: pointer;
