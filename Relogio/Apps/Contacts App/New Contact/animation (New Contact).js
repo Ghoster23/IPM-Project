@@ -20,29 +20,55 @@ function updateProgress() {
 
 
 function hideInputOptions() {
-  document.getElementById("Table").style.visibility = "hidden";
-  document.getElementById("Back").style.visibility  = "hidden";
-  document.getElementById("Progress_Circles").style.visibility = "hidden";
+  var table = document.getElementById("Table");
+  var back  = document.getElementById("Back");
+  var prog  = document.getElementById("Progress_Circles");
+
+  table.style.opacity = "0";
+  back.style.opacity  = "0";
+  prog.style.opacity  = "0";
+
+  table.style.visibility = "hidden";
+  back.style.visibility  = "hidden";
+  prog.style.visibility  = "hidden";
 }
 
 
 function showInputOptions() {
-  slider.scrollTop = 180;
+  var table = document.getElementById("Table");
+  var back  = document.getElementById("Back");
+  var prog  = document.getElementById("Progress_Circles");
 
-  document.getElementById("Table").style.visibility = "visible";
-  document.getElementById("Back").style.visibility  = "visible";
-  document.getElementById("Progress_Circles").style.visibility = "visible";
+  table.style.opacity = "1";
+  back.style.opacity  = "1";
+  prog.style.opacity  = "1";
+
+  table.style.visibility = "visible";
+  back.style.visibility  = "visible";
+  prog.style.visibility  = "visible";
+
+  slider.scrollTop = 180;
 }
 
 
 function hideInputMethod() {
   if ((writeMode == 0) || (writeMode == 1)) {
-    document.getElementById("Input").style.visibility  = "hidden";
-    document.getElementById("Cancel").style.visibility = "hidden";
-    document.getElementById("Done").style.visibility   = "hidden";
+    var input  = document.getElementById("Input");
+    var cancel = document.getElementById("Cancel");
+    var done   = document.getElementById("Done");
+
+    input.style.opacity  = "1";
+    cancel.style.opacity = "1";
+    done.style.opacity   = "1";
+
+    input.style.visibility  = "hidden";
+    cancel.style.visibility = "hidden";
+    done.style.visibility   = "hidden";
 
     if (writeMode == 0) {
-      document.getElementById("Dictate_Button").style.visibility = "hidden";
+      var dictButton = document.getElementById("Dictate_Button");
+      dictButton.style.opacity = "0";
+      dictButton.style.visibility = "hidden";
     } else {
       removeKeyboard();
     }
@@ -54,14 +80,24 @@ function hideInputMethod() {
 
 function showInputMethod() {
   if ((writeMode == 0) || (writeMode == 1)) {
-    var input = document.getElementById("Input");
+    var input  = document.getElementById("Input");
+    var cancel = document.getElementById("Cancel");
+    var done   = document.getElementById("Done");
+
     input.value = "";
-    input.style.visibility = "visible";
-    document.getElementById("Cancel").style.visibility = "visible";
-    document.getElementById("Done").style.visibility   = "visible";
+
+    input.style.opacity  = "1";
+    cancel.style.opacity = "1";
+    done.style.opacity   = "1";
+
+    input.style.visibility  = "visible";
+    cancel.style.visibility = "visible";
+    done.style.visibility   = "visible";
 
     if (writeMode == 0) {
-      document.getElementById("Dictate_Button").style.visibility = "visible";
+      var dictButton = document.getElementById("Dictate_Button");
+      dictButton.style.opacity = "1";
+      dictButton.style.visibility = "visible";
     } else {
       createKeyboard("Input");
     }
@@ -75,30 +111,56 @@ function fadeAwayInputMethod() {
   var input  = document.getElementById("Input");
   var done   = document.getElementById("Done");
   var cancel = document.getElementById("Cancel");
-  var dictButton = document.getElementById("Dictate_Button");
 
   input.style.animation  = "fadeAway 0.5s ease-in";
   done.style.animation   = "fadeAway 0.5s ease-in";
   cancel.style.animation = "fadeAway 0.5s ease-in";
-  dictButton.style.animation = "fadeAway 0.5s ease-in";
+
+  switch (writeMode) {
+    case 0:
+      var dictButton = document.getElementById("Dictate_Button");
+      dictButton.style.animation = "fadeAway 0.5s ease-in";
+      break;
+
+    case 1:
+      //cenas de escrever
+      break;
+
+    case 2:
+      // cenas do nfc
+      break;
+  }
 
   setTimeout(function () {
     input.style.animation  = "";
     done.style.animation   = "";
     cancel.style.animation = "";
-    dictButton.style.animation = "";
 
-    input.style.animation  = "0";
-    done.style.animation   = "0";
-    cancel.style.animation = "0";
-    dictButton.style.animation = "0";
+    input.style.opacity  = "0";
+    done.style.opacity   = "0";
+    cancel.style.opacity = "0";
 
     input.style.visibility  = "hidden";
     done.style.visibility   = "hidden";
     cancel.style.visibility = "hidden";
-    dictButton.style.visibility = "hidden";
-  },
-  500);
+
+    switch (writeMode) {
+      case 0:
+        dictButton.style.animation  = "";
+        dictButton.style.opacity    = "0";
+        dictButton.style.visibility = "hidden";
+        break;
+
+      case 1:
+        //cenas de escrever
+        break;
+
+      case 2:
+        // cenas do nfc
+        break;
+    }
+
+  }, 500);
 }
 
 
@@ -127,10 +189,58 @@ function appearConfElem() {
 }
 
 
+function fadeAwayConfElem() {
+  var conf   = document.getElementById("Confirm");
+  var done   = document.getElementById("Confirm_Done");
+  var cancel = document.getElementById("Confirm_Cancel");
+
+  conf.style.animation   = "fadeAway 0.5s ease-in";
+  done.style.animation   = "fadeAway 0.5s ease-in";
+  cancel.style.animation = "fadeAway 0.5s ease-in";
+
+  setTimeout(function () {
+    conf.style.animation   = "";
+    done.style.animation   = "";
+    cancel.style.animation = "";
+
+    conf.style.opacity   = "0";
+    done.style.opacity   = "0";
+    cancel.style.opacity = "0";
+
+    conf.style.visibility   = "hidden";
+    done.style.visibility   = "hidden";
+    cancel.style.visibility = "hidden";
+  }, 500);
+}
+
+
+function showConfElem() {
+  var conf   = document.getElementById("Confirm");
+  var done   = document.getElementById("Confirm_Done");
+  var cancel = document.getElementById("Confirm_Cancel");
+
+  conf.style.opacity   = "1";
+  done.style.opacity   = "1";
+  cancel.style.opacity = "1";
+
+  conf.style.visibility   = "visible";
+  done.style.visibility   = "visible";
+  cancel.style.visibility = "visible";
+}
+
+
 function hideConfElem() {
-  document.getElementById("Confirm").style.visibility = "hidden";
-  document.getElementById("Confirm_Done").style.visibility   = "hidden";
-  document.getElementById("Confirm_Cancel").style.visibility = "hidden";
+  var conf = document.getElementById("Confirm");
+  var done = document.getElementById("Confirm_Done");
+  var cancel = document.getElementById("Confirm_Cancel");
+
+  conf.style.opacity = "0";
+  done.style.opacity = "0";
+  cancel.style.opacity = "0";
+
+  conf.style.visibility   = "hidden";
+  done.style.visibility   = "hidden";
+  cancel.style.visibility = "hidden";
 }
 
 
@@ -149,14 +259,18 @@ function cancelChoice() {
 
 function cancelConf() {
   hideConfElem();
+  hideInputMethod();
   showInputOptions();
 }
 
 
 function startDictation() {
+  var dictSimul = document.getElementById("DictateSimul");
+
   document.getElementById("Input").value = "";
 
-  document.getElementById("DictateSimul").style.visibility  = "visible";
+  dictSimul.style.opacity = "1";
+  dictSimul.style.visibility = "visible";
   document.getElementById("Dictate_Button").style.animation = "pulse 1s ease-in infinite";
 }
 
@@ -167,6 +281,7 @@ function endDictation() {
   document.getElementById("Input").value = dictSimul.value;
   dictSimul.value = "";
 
+  dictSimul.style.opacity = "0";
   dictSimul.style.visibility = "hidden";
 
   document.getElementById("Dictate_Button").style.animation = "";
@@ -220,11 +335,27 @@ function saveNewFriend() {
         break;
     }
   } else {
-    hideInputMethod();
+    document.getElementById("Input").style.opacity  = "0.5";
+    document.getElementById("Cancel").style.opacity = "0.5";
+    document.getElementById("Done").style.opacity   = "0.5";
+
+    switch (writeMode) {
+      case 0:
+        document.getElementById("Dictate_Button").style.opacity = "0.5";
+        break;
+
+      case 1:
+        document.getElementById("Keyboard").style.opacity = "0.5";
+        break;
+    }
 
     document.getElementById("Confirm_Contact").innerHTML = name;
 
-    appearConfElem();
+    showConfElem();
+
+    var conf = document.getElementById("Confirm");
+    conf.style.animation = "boing 300ms ease-in-out";
+    setTimeout(function () { conf.style.animation = ""; }, 300);
   }
 }
 
@@ -233,5 +364,10 @@ function sendInvite() {
   var mafrensname = document.getElementById("Confirm_Contact").innerHTML;
   setAlert(mafrensname,mafrensname+" foi\nadicionado aos\nseus contactos.","newcontact",5000);
 
-  document.location.href = "../Contacts App.html";
+  hideConfElem();
+  document.getElementById("Sent").style.transform = "scale(1,1)";
+  setTimeout(function(){
+    document.getElementById("Sent").style.transform = "scale(0,0)";
+    document.location.href = "../Contacts App.html";
+  }, 1300);
 }
