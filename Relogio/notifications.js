@@ -183,6 +183,12 @@ function addNotification(notif){
   if( dirname == "NotificationMenu.html"){
     //lets add that new notification to this menu
   
+    if(notifications.length == 1){
+      showNotifications(0);
+      location.reload();
+      return;
+    }
+
     var element1 = "<th> <div class='iconApp' style='background:";
     var element2 = ";' draggable='false'> <span id ='notText'>";
     var element3 = "</span>";
@@ -203,8 +209,10 @@ function addNotification(notif){
     var rows = body.rows;
     
     // pick the last and prepend
-    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.text + element3);
+    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) + ":<br>"+ notif.text + element3);
     anchors.push(i*138+10);
+
+    
   }
 }
          
