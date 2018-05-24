@@ -230,9 +230,8 @@ function saveNewFriend() {
 
 
 function sendInvite() {
-  var contacts = JSON.parse(sessionStorage.getItem("contacts"));
-  contacts.push(document.getElementById("Confirm_Contact").innerHTML);
-  sessionStorage.setItem("contacts", JSON.stringify(contacts));
+  var mafrensname = document.getElementById("Confirm_Contact").innerHTML;
+  setAlert(mafrensname,mafrensname+" foi\nadicionado aos\nseus contactos.","newcontact",5000);
 
   document.location.href = "../Contacts App.html";
 }

@@ -41,12 +41,18 @@ function showNotifications(startRow) {
         var backcolor = "#8d23c2";
         contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.text + element3;
       break;
+
       case "go2conversation":
         var backcolor = "#2bade0";
         if(notif.text.length >= 35){
           notif.text = notif.text.substr(0,30) + "...";
         }
         contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) +":<br>"+ notif.text + element3;
+      break;
+
+      case "newcontact":
+        var backcolor = "#2bade0";
+        contact_Table.insertRow(i+startRow).innerHTML = element1 + backcolor + element2 + notif.text + element3;
       break;
     }
   }
@@ -73,6 +79,12 @@ function acceptNotification(){
       sessionStorage.setItem("friend",notif.name);
       document.location.href = "../Contacts App/Chat/Chat.html";
     break;
+    
+    case "newcontact":
+      sessionStorage.setItem("friend",notif.name);
+      document.location.href = "../Contacts App/Chat/Chat.html";
+    break;
+
     default:
       console.log("nada");
     break;
