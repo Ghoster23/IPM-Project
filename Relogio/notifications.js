@@ -114,6 +114,14 @@ function ExecuteNotification(targetname){
       //if this is the notification that came to conclusion remove it
       if(targetname == notif.name){
         alerts.splice(i,1);
+
+        //check if alert was of type add contact and if so add it
+        if(notif.function == "newcontact"){
+          var contacts = JSON.parse(sessionStorage.getItem("contacts"));
+          contacts.push(notif.name);
+          sessionStorage.setItem("contacts", JSON.stringify(contacts));
+        }
+
         //check if the alert was of type message and if you are already in the chat dont make a notif
         if(notif.function == "go2conversation" && 
            dirname == "Chat.html" && 
@@ -207,6 +215,11 @@ function addNotification(notif){
       case "go2conversation":
         var backcolor = "#2bade0";
         rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) + ":<br>"+ notif.text + element3);
+        anchors.push(i*138+10);
+      break;
+      case "newcontact":
+        var backcolor = "#2bade0";
+        rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.text + element3);
         anchors.push(i*138+10);
       break;
     }
@@ -544,6 +557,9 @@ function createminifloaters(){
         navigcount++;
       break;
       case "go2conversation":
+        smscount++;
+      break;
+      case "newcontact":
         smscount++;
       break;
     }

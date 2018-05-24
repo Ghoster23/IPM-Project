@@ -92,6 +92,7 @@ figcaption {
   position: absolute;
   top:  55px;
   left: 35px;
+  z-index: 1;
   visibility: hidden;
 }
 
