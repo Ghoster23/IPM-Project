@@ -195,24 +195,21 @@ function addNotification(notif){
 
     var notifications = JSON.parse(sessionStorage.getItem("notifications"));
     var contact_Table = document.getElementById("Table");
+    var body = contact_Table.tBodies[0];
+    var rows = body.rows;
 
     switch(newnotif.function){
       case "NavigateToFriend":
         var backcolor = "#8d23c2";
+        rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.text + element3);
+        anchors.push(i*138+10);
       break;
       case "go2conversation":
         var backcolor = "#2bade0";
+        rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) + ":<br>"+ notif.text + element3);
+        anchors.push(i*138+10);
       break;
     }
-
-    var body = contact_Table.tBodies[0];
-    var rows = body.rows;
-    
-    // pick the last and prepend
-    rows[rows.length - 1].insertAdjacentHTML('beforebegin', element1 + backcolor + element2 + notif.name.bold().fontsize(2.8) + ":<br>"+ notif.text + element3);
-    anchors.push(i*138+10);
-
-    
   }
 }
          
