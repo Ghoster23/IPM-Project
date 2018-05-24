@@ -220,7 +220,7 @@ function saveNewFriend() {
         break;
     }
   } else {
-    fadeAwayInputMethod();
+    hideInputMethod();
 
     document.getElementById("Confirm_Contact").innerHTML = name;
 
