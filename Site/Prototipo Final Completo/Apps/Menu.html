@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menu Principal</title>
+        <link rel="stylesheet" href="../style (Watch).css">
+        <link rel="stylesheet" href="style (Menu).css">
+    </head>
+
+    <body>
+        <a href="../../../index.html">
+            <img id="Back_Arrow" src="../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+
+                        <!-- Health App -->
+                        <tr>
+                            <th>
+                                <a href="Health App/Health App.html">
+                                    <img class="iconApp" draggable="false" src="Images/Health Icon.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Sa&uacute;de </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- SOS shortcut -->
+                        <tr>
+                            <th>
+                                <!-- SOS Confirm -->
+                                <canvas id="sosconfirm"></canvas>
+                                <img id="iconSOS" class="iconApp" draggable="false" src="Images/SOS icon.png">
+                                <figcaption class="appSubtitle"> <br> </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Contacts App -->
+                        <tr>
+                            <th>
+                                <a href="Contacts App/Contacts App.html">
+                                  <img class="iconApp" draggable="false" src="Images/Contacts.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Contactos </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Navigation App -->
+                        <tr>
+                            <th>
+                              <a href="Navigation App/Navigation App.html">
+                                <img class="iconApp" draggable="false" src="Images/Location Icon.png">
+                              </a>
+                              <figcaption class="appSubtitle"> Navega&ccedil;&atilde;o </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Notification Menu -->
+                        <tr>
+                            <th>
+                              <a href="Notifications/NotificationMenu.html">
+                                <img class="iconApp" draggable="false" src="Images/Notifmenu Icon.png">
+                              </a>
+                              <figcaption class="appSubtitle"> Notifica&ccedil;&otilde;es </figcaption>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Back Button -->
+                <a href="../Watch.html">
+                    <img id="Back" src="Images/back.png">
+                </a>
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles" src="Images/progress2.png">
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+        <script src="../animation (Watch).js"></script>
+        <script src="../notifications.js"></script>
+        <script src="animation (Menu).js"></script>
+    </body>
+</html>

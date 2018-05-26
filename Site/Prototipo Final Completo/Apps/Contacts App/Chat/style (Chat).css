@@ -1,0 +1,74 @@
+#Table {
+  width: 150px;
+  margin-top:    50px;
+  margin-left:   40px;
+  margin-bottom: 50px;
+  border-collapse: collapse;
+  vertical-align:  middle;
+}
+
+#FriendBox {
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  top: 4%;
+  left: 4%;
+}
+
+#FriendName {
+  font-family: "Open Sans", sans-serif;
+  position: absolute;
+  width: 95px;
+  height: 27px;
+  font-size: 18px;
+  top: 8%;
+  left: 27.5%;
+  text-align: center;
+  line-height: 28px;
+}
+
+#Input {
+  width: 136px;
+  top:   165px;
+  left:  19px;
+  padding-top:    1px;
+  padding-bottom: 22px;
+  font-size:  14px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.sendTemplate, .receivedTemplate {
+  position: relative;
+  left: 35px;
+  width: 120px;
+  height: 65px;
+}
+
+.receivedTemplate {
+  left: 5px;
+}
+
+.sendMessage, .receivedMessage {
+  position: relative;
+  width: 110px;
+  top: -4px;
+  left: 35px;
+  padding: 5px;
+  margin-top: -50px;
+  text-align: justify;
+  white-space: pre;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+  text-decoration: none;
+  display: block;
+}
+
+.receivedMessage {
+  left: 5px;
+  color: black;
+  text-shadow: 0px 0px 0px #000000;
+}

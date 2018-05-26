@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Navega&ccedil;&atilde;o - Mapa</title>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Navigation App).css">
+        <link rel="stylesheet" href="style (Navigation App Map).css">
+    </head>
+
+    <body onload="markerPosition()">
+        <a href="../../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu">
+                    <!-- Map -->
+                    <div overflow="hidden">
+                      <canvas id="Map" width=210px height=210px>
+                    </div>
+
+                    <div id="YouReHere">
+                      <!-- Looking at -->
+                      <img id="LookAt" src="Images/Map/cone.png">
+                      <!-- Self -->
+                      <img id="Self" src="Images/Map/user.png">
+                    </div>
+
+                    <!-- Arrow -->
+                    <img id="Arrow" src="Images/Map/arrow.png">
+                    <!-- Marker -->
+                    <!--<img id="Marker" src="http://www.stickpng.com/assets/images/585e47accb11b227491c338a.png">-->
+
+                    <!-- Text Boxes -->
+                    <div id="Info">
+                      <img id="TextBoxes" src="Images/Map/text_boxes.png">
+                      <span id="Target"> target </span>
+                      <span id="Distance"> distance </span>
+                      <img id="Confirm" src="Images/Map/accept.png" onclick="confirm()">
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <a href="Navigation App.html">
+                    <img id="Back" src="Images/Map/cancel.png">
+                </a>
+            </div>
+
+            <!-- Bezzle -->
+            <img id="Bezel" src="../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <div id=MovimentButtons>
+                <p id="MovimentButtons_Text">Use as setas para simular o seu movimento!</p>
+                <div id="MovimentButtons_Buttons">
+                    <button id="Up_Button" onclick="changePosition(1)"><img id="Up_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button><br>
+                    <button id="Left_Button" onclick="changePosition(2)"><img id="Left_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                    <button id="Down_Button" onclick="changePosition(3)"><img id="Down_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                    <button id="Right_Button" onclick="changePosition(4)"><img id="Right_Arrow" class="buttonArrow" src="../../../Images/Arrow.png"></button>
+                </div>
+            </div>
+
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+
+        <script src="../../animation (Watch).js"></script>
+        <script src="../../notifications.js"></script>
+        <script src="animation (Navigation App Map).js"></script>
+
+    </body>
+</html>

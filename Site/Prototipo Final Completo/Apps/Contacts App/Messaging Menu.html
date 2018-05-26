@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mensagens - Menu</title>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Messaging Menu).css">
+    </head>
+
+    <body>
+        <a href="../../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <div id="Touch_Screen">
+                <div class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+
+                        <!-- Send Location -->
+                        <tr>
+                            <th>
+                                <img class="iconApp" draggable="false" src="Images/sendlocation.png" onclick="sent()">
+                                <figcaption class="appSubtitle"> Enviar<br>Localiza&ccedil;&atilde;o </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Premade Messages -->
+                        <tr>
+                            <th>
+                                <a href="Premade Messages/Premade Messages Menu.html">
+                                    <img class="iconApp" draggable="false" src="Images/premademessage.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Predefinidas </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Write Message -->
+                        <tr>
+                            <th>
+                                <a href="Write Message/Write Message.html">
+                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(0)" src="Images/keyboard.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Escrever </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Dictate Message -->
+                        <tr>
+                            <th>
+                                <a href="Write Message/Write Message.html">
+                                    <img class="iconApp" draggable="false" onclick="saveWriteMode(1)" src="Images/microphone.png">
+                                </a>
+                                <figcaption class="appSubtitle"> Ditar </figcaption>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Sent -->
+                <img id="Sent" src="Images/Sent.gif">
+
+                <!-- Back Button -->
+                <a href="Chat/Chat.html">
+                    <img id="Back" src="../Images/back.png">
+                </a>
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles" src="../Images/progress2.png">
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+
+        <script src="../../animation (Watch).js"></script>
+        <script src="../../notifications.js"></script>
+        <script src="../animation (Menu).js"></script>
+        <script src="Premade Messages/animation (Premade Messages Menu).js"></script>
+        <script src="animation (Messaging Menu).js"></script>
+    </body>
+</html>

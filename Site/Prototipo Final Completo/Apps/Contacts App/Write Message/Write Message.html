@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mensagens - </title>
+        <link rel="stylesheet" href="../../../style (Watch).css">
+        <link rel="stylesheet" href="../../style (Menu).css">
+        <link rel="stylesheet" href="../New Contact/style (New Contact).css">
+        <link rel="stylesheet" href="style (Write Message).css">
+    </head>
+
+    <body onload="chooseWriteMode()">
+        <a href="../../../../../index.html">
+            <img id="Back_Arrow" src="../../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <div id="Touch_Screen">
+                <textarea id="Input" rows="1" maxlength="20"></textarea>
+
+                <a href="../Messaging Menu.html">
+                    <img id="Cancel" class="controlButton" src="../../Images/cancel.png">
+                </a>
+
+                <img id="Dictate_Button" class="controlButton" onclick="dictationButton()" src="../Images/microphone.png">
+
+                <img id="Done" class="controlButton" onclick="checkSMS()" src="../../Images/accept.png">
+
+                <img id="Dictate" class="option" draggable="false" src="../Images/microphone.png">
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <textarea id="DictateSimul" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
+
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+        <script src="../../../keyboard.js"></script>
+        <script src="../../../animation (Watch).js"></script>
+        <script src="../../../notifications.js"></script>
+        <script src="../Premade Messages/animation (Premade Messages Menu).js"></script>
+        <script src="animation (Write Message).js"></script>
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sa&uacute;de - Teste</title>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (Health App).css">
+        <link rel="stylesheet" href="style (Health App Test).css">
+    </head>
+
+    <body>
+        <a href="../../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu">
+                    <!-- Loading -->
+                    <canvas id="Loading"></canvas>
+                    <!-- little circle -->
+                    <div id="littlecircle"></div>
+                    <!-- SOS Confirm -->
+                    <canvas id="sosconfirm"></canvas>
+                    <!-- Result -->
+                    <div id="Good">
+                        <img id="Symbol" src="Images/good.png">
+                        <img id="Warningfinal" src="Images/warningfinal.png">
+                    </div>
+                    <div id="Warning"></div>
+                    <!-- Result Text -->
+                    <span id="Result_Text"> place_holder_text</span>
+                </div>
+
+                <!-- Back Button -->
+                <a href="Health App.html">
+                    <img id="Back" src="../Images/back.png">
+                </a>
+            </div>
+
+            <!-- Bezzle -->
+            <img id="Bezel" src="../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+
+        <script src="../../animation (Watch).js"></script>
+        <script src="../../notifications.js"></script>
+        <script src="animation (Health App Test).js"></script>
+    </body>
+</html>

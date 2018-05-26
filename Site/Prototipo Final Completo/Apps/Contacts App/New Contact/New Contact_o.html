@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Novo Contacto</title>
+        <link rel="stylesheet" href="../../../style (Watch).css">
+        <link rel="stylesheet" href="../../style (Menu).css">
+        <link rel="stylesheet" href="style (New Contact).css">
+    </head>
+
+    <body>
+        <a href="../../../index.html">
+            <img id="Back_Arrow" src="../../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <div id="Touch_Screen">
+                <table id="Table">
+                    <tr>
+                        <th>
+                            <img id="Dictate" class="option" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
+                            <figcaption id="DictateSub" class="optionSubtitle"> Ditar </figcaption>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <img id="Write" class="option" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
+                            <figcaption id="WriteSub" class="optionSubtitle"> Escrever </figcaption>
+                        </th>
+                    </tr>
+                </table>
+
+                <input id="Input" type="text" placeholder="Novo Contacto" min="1" maxlength="10">
+
+                <img id="Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
+                <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
+
+                <!-- Back Button -->
+                <a href="../Contacts App.html">
+                    <img id="Back" src="../../Images/back.png">
+                </a>
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <textarea id="DictateSimul" maxlength="10" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
+
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+        <script src="../../../keyboard.js"></script>
+        <script src="../../../animation (Watch).js"></script>
+        <script src="animation (New Contact).js"></script>
+        <script src="../../../notifications.js"></script>
+    </body>
+</html>

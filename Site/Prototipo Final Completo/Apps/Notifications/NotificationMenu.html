@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../style (Watch).css">
+        <link rel="stylesheet" href="../style (Menu).css">
+        <link rel="stylesheet" href="style (NotificationMenu).css">
+    </head>
+
+    <body onload="showNotifications(0)">
+        <a href="../../../../index.html">
+            <img id="Back_Arrow" src="../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div class="menu" id="menu">
+                    <table id="Table">
+                        <br>
+                    </table>
+                </div>
+
+                <!-- Back Button -->
+                <a onclick="goBack()">
+                    <img id="Back" src="../Images/back.png">
+                </a>
+            </div>
+
+            <!-- Cancel -->
+            <img id="Cancel" onclick="denyNotification()" src="../Images/cancel.png">
+
+            <!-- Accept -->
+            <img id="Accept" onclick="acceptNotification()" src="../Images/accept.png">
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+            <input id="From" maxlength="10" placeholder="De" type="text">
+            <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+            <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+        <script src="../../animation (Watch).js"></script>
+        <script src="../../notifications.js"></script>
+        <script src="../animation (Menu).js"></script>
+        <script src="NotificationMenu.js"></script>
+    </body>
+</html>

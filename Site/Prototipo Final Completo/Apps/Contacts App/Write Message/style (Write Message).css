@@ -1,0 +1,24 @@
+#Input {
+  width: 125px;
+  top: 1px;
+  left: 25px;
+  padding-top: 18px;
+  padding-left: 17px;
+  padding-right: 27px;
+  padding-bottom: 1px;
+  visibility: visible;
+  opacity: 1;
+  overflow: overlay;
+}
+
+.controlButton {
+  visibility: visible;;
+  opacity: 1;
+}
+
+.option {
+  top: 102px;
+  left: 71px;
+  visibility: hidden;
+  opacity: 0;
+}

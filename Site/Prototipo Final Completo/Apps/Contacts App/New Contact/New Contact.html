@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Novo Contacto</title>
+        <link rel="stylesheet" href="../../../style (Watch).css">
+        <link rel="stylesheet" href="../../style (Menu).css">
+        <link rel="stylesheet" href="../style (Messaging Menu).css">
+        <link rel="stylesheet" href="style (New Contact).css">
+    </head>
+
+    <body>
+        <a href="../../../../../index.html">
+            <img id="Back_Arrow" src="../../../../Images/Arrow.png">
+        </a>
+
+        <div id="Clock">
+            <!-- Dark Background -->
+            <div id="Touch_Screen">
+                <div id="menu" class="menu" onscroll="updateProgress()">
+                    <table id="Table">
+                        <br>
+                        <!-- Dictate -->
+                        <tr>
+                            <th>
+                                <img id="Dictate" class="iconApp" draggable="false" onclick="optionChoosen(0)" src="../Images/microphone.png">
+                                <figcaption id="DictateSub" class="appSubtitle"> Ditar </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- Write -->
+                        <tr>
+                            <th>
+                                <img id="Write" class="iconApp" draggable="false" onclick="optionChoosen(1)" src="../Images/keyboard.png">
+                                <figcaption id="WriteSub" class="appSubtitle"> Escrever </figcaption>
+                            </th>
+                        </tr>
+
+                        <!-- NFC -->
+                        <tr>
+                            <th>
+                                <img id="NFC" class="iconApp" draggable="false" onclick="optionChoosen(2)" src="../Images/nfc.png">
+                                <figcaption id="NFCSub" class="appSubtitle"> NFC </figcaption>
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+
+                <input id="Input" type="text" placeholder="Novo Contacto" min="1" maxlength="10">
+
+                <img id="Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
+                <img id="Done" class="controlButton" onclick="saveNewFriend()" src="../../Images/accept.png">
+
+                <img id="Dictate_Button" class="controlButton" onclick="dictationButton()" src="../Images/microphone.png">
+
+                <img id="NFC_Active" src="../Images/nfc_active.png">
+                <img id="NFC_Cancel" class="controlButton" onclick="cancelChoice()" src="../../Images/cancel.png">
+                <span id="NFC_Prompt"> Encoste o seu relogio ao relogio cujo contacto quer adicionar. </span>
+
+                <div id="Confirm">
+                    <img id="Confirm_Box" src="../Images/send background.png">
+                    <span id="Confirm_Text">Enviar pedido a:</span>
+                    <span id="Confirm_Contact"></span>
+                    <img id="Confirm_Cancel" class="controlButton" onclick="cancelConf()" src="../../Images/cancel.png">
+                    <img id="Confirm_Done" class="controlButton" onclick="sendInvite()" src="../../Images/accept.png">
+                </div>
+
+                <img id="Sent" src="../Images/Sent.gif">
+
+                <!-- Progress Circles -->
+                <img id="Progress_Circles" src="../Images/progress2.png">
+
+                <!-- Back Button -->
+                <a href="../Contacts App.html">
+                    <img id="Back" src="../../Images/back.png">
+                </a>
+            </div>
+
+            <!-- Bezle -->
+            <img id="Bezel" src="../../../Images/Bezel.png">
+
+            <!-- Button -->
+            <a href="../../../Watch.html">
+                <div id="Button"></div>
+            </a>
+        </div>
+
+        <div id="Auxiliary">
+          <textarea id="DictateSimul" maxlength="10" placeholder="Escreva aqui o que quer simular que est&aacute; a ditar!" rows="1" cols="53"></textarea>
+          <textarea id="NFCSimul" maxlength="10" placeholder="Escreva aqui o nome da pessoa a adicionar." rows="1" cols="53"></textarea>
+          <button id="SendNFC" onclick="sendNFC()">Adicionar</button>
+
+          <input id="From" maxlength="10" placeholder="De" type="text">
+          <textarea id="Message" placeholder="Escreva aqui uma mensagem para enviar ao rel&oacute;gio!" rows="2" cols="52"></textarea>
+          <button id="SendMessage" onclick="sendToWatch()">Enviar</button>
+        </div>
+
+        <script src="../../../animation (Watch).js"></script>
+        <script src="../../../keyboard.js"></script>
+        <script src="../../../notifications.js"></script>
+        <script src="../../animation (Menu).js"></script>
+        <script src="animation (New Contact).js"></script>
+    </body>
+</html>
